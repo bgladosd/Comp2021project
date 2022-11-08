@@ -1,7 +1,10 @@
 package hk.edu.polyu.comp.comp2021.simple;
 
 import hk.edu.polyu.comp.comp2021.simple.model.Simple;
-
+/**
+ * Missing "@param" is reported (if configured).
+ * @param param
+ */
 public class Application {
 
     public static void main(String[] args){
