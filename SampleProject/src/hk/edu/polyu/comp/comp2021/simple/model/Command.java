@@ -4,7 +4,7 @@ import java.io.IOException;
 
 public interface Command {
 	
-	public void execute(Memory m) ;
+	public DataObject execute(Memory m) ;
 	public void setLabel(String l);
 	public String getLabel();
 

@@ -7,9 +7,10 @@ public class CommandVarDef implements Command {
     String dataName;
     DataObject dataObject;
     @Override
-    public void execute(Memory m)  {
+    public DataObject execute(Memory m)  {
         
         m.addData(dataName, dataObject);
+        return(null);
     }
     public CommandVarDef(String label,String dataName,DataObject dataObject) {
         this.label=label;
