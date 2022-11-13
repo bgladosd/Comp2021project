@@ -11,23 +11,19 @@ public class CommandBuilder {
         String[] cmd = c.split(" ");
         // vardef command
         if (cmd[0].equals("vardef")) {
-            
-            CommandVarDef cvd = new CommandVarDef(cmd,m);
-
-                 
-        }else if (cmd[0].equals("binexpr")) {
+            CommandVarDef cvd = new CommandVarDef(cmd, m);
+        } else if (cmd[0].equals("binexpr")) {
             CommandBinexpr cb = new CommandBinexpr(cmd, m);
-        }
-        else if (cmd[0].equals("inspect")) {
+        } else if (cmd[0].equals("inspect")) {
             CommandInspect ci = new CommandInspect(cmd, m);
             ci.execute(m);
-        }else if (cmd[0].equals("if")) {
+        } else if (cmd[0].equals("if")) {
             CommandIf cif = new CommandIf(cmd, m);
-            cif.execute(m);
-        }
-        else if (cmd[0].equals("load")) {
+        } else if (cmd[0].equals("load")) {
             CommandLoad cl = new CommandLoad(cmd, m);
             cl.execute(m);
+        } else if (cmd[0].equals("execute")) {
+            CommandExecute cl = new CommandExecute(cmd, m);
         }
 
     }

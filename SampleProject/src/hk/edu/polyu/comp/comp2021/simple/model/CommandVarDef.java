@@ -20,8 +20,6 @@ public class CommandVarDef implements Command {
         }
         m.addData(dataName, dataObject);
 
-        //delete later just show print data to debug
-        System.out.println("vardef test " + dataName + " : " + m.getData(dataName));
         return (null);
     }
 
