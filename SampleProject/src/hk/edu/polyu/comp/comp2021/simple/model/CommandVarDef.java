@@ -61,6 +61,7 @@ public class CommandVarDef implements Command {
             }
             dataO.setType("b");
         }
+        
         setLabel(label);
         setDataObject(dataO);
         setDataName(varName);

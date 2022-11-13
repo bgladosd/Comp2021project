@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 public class Simple {
-
+    
     private Memory memory;
     private CommandBuilder commandBuilder;
     public Simple() {
@@ -24,14 +24,45 @@ public class Simple {
 
             Scanner scanner1 = new Scanner(System.in);  // Create a Scanner object
             System.out.print(">");
-
             String input = scanner1.nextLine();  // Read user input
-            System.out.println("your input is: " + input);  // Output user input
             commandBuilder.buildCommand(input, memory);
             
 
 
         }
+    }
+    public static boolean checkIsValidNameOrLabel(String s) {
+        //ascii table [(48)0-9(58),(65)A-Z(90),(97)a-z(122)]
+        //case1 if more than eight characters
+        if (s.length()>8) {
+            return false;
+        }
+        //case2 if not english letters and digits
+        for (char c : s.toCharArray()) {
+            if (!((c>47&&c<59)||(c>64&&c<91)||(c>96&&c<123))) {
+                return false;
+            }
+            
+        }
+
+        //case3 if string start with 0-9
+        if (s.charAt(0)>47&&s.charAt(0)<58) {
+            return false;    
+        }
+        //case4 is SIMPLE Keywords
+        //please continue add
+        String[] Identifiers={"int","bool","true","false"};
+        for (String string : Identifiers) {
+            if (s==string) {
+                return false;
+            }
+        }
+
+
+
+        return true;
+
+        
     }
 
     public abstract class Statement {
