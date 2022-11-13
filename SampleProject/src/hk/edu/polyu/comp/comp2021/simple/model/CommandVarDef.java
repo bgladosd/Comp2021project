@@ -64,11 +64,8 @@ public class CommandVarDef implements Command {
         setLabel(label);
         setDataObject(dataO);
         setDataName(varName);
-        
-        DataObject me = new DataObject() ;
-        me.setO(this);
-        me.setType("c");
-        m.addData(getLabel(),me);
+
+        m.addCmd(label, this);
         
     }
     @Override

@@ -18,8 +18,7 @@ public class CommandBuilder {
             //     Command cm= (Command)m.getData("vardef1").o;
             //     to=cm.execute(m);
             // }
-            Command cm= (Command)m.getData("vardef1").o;
-            cm.execute(m);
+            m.getCmd("vardef1").execute(m);
 
             System.out.println(m.getData("x").o);
                  
