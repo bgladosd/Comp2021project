@@ -36,11 +36,11 @@ public class DataObject {
     }
     public void setBoolean(Boolean b){
         o=b;
-        type="b";        
+        type="bool";        
     }
     public void setInteger(Integer i){
         o=i;
-        type="i";        
+        type="int";        
     }
     public boolean autoSetData(String s,Memory m){
         //is variable that inside memory
@@ -64,12 +64,12 @@ public class DataObject {
             }
         //is a boolean
         }else if (s.equals("true") || s.equals("false")) {
-            this.type="b";
+            this.type="bool";
             this.o=Boolean.parseBoolean(s);
             return true;
         //is a integer
         }else if (isInteger(s)) {
-            this.type="i";
+            this.type="int";
             int t= Integer.parseInt(s);
             if (t > 99999) {
                 t = 99999;
@@ -95,11 +95,11 @@ public class DataObject {
     
     @Override
     public String toString() {
-        if (type.equals("i")) {
+        if (type.equals("int")) {
             int t = (int)o;
             return String.valueOf(t);
         }
-        if (type.equals("b")) {
+        if (type.equals("bool")) {
             Boolean t = (Boolean)o;
             return String.valueOf(t);
         }

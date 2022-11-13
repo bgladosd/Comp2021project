@@ -32,11 +32,11 @@ public class CommandBinexpr implements Command {
         // can't do calculation if they are not the same type
         if (!expRefObject1.type.equals(expRefObject2.type)) {
             System.out.println(
-                "Error on :"+ expName +" can't do calculation if ExpRef1 and ExpRef2 are not the same type");
+                    "Error on :" + expName + " can't do calculation if ExpRef1 and ExpRef2 are not the same type");
             return new DataObject("false", m);
         }
 
-        if (expRefObject1.type == "i") {
+        if (expRefObject1.type == "int") {
             Integer intExpRef1 = (Integer) expRefObject1.o;
             Integer intExpRef2 = (Integer) expRefObject2.o;
             switch (bop) {
@@ -74,7 +74,7 @@ public class CommandBinexpr implements Command {
                     dataObject = new DataObject(String.valueOf((intExpRef1 != intExpRef2)), m);
                     break;
             }
-        } else {
+        } else if (expRefObject1.type == "bool") {
             Boolean boolExpRef1 = (Boolean) expRefObject1.o;
             Boolean boolExpRef2 = (Boolean) expRefObject2.o;
             switch (bop) {

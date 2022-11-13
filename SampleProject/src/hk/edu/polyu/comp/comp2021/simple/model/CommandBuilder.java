@@ -21,6 +21,9 @@ public class CommandBuilder {
         else if (cmd[0].equals("inspect")) {
             CommandInspect ci = new CommandInspect(cmd, m);
             ci.execute(m);
+        }else if (cmd[0].equals("if")) {
+            CommandIf cif = new CommandIf(cmd, m);
+            cif.execute(m);
         }
 
     }
