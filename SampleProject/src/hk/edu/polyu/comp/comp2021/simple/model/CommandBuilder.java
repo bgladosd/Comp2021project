@@ -22,6 +22,10 @@ public class CommandBuilder {
             CommandInspect ci = new CommandInspect(cmd, m);
             ci.execute(m);
         }
+        else if (cmd[0].equals("load")) {
+            CommandLoad cl = new CommandLoad(cmd, m);
+            cl.execute(m);
+        }
 
     }
 
