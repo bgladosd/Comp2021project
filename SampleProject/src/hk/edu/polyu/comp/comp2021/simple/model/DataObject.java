@@ -50,6 +50,12 @@ public class DataObject {
                 Command tc= (Command)m.getData(s).o;
                 this.o= tc.execute(m).o;
                 this.type= tc.execute(m).type;
+                while (this.type.equals("e")) {
+                    Command tcc= (Command)this.o;
+                    this.o= tcc.execute(m).o;
+                    this.type= tcc.execute(m).type;
+                }
+                
                 return true;
             }else{
                 this.o=m.getData(s).o;

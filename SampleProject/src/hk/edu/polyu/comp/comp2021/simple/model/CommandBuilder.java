@@ -19,9 +19,6 @@ public class CommandBuilder {
                  
         }else if (cmd[0].equals("binexpr")) {
             CommandBinexpr cb = new CommandBinexpr(cmd, m);
-            m.getCmd("exp1").execute(m);
-
-            System.out.println("binexpr test : "+m.getData("exp1"));
         }
         else if (cmd[0].equals("inspect")) {
             CommandInspect ci = new CommandInspect(cmd, m);
