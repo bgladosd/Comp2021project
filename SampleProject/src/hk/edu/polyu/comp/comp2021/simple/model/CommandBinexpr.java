@@ -15,8 +15,27 @@ public class CommandBinexpr implements Command {
     public DataObject execute(Memory m) {
         m.addData(expName, new DataObject(this, m));
 
-        DataObject expRefObject1 = new DataObject(expRef1, m);
-        DataObject expRefObject2 = new DataObject(expRef2, m);
+        DataObject expRefObject1 = new DataObject();
+        DataObject expRefObject2 = new DataObject();
+        if (expRefObject1.autoSetData(expRef1, m)) {
+        } else {
+            System.out.println(
+                    "Error on :" + expName + " ExpRef1 is not a valid data");
+            return new DataObject("false", m);
+        }
+        if (expRefObject2.autoSetData(expRef2, m)) {
+        } else {
+            System.out.println(
+                    "Error on :" + expName + " ExpRef2 is not a valid data");
+            return new DataObject("false", m);
+        }
+        // can't do calculation if they are not the same type
+        if (!expRefObject1.type.equals(expRefObject2.type)) {
+            System.out.println(
+                "Error on :"+ expName +" can't do calculation if ExpRef1 and ExpRef2 are not the same type");
+            return new DataObject("false", m);
+        }
+
         if (expRefObject1.type == "i") {
             Integer intExpRef1 = (Integer) expRefObject1.o;
             Integer intExpRef2 = (Integer) expRefObject2.o;
@@ -113,7 +132,7 @@ public class CommandBinexpr implements Command {
         // command check tegrity end
         m.addCmd(expName, this);
 
-        //instant execute for testing delete later
+        // instant execute for testing delete later
         System.out.println(m.getCmd(expName).execute(m));
 
     }
