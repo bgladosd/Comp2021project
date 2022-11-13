@@ -8,6 +8,7 @@ public class CommandInspect implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        
         if (inspectObject.autoSetData(varName, m)) {
         } else {
             System.out.println(
@@ -19,6 +20,10 @@ public class CommandInspect implements Command {
     }
 
     public CommandInspect(String[] cmd, Memory m) {
+        if (cmd[1].equals("all")) {
+            m.printData();
+            return;
+        }
         if (cmd.length != 3) {
             System.out.println(
                     "instruction failed! inspect statement should only have 3 elements which is (inspect programName varName)");
@@ -28,6 +33,7 @@ public class CommandInspect implements Command {
         varName = cmd[2];
 
         inspectObject = new DataObject();
+        this.execute(m);
 
         // if (inspectObject.autoSetData(varName,m)) {
         // }else{

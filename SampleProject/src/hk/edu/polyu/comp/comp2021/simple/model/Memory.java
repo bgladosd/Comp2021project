@@ -13,7 +13,6 @@ public class Memory {
     }
     public void addData(String dataName,DataObject data){
         dataMemory.put(dataName, data);
-        System.out.println(data + " : added");
     }
     public DataObject getData(String dataName){
         return dataMemory.get(dataName);
@@ -23,5 +22,11 @@ public class Memory {
     }
     public Command getCmd(String label){
         return cmdMemory.get(label);
+    }
+    public void printData(){
+        for (String data : dataMemory.keySet()) {
+            System.out.println(data + " : "+getData(data));
+        }
+
     }
 }
