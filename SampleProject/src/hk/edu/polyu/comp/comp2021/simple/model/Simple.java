@@ -55,7 +55,7 @@ public class Simple {
         //please continue add
         String[] Identifiers={"int","bool","true","false"};
         for (String string : Identifiers) {
-            if (s==string) {
+            if (s.equals(string)) {
                 return false;
             }
         }
