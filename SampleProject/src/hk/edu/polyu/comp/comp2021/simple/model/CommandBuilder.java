@@ -14,9 +14,6 @@ public class CommandBuilder {
             
             CommandVarDef cvd = new CommandVarDef(cmd,m);
 
-            //for testing
-            m.getCmd("vardef1").execute(m);
-            System.out.println("vardef test x : "+m.getData("x"));
                  
         }else if (cmd[0].equals("binexpr")) {
             CommandBinexpr cb = new CommandBinexpr(cmd, m);

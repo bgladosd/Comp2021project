@@ -67,6 +67,11 @@ public class CommandVarDef implements Command {
         setDataName(varName);
 
         m.addCmd(label, this);
+
+         //for testing
+         m.getCmd(label).execute(m);
+         System.out.println("vardef test "+varName +" : "+m.getData(varName));  
+        
         
     }
     @Override
