@@ -1,4 +1,5 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
+
 import java.util.HashMap;
 import java.util.Scanner;
 
