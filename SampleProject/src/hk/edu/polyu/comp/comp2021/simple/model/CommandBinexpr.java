@@ -112,6 +112,8 @@ public class CommandBinexpr implements Command {
 
         // command check tegrity end
         m.addCmd(expName, this);
+
+        //instant execute for testing delete later
         System.out.println(m.getCmd(expName).execute(m));
 
     }

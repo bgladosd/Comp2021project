@@ -16,16 +16,18 @@ public class Simple {
 
         System.out.println("SIMPLE is running please input");
         while (true){
-            //Store <label, statement (class)>
-            HashMap<String, Statement> StateStorage = new HashMap<String, Statement>();
-            //Store <expression name, expression (class)>
-            HashMap<String, expression> ExpStorage = new HashMap<String, expression>();
+            
 
 
             Scanner scanner1 = new Scanner(System.in);  // Create a Scanner object
             System.out.print(">");
             String input = scanner1.nextLine();  // Read user input
             commandBuilder.buildCommand(input, memory);
+
+            //Store <label, statement (class)>
+            HashMap<String, Statement> StateStorage = new HashMap<String, Statement>();
+            //Store <expression name, expression (class)>
+            HashMap<String, expression> ExpStorage = new HashMap<String, expression>();
             
 
 

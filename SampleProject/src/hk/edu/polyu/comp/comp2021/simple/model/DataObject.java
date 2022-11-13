@@ -79,6 +79,7 @@ public class DataObject {
             this.o = t;
             return true;
         }
+        System.out.println("can't create object from string");
         return false;
     }
 
