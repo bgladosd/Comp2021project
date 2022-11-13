@@ -1,0 +1,4 @@
+vardef vardef1 int a 100
+vardef vardef int b 90
+binexpr exp1 a + b
+

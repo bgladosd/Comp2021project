@@ -25,6 +25,10 @@ public class CommandBuilder {
             CommandIf cif = new CommandIf(cmd, m);
             cif.execute(m);
         }
+        else if (cmd[0].equals("load")) {
+            CommandLoad cl = new CommandLoad(cmd, m);
+            cl.execute(m);
+        }
 
     }
 
