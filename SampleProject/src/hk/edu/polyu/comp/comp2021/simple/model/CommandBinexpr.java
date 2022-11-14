@@ -110,6 +110,12 @@ public class CommandBinexpr implements Command {
         bop = cmd[3];
         expRef2 = cmd[4];
 
+        if (!Simple.checkIsValidNameOrLabel(expName)) {
+            System.out.println(
+                    expName + " is not a valid expression name");
+            return;
+        }
+
         DataObject expRefObject1 = new DataObject();
         DataObject expRefObject2 = new DataObject();
 
