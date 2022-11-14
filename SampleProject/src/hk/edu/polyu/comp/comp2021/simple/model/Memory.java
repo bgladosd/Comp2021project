@@ -29,4 +29,10 @@ public class Memory {
         }
 
     }
+    public void printCmd(){
+        for (String data : cmdMemory.keySet()) {
+            System.out.println(data + " : "+getCmd(data));
+        }
+
+    }
 }

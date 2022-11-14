@@ -20,8 +20,13 @@ public class CommandInspect implements Command {
     }
 
     public CommandInspect(String[] cmd, Memory m) {
+        //just for debuging delete later
         if (cmd[1].equals("all")) {
             m.printData();
+            return;
+        }
+        if (cmd[1].equals("allf")) {
+            m.printCmd();
             return;
         }
         if (cmd.length != 3) {
