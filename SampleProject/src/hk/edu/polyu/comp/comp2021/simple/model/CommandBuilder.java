@@ -18,6 +18,10 @@ public class CommandBuilder {
             CommandUnexpr cu = new CommandUnexpr(cmd, m);
         } else if (cmd[0].equals("assign")) {
             CommandAssign ca = new CommandAssign(cmd, m);
+        } else if (cmd[0].equals("print")) {
+            CommandPrint cp = new CommandPrint(cmd, m);
+        } else if (cmd[0].equals("skip")) {
+            CommandSkip cs = new CommandSkip(cmd, m);
         } else if (cmd[0].equals("inspect")) {
             CommandInspect ci = new CommandInspect(cmd, m);
            
