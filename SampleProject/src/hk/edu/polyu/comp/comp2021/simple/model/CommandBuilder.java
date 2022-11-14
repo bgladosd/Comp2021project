@@ -16,6 +16,8 @@ public class CommandBuilder {
             CommandBinexpr cb = new CommandBinexpr(cmd, m);
         } else if (cmd[0].equals("unexpr")) {
             CommandUnexpr cu = new CommandUnexpr(cmd, m);
+        } else if (cmd[0].equals("assign")) {
+            CommandAssign ca = new CommandAssign(cmd, m);
         } else if (cmd[0].equals("inspect")) {
             CommandInspect ci = new CommandInspect(cmd, m);
            

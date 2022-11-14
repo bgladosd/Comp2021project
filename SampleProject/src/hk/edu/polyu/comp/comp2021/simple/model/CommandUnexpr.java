@@ -9,9 +9,13 @@ public class CommandUnexpr implements Command {
     String expRef1;
     String uop;
 
+    boolean executedToData=false;
+
     @Override
     public DataObject execute(Memory m) {
-        m.addData(expName, new DataObject(this, m));
+        if (!executedToData) {
+            m.addData(expName, new DataObject(this, m));
+        }
         DataObject expRefObject = new DataObject();
         if (expRefObject.autoSetData(expRef1, m)) {
         } else {
@@ -65,6 +69,7 @@ public class CommandUnexpr implements Command {
             return;
         }
 
+        executedToData=false;
         m.addCmd(expName, this);
 
     }

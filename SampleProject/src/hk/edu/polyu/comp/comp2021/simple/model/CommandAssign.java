@@ -9,7 +9,6 @@ public class CommandAssign implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.addData(label, new DataObject(this, m));
         DataObject dataObject1 = new DataObject();
         DataObject dataObject2 = new DataObject();
         String varName = dataName;

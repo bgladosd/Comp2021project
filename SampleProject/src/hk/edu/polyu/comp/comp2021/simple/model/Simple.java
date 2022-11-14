@@ -49,7 +49,7 @@ public class Simple {
         }
         // case4 is SIMPLE Keywords
         // please continue add
-        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "inspect", "if", "load", "execute" };
+        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "inspect", "if", "load", "execute" };
         for (String string : Identifiers) {
             if (s.equals(string)) {
                 return false;
