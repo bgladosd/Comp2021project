@@ -29,7 +29,7 @@ public class CommandPrint implements Command {
         label = cmd[1];
         expRef = cmd[2];
 
-        if (!Simple.checkIsValidNameOrLabel(label)) {
+        if (!m.checkIsValidNameOrLabel(label)) {
             System.out.println(
                     label + " is not a valid label name");
             return;

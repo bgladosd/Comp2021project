@@ -54,16 +54,21 @@ public class CommandUnexpr implements Command {
         uop = cmd[2];
         expRef1 = cmd[3];
 
-        if (!Simple.checkIsValidNameOrLabel(expName)) {
+        if (!m.checkIsValidNameOrLabel(expName)) {
             System.out.println(
                     expName + " is not a valid expression name");
             return;
         }
+        // delete later, updated check with checkIsValidExpression below
+        // DataObject expRefObject1 = new DataObject();
 
-        DataObject expRefObject1 = new DataObject();
-
-        if (expRefObject1.autoSetData(expRef1, m)) {
-        } else {
+        // if (expRefObject1.autoSetData(expRef1, m)) {
+        // } else {
+        //     System.out.println(
+        //             "ExpRef1 is not a valid data");
+        //     return;
+        // }
+        if (!m.checkIsValidExpression(expRef1)) {
             System.out.println(
                     "ExpRef1 is not a valid data");
             return;

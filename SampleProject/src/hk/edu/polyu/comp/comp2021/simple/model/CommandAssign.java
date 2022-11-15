@@ -9,38 +9,30 @@ public class CommandAssign implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        DataObject dataObject1 = new DataObject();
+
+
+
+
+
         DataObject dataObject2 = new DataObject();
         String varName = dataName;
-        if (dataObject1.autoSetData(varName, m)) {
-        } else {
+
+        if (m.getData(varName)==null) {
             System.out.println(
-                    "Error on :" + label + " varName is not exists");
+                    "Error on :" + label +  " "+varName +" not found");
             return new DataObject("false", m);
         }
+
         if (dataObject2.autoSetData(expRef, m)) {
         } else {
             System.out.println(
                     "Error on :" + label + " ExpRef is not a valid data");
             return new DataObject("false", m);
         }
-        // can't do calculation if they are not the same type
-        if (!dataObject1.type.equals(dataObject2.type)) {
-            System.out.println(
-                    "Error on :" + label + " can't assign if varName and ExpRef are not the same type");
-            return new DataObject("false", m);
-        }
 
-        // replace old
-        if (dataObject1.type == "int") {
-            Integer intRef = (Integer) dataObject2.o;
-            m.addData(dataName, new DataObject(String.valueOf(intRef), m));
-        } else if (dataObject1.type == "bool") {
-            Boolean boolRef = (Boolean) dataObject2.o;
-            m.addData(dataName, new DataObject(String.valueOf(boolRef), m));
-        }
 
-        return null;
+        m.addData(dataName, dataObject2);
+		return null;
     }
 
     public CommandAssign(String[] cmd, Memory m) {
@@ -53,30 +45,41 @@ public class CommandAssign implements Command {
         String varName = cmd[2];
         expRef = cmd[3];
 
-        if (!Simple.checkIsValidNameOrLabel(label)) {
+        if (!m.checkIsValidNameOrLabel(label)) {
             System.out.println(
                     label + " is not a valid label name");
             return;
         }
-
-        DataObject dataObject1 = new DataObject();
-        DataObject dataObject2 = new DataObject();
-
-
-        if (!dataObject1.autoSetData(varName, m)) {
-            System.out.println("instruction failed! variable: "+varName+" is not exists");
+        if (!m.checkIsValidNameOrLabel(varName)) {
+            System.out.println(
+                  varName + " is not a valid label name");
+            return;
+        }
+        if (!m.checkIsValidExpression(expRef)) {
+            System.out.println(
+                expRef + " is not a valid Expression");
             return;
         }
 
-        if (!dataObject2.autoSetData(expRef, m)) {
-            System.out.println("instruction failed! expRef is not valid value");
-            return;
-        }
+        //updated checking delete later
+        // DataObject dataObject1 = new DataObject();
+        // DataObject dataObject2 = new DataObject();
 
-        if (!dataObject1.type.equals(dataObject2.type)) {
-            System.out.println("instruction failed! Not the same type! "+varName+" is :" + dataObject1.type + " "+expRef+"is :"+dataObject2.type);
-            return;
-        }
+
+        // if (!dataObject1.autoSetData(varName, m)) {
+        //     System.out.println("instruction failed! variable: "+varName+" is not exists");
+        //     return;
+        // }
+
+        // if (!dataObject2.autoSetData(expRef, m)) {
+        //     System.out.println("instruction failed! expRef is not valid value");
+        //     return;
+        // }
+
+        // if (!dataObject1.type.equals(dataObject2.type)) {
+        //     System.out.println("instruction failed! Not the same type! "+varName+" is :" + dataObject1.type + " "+expRef+"is :"+dataObject2.type);
+        //     return;
+        // }
 
 
         setDataName(varName);

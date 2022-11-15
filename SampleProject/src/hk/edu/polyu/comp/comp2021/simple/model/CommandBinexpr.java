@@ -110,12 +110,24 @@ public class CommandBinexpr implements Command {
         bop = cmd[3];
         expRef2 = cmd[4];
 
-        if (!Simple.checkIsValidNameOrLabel(expName)) {
+        if (!m.checkIsValidNameOrLabel(expName)) {
             System.out.println(
                     expName + " is not a valid expression name");
             return;
         }
+        
+        if (!m.checkIsValidExpression(expRef1)) {
+            System.out.println(
+                expRef1 + " is not a valid expression");
+            return;
+        }
+        if (!m.checkIsValidExpression(expRef2)) {
+            System.out.println(
+                expRef2 + " is not a valid expression");
+            return;
+        }
 
+        /*  Delete Later,  my mistake, should not check the if the variable is available before executed
         DataObject expRefObject1 = new DataObject();
         DataObject expRefObject2 = new DataObject();
 
@@ -137,6 +149,8 @@ public class CommandBinexpr implements Command {
                     "can't do calculation if ExpRef1 and ExpRef2 are not the same type");
             return;
         }
+        */
+
         executedToData=false;
         // command check tegrity end
         m.addCmd(expName, this);
