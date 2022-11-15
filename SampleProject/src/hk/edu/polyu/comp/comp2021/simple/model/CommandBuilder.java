@@ -24,7 +24,6 @@ public class CommandBuilder {
             CommandSkip cs = new CommandSkip(cmd, m);
         } else if (cmd[0].equals("inspect")) {
             CommandInspect ci = new CommandInspect(cmd, m);
-           
         } else if (cmd[0].equals("if")) {
             CommandIf cif = new CommandIf(cmd, m);
         } else if (cmd[0].equals("load")) {

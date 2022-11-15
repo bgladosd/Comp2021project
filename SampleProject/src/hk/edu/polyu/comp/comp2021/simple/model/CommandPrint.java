@@ -35,9 +35,9 @@ public class CommandPrint implements Command {
             return;
         }
 
-        DataObject dataObject = new DataObject();
-        if (!dataObject.autoSetData(expRef, m)) {
-            System.out.println("instruction failed! expRef is not valid value");
+        if (!m.checkIsValidExpression(expRef)) {
+            System.out.println(
+                    label + "instruction failed! expRef is not valid expression");
             return;
         }
 
