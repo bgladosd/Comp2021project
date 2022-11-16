@@ -25,7 +25,7 @@ public class CommandExecute implements Command {
     public CommandExecute(String[] cmd, Memory m) {
         if (cmd.length != 2) {
             System.out.println(
-                    "instruction failed! execute statement should only have 2 elements which is (execute program1)");
+                    "instruction failed! execute statement should only have 2 elements which are (execute program1)");
             return;
         }
         exeLabel = cmd[1];
