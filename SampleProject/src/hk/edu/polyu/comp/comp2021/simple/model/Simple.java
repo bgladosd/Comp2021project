@@ -19,6 +19,7 @@ public class Simple {
             Scanner scanner1 = new Scanner(System.in); // Create a Scanner object
             System.out.print(">");
             String input = scanner1.nextLine(); // Read user input
+            if(input.equals("quit"))break;
             commandBuilder.buildCommand(input, memory);
 
         }

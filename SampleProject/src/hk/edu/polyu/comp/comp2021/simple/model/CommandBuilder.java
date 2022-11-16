@@ -45,7 +45,11 @@ public class CommandBuilder {
             }else{executeMode=true;}
             System.out.println("exe mode : = "+ executeMode);
 
-        } else {
+        } else if (cmd[0].equals("store")) {
+            new CommandStore(cmd,m);
+        }
+
+        else {
             System.out.println("Command not found : " + cmd[0]);
             return;
         }
