@@ -55,6 +55,15 @@ public class DataObjectTest {
     }
 
     @Test
+    public void testDataObjectConstructor7() {
+        Memory m = new Memory();
+        DataObject data = new DataObject("d6as56da7g7", m);
+        assertFalse(data.autoSetData("d6as56da7g7", m));
+        assertEquals(null, data.getO());
+        assertEquals(null, data.getType());
+    }
+
+    @Test
     public void testDataObjectConstructorAndExpression() {
         Memory m = new Memory();
         Command command = new CommandBinexpr("binexpr exp1 3 * 20".split(" "), m);
@@ -62,6 +71,7 @@ public class DataObjectTest {
         assertEquals(command, data.getO());
         assertEquals("e", data.getType());
 
+        assertTrue(data.autoSetData("exp1", m));
         m.setExecuting(true);
         assertTrue(data.autoSetData("exp1", m));
         assertEquals(60, data.getO());
@@ -89,5 +99,24 @@ public class DataObjectTest {
         DataObject data = new DataObject(command, m);
         m.setExecuting(true);
         assertEquals("60", data.toString());
+    }
+
+    @Test
+    public void testSetMethod() {
+        Memory m = new Memory();
+        DataObject data = new DataObject("123", m);
+        data.setO(true);
+        data.setType("bool");
+        assertEquals(true, data.getO());
+        assertEquals("bool", data.getType());
+
+        data.setInteger(321);
+        assertEquals(321, data.getO());
+        assertEquals("int", data.getType());
+
+        data.setBoolean(false);
+        assertEquals(false, data.getO());
+        assertEquals("bool", data.getType());
+
     }
 }
