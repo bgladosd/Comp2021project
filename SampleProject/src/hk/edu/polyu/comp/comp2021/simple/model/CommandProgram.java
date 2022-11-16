@@ -15,9 +15,7 @@ public class CommandProgram implements Command {
         }
         c.execute(m);
 
-        
         return null;
-
     }
 
     public CommandProgram(String[] cmd, Memory m) {
@@ -38,6 +36,7 @@ public class CommandProgram implements Command {
 
 
         // command check tegrity end
+        
         m.addProgram(label, this);
 
     }
