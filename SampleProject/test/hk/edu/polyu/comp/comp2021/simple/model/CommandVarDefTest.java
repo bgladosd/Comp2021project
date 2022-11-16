@@ -22,41 +22,41 @@ public class CommandVarDefTest {
     }
 
     @Test
-    public void testCommandVarDefConstructor1() {
+    public void testConstructor1() {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
         assertEquals("vardef1" ,c1.getLabel());
     }
 
     @Test
-    public void testCommandVarDefConstructor2() {
+    public void testConstructor2() {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100 6thEle".split(" "), m);
         String failStat = "instruction failed! vardef statement should only have 5 elements which is (vardef lable type varName expRef)";
         assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
-    public void testCommandVarDefConstructor3() {
+    public void testConstructor3() {
         Command c1 = new CommandVarDef("vardef vardef int x abc".split(" "), m);
         String failStat = "instruction failed! vardef is not a valid label name";
         assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
-    public void testCommandVarDefConstructor4() {
+    public void testConstructor4() {
         Command c1 = new CommandVarDef("vardef vardef1 int x abc".split(" "), m);
         String failStat = "instruction failed! expRef is not valid value";
         assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
-    public void testCommandVarDefConstructor5() {
+    public void testConstructor5() {
         Command c1 = new CommandVarDef("vardef vardef1 long x 100".split(" "), m);
         String failStat = "instruction failed! expRef is not type :long";
         assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
-    public void testCommandVarDefExecute1() {
+    public void testExecute1() {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
         c1.execute(m);
         assertEquals(100, m.getData("x").getO());

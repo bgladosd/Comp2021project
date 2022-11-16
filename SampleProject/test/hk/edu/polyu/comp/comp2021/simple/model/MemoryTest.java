@@ -23,7 +23,7 @@ public class MemoryTest {
     }
 
     @Test
-    public void testMemoryGetAddPrintData () {
+    public void testGetAddPrintData () {
         DataObject dataX = new DataObject("123", m);
         DataObject dataB1 = new DataObject("true", m);
         m.addData("x", dataX);
@@ -40,7 +40,7 @@ public class MemoryTest {
     }
 
     @Test
-    public void testMemoryGetAddPrintCmd () {
+    public void testGetAddPrintCmd () {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
         //assertEquals("vardef1 added", outContent.toString().trim());
 
@@ -67,7 +67,7 @@ public class MemoryTest {
     }
 
     @Test
-    public void testMemoryGetAddProgram () {
+    public void testGetAddProgram () {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
         Command c2 = new CommandPrint("print print1 x".split(" "), m);
         Command c3 = new CommandProgram("program program1 print1".split(" "), m);
@@ -77,7 +77,7 @@ public class MemoryTest {
     }
 
     @Test
-    public void testMemorycheckIsValidExpression () {
+    public void testcheckIsValidExpression () {
         assertTrue(m.checkIsValidExpression("123"));
         assertTrue(m.checkIsValidExpression("true"));
         Command cb = new CommandBinexpr("binexpr exp1 3 * 20".split(" "), m);
@@ -86,7 +86,7 @@ public class MemoryTest {
     }
 
     @Test
-    public void testMemoryCheckIsValidNameOrLabel () {
+    public void testCheckIsValidNameOrLabel () {
         assertTrue(m.checkIsValidNameOrLabel("A1234567"));
         assertTrue(m.checkIsValidNameOrLabel("Aaa123"));
 
@@ -100,7 +100,7 @@ public class MemoryTest {
     }
 
     @Test
-    public void testMemoryCheckIsValidProgramName () {
+    public void testCheckIsValidProgramName () {
         assertTrue(m.checkIsValidProgramName("A1234567"));
         assertTrue(m.checkIsValidProgramName("Aaa123"));
 
