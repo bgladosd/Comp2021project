@@ -6,12 +6,19 @@ public class Memory {
     private HashMap<String,Command> cmdMemory;
     private HashMap<String,Command> programMemory;
 
+    private boolean executing=false;
     
     public Memory(){
         dataMemory = new HashMap<>();
         cmdMemory= new HashMap<>();
         programMemory=new HashMap<>();
 
+    }
+    public void setExecuting(boolean executing) {
+        this.executing = executing;
+    }
+    public boolean getExecuting(){
+        return this.executing;
     }
     public void addData(String dataName,DataObject data){
         dataMemory.put(dataName, data);
@@ -113,7 +120,7 @@ public class Memory {
                 return false;
             }
         }
-
+        
         return true;
 
     }

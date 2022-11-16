@@ -15,7 +15,9 @@ public class CommandExecute implements Command {
             return null;
         }
         // c=m.getCmd(exeLabel);
+        m.setExecuting(true);
         c.execute(m);
+        m.setExecuting(false);
         return null;
 
     }

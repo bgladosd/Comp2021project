@@ -38,7 +38,7 @@ public class CommandBuilder {
         } else if (cmd[0].equals("block")) {
             command = new CommandBlock(cmd, m);
         } else if (cmd[0].equals("program")) {
-            CommandProgram cP = new CommandProgram(cmd, m);
+            command= new CommandProgram(cmd, m);
         } else if (cmd[0].equals("exeMode")) {
             if (executeMode) {
                 executeMode=false;

@@ -13,6 +13,9 @@ public class CommandBinexpr implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        if (!m.getExecuting()) {
+            return new DataObject("false", m);
+        }
         DataObject expRefObject1 = new DataObject();
         DataObject expRefObject2 = new DataObject();
         if (expRefObject1.autoSetData(expRef1, m)) {
