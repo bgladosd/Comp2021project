@@ -15,6 +15,8 @@ public class MemoryTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
+    Memory m = new Memory();
+
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
@@ -22,7 +24,6 @@ public class MemoryTest {
 
     @Test
     public void testMemoryGetAddPrintData () {
-        Memory m = new Memory();
         DataObject dataX = new DataObject("123", m);
         DataObject dataB1 = new DataObject("true", m);
         m.addData("x", dataX);
@@ -40,7 +41,6 @@ public class MemoryTest {
 
     @Test
     public void testMemoryGetAddPrintCmd () {
-        Memory m = new Memory();
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
         //assertEquals("vardef1 added", outContent.toString().trim());
 
@@ -68,7 +68,6 @@ public class MemoryTest {
 
     @Test
     public void testMemoryGetAddProgram () {
-        Memory m = new Memory();
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
         Command c2 = new CommandPrint("print print1 x".split(" "), m);
         Command c3 = new CommandProgram("program program1 print1".split(" "), m);
@@ -79,17 +78,15 @@ public class MemoryTest {
 
     @Test
     public void testMemorycheckIsValidExpression () {
-        Memory m = new Memory();
         assertTrue(m.checkIsValidExpression("123"));
         assertTrue(m.checkIsValidExpression("true"));
-        Command c1 = new CommandBinexpr("binexpr exp1 3 * 20".split(" "), m);
+        Command cb = new CommandBinexpr("binexpr exp1 3 * 20".split(" "), m);
         assertTrue(m.checkIsValidExpression("60"));
         assertFalse(m.checkIsValidExpression("A12345678"));
     }
 
     @Test
     public void testMemoryCheckIsValidNameOrLabel () {
-        Memory m = new Memory();
         assertTrue(m.checkIsValidNameOrLabel("A1234567"));
         assertTrue(m.checkIsValidNameOrLabel("Aaa123"));
 
@@ -104,7 +101,6 @@ public class MemoryTest {
 
     @Test
     public void testMemoryCheckIsValidProgramName () {
-        Memory m = new Memory();
         assertTrue(m.checkIsValidProgramName("A1234567"));
         assertTrue(m.checkIsValidProgramName("Aaa123"));
 
@@ -116,8 +112,6 @@ public class MemoryTest {
             assertFalse(m.checkIsValidProgramName(string));
         }
     }
-
-
 
     @After
     public void restoreStreams() {
