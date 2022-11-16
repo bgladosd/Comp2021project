@@ -4,7 +4,7 @@ public class CommandVarDef implements Command {
     String label;
     String dataName;
     DataObject dataObject;
-
+    String cmdString;
     String type;
     String expRef;
 

@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandPrint implements Command {
     String label;
     String expRef;
-
+    String cmdString;
     @Override
     public DataObject execute(Memory m) {
         DataObject dataObject = new DataObject();

@@ -2,7 +2,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 
 public class CommandWhile implements Command {
-
+    String cmdString;
     String label;
     String expRef;
     Boolean expBoolean;

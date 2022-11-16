@@ -4,7 +4,7 @@ public class CommandUnexpr implements Command {
     String label;
     String dataName;
     DataObject dataObject;
-
+    String cmdString;
     String expName;
     String expRef1;
     String uop;

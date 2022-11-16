@@ -2,7 +2,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandSkip implements Command {
     String label;
-
+    String cmdString;
     @Override
     public DataObject execute(Memory m) {
         return null;
