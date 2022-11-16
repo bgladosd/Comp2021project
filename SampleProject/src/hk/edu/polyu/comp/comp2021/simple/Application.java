@@ -13,7 +13,7 @@ public class Application {
         Simple simple = new Simple();
         // Initialize and utilize the system
         System.out.println("program end!");
-
+        
     }
 
 }

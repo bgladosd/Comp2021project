@@ -7,31 +7,51 @@ public class CommandBuilder {
     }
 
     public void buildCommand(String c, Memory m) {
+        Boolean executeMode = false;
 
         String[] cmd = c.split(" ");
+        // Command command = new CommandSkip(new String[]{"skip","shit"}, m);
+        Command command;
         // vardef command
         if (cmd[0].equals("vardef")) {
-            CommandVarDef cvd = new CommandVarDef(cmd, m);
+            command = new CommandVarDef(cmd, m);
         } else if (cmd[0].equals("binexpr")) {
-            CommandBinexpr cb = new CommandBinexpr(cmd, m);
+            command = new CommandBinexpr(cmd, m);
         } else if (cmd[0].equals("unexpr")) {
-            CommandUnexpr cu = new CommandUnexpr(cmd, m);
+            command = new CommandUnexpr(cmd, m);
         } else if (cmd[0].equals("assign")) {
-            CommandAssign ca = new CommandAssign(cmd, m);
+            command = new CommandAssign(cmd, m);
         } else if (cmd[0].equals("print")) {
-            CommandPrint cp = new CommandPrint(cmd, m);
+            command = new CommandPrint(cmd, m);
         } else if (cmd[0].equals("skip")) {
-            CommandSkip cs = new CommandSkip(cmd, m);
+            command = new CommandSkip(cmd, m);
         } else if (cmd[0].equals("inspect")) {
-            CommandInspect ci = new CommandInspect(cmd, m);
+            new CommandInspect(cmd, m);
         } else if (cmd[0].equals("if")) {
-            CommandIf cif = new CommandIf(cmd, m);
+            command = new CommandIf(cmd, m);
         } else if (cmd[0].equals("load")) {
-            CommandLoad cl = new CommandLoad(cmd, m);
-            cl.execute(m);
+            new CommandLoad(cmd, m);
         } else if (cmd[0].equals("execute")) {
-            CommandExecute cl = new CommandExecute(cmd, m);
+            new CommandExecute(cmd, m);
+        } else if (cmd[0].equals("while")) {
+            command = new CommandWhile(cmd, m);
+        } else if (cmd[0].equals("block")) {
+            command = new CommandBlock(cmd, m);
+        } else if (cmd[0].equals("program")) {
+            CommandProgram cP = new CommandProgram(cmd, m);
+        } else if (cmd[0].equals("exeMode")) {
+            if (executeMode) {
+                executeMode=false;
+            }else{executeMode=true;}
+            System.out.println("exe mode : = "+ executeMode);
+
+        } else {
+            System.out.println("Command not found : " + cmd[0]);
+            return;
         }
+        // if (executeMode) {
+        //     command.execute(m);
+        // }
 
     }
 

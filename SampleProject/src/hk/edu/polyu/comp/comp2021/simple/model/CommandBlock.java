@@ -10,9 +10,10 @@ public class CommandBlock implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        cmdList=new ArrayList<Command>();
         for (String command : cmdListString) {
             if (m.getCmd(command)==null) {
-                System.out.println("Command : "+ command +" can not be found ");
+                System.out.println("Statement : "+ command +" can not be found ");
             }
             cmdList.add(m.getCmd(command)) ;
         }

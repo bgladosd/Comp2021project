@@ -30,6 +30,15 @@ public class CommandWhile implements Command {
         expBoolean = (boolean) dataO.o;
         while (expBoolean) {
             statement.execute(m);
+            if (!dataO.autoSetData(expRef, m)) {
+                System.out.println("execute " + label + " failed! unable to load expRef");
+                return null;
+            }
+            if (!dataO.type.equals("bool")) {
+                System.out.println("execute " + label + " failed!    expRef is not boolean");
+                return null;
+            }
+            expBoolean = (boolean) dataO.o;
         }
 
 

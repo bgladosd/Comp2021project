@@ -9,7 +9,13 @@ public class CommandExecute implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.getCmd(exeLabel).execute(m);
+        Command c = m.getProgram(exeLabel);
+        if (c==null) {
+            System.out.println("Program : "+ exeLabel +" can not be found ");
+            return null;
+        }
+        // c=m.getCmd(exeLabel);
+        c.execute(m);
         return null;
 
     }

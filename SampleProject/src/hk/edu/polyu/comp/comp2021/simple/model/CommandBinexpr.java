@@ -15,9 +15,9 @@ public class CommandBinexpr implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        if (!executedToData) {
-            m.addData(expName, new DataObject(this, m));   
-        }
+        // if (!executedToData) {
+        //     m.addData(expName, new DataObject(this, m));   
+        // }
         DataObject expRefObject1 = new DataObject();
         DataObject expRefObject2 = new DataObject();
         if (expRefObject1.autoSetData(expRef1, m)) {
@@ -154,6 +154,7 @@ public class CommandBinexpr implements Command {
         executedToData=false;
         // command check tegrity end
         m.addCmd(expName, this);
+        m.addData(expName, new DataObject(this, m));   
 
         // delete later, instant execute for testing
         // System.out.println(m.getCmd(expName).execute(m));

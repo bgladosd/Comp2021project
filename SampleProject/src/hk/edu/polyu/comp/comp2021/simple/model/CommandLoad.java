@@ -31,6 +31,8 @@ public class CommandLoad implements Command{
             System.out.println("Load success");
         } catch (Exception e) {
             System.out.println("file not found, please ensure that your file path is correct");
+            System.out.println(e);
+            System.out.println(e.getStackTrace()[0]);
         }
 
         return null;
@@ -44,6 +46,8 @@ public class CommandLoad implements Command{
         }
         this.path=cmd[1];
         this.progName=cmd[2];
+
+        this.execute(m);
 
     }
 

@@ -13,9 +13,9 @@ public class CommandUnexpr implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        if (!executedToData) {
-            m.addData(expName, new DataObject(this, m));
-        }
+        // if (!executedToData) {
+        //     m.addData(expName, new DataObject(this, m));
+        // }
         DataObject expRefObject = new DataObject();
         if (expRefObject.autoSetData(expRef1, m)) {
         } else {
@@ -77,7 +77,7 @@ public class CommandUnexpr implements Command {
 
         executedToData=false;
         m.addCmd(expName, this);
-
+        m.addData(expName, new DataObject(this, m));
     }
 
     @Override
