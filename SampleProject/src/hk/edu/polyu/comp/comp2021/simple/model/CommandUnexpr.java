@@ -70,7 +70,6 @@ public class CommandUnexpr implements Command {
             return;
         }
 
-        m.addCmd(expName, this);
         m.addData(expName, new DataObject(this, m));
     }
 
