@@ -24,6 +24,8 @@ public class CommandVarDefTest {
     @Test
     public void testConstructor1() {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
+        String printString = "vardef1 added";
+        assertEquals(printString, outContent.toString().trim());
         assertEquals("vardef1" ,c1.getLabel());
     }
 
