@@ -23,8 +23,6 @@ public class CommandSkipTest {
     @Test
     public void testConstructor1 () {
         Command c1 = new CommandSkip("skip skip1".split(" "), m);
-        String printString = "skip1 added";
-        assertEquals(printString, outContent.toString().trim());
         assertEquals(c1 ,m.getCmd("skip1"));
         assertEquals("skip1", m.getCmd("skip1").getLabel());
     }

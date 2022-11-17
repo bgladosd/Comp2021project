@@ -25,8 +25,6 @@ public class CommandPrintTest {
     @Test
     public void testConstructor1 () {
         Command c1 = new CommandPrint("print print1 1".split(" "), m);
-        String printString = "print1 added";
-        assertEquals(printString, outContent.toString().trim());
         assertEquals(c1 ,m.getCmd("print1"));
         assertEquals("print1", m.getCmd("print1").getLabel());
     }
@@ -56,39 +54,32 @@ public class CommandPrintTest {
     public void testExecute1() {
         Command c1 = new CommandPrint("print print1 1".split(" "), m);
         c1.execute(m);
-        String printString = "print1 added";
-        assertEquals(printString, outContent.toString().split("\n")[0].trim());
         String result = "[1]";
-        assertEquals(result ,outContent.toString().split("\n")[1].trim());
+        assertEquals(result ,outContent.toString().trim());
     }
 
     @Test
     public void testExecute2() {
         Command c1 = new CommandPrint("print print1 true".split(" "), m);
         c1.execute(m);
-        String printString = "print1 added";
-        assertEquals(printString, outContent.toString().split("\n")[0].trim());
         String result = "[true]";
-        assertEquals(result ,outContent.toString().split("\n")[1].trim());
+        assertEquals(result ,outContent.toString().trim());
     }
 
     @Test
     public void testExecute3() {
         Command c1 = new CommandPrint("print print1 x".split(" "), m);
         c1.execute(m);
-        String printString = "print1 added";
-        assertEquals(printString, outContent.toString().split("\n")[0].trim());
         String result = "[100]";
-        assertEquals(result ,outContent.toString().split("\n")[1].trim());
+        assertEquals(result ,outContent.toString().trim());
     }
 
     @Test
     public void testExecuteFail() {
         Command c1 = new CommandPrint("print print1 y".split(" "), m);
-        c1.execute(m);
         assertEquals(false, c1.execute(m).getO());
         String failStat = "ExpRef is not a valid data";
-        assertEquals(failStat ,outContent.toString().split("\n")[1].trim());
+        assertEquals(failStat ,outContent.toString().trim());
     }
 
     @After

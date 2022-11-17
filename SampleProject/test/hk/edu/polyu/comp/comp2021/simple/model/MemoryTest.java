@@ -46,9 +46,9 @@ public class MemoryTest {
 
         Command c2 = new CommandPrint("print print1 x".split(" "), m);
         //check output
-        String [] printString = {"vardef1 added", "print1 added"};
-        assertEquals(printString[0], outContent.toString().split("\n")[0].trim());
-        assertEquals(printString[1], outContent.toString().split("\n")[1].trim());
+        //String [] printString = {"vardef1 added", "print1 added"};
+        //assertEquals(printString[0], outContent.toString().split("\n")[0].trim());
+        //assertEquals(printString[1], outContent.toString().split("\n")[1].trim());
         //m.addCmd("vardef1", c1);
         //m.addCmd("print1", c2);
 
@@ -60,8 +60,8 @@ public class MemoryTest {
                 "print1 : hk.edu.polyu.comp.comp2021.simple.model.CommandPrint"};
         m.printCmd();
         //assertTrue(Arrays.stream(printString2).anyMatch((outContent.toString().split("\n")[2].trim())::equals));
-        String output1 = outContent.toString().split("\n")[3].trim();
-        String output2 = outContent.toString().split("\n")[2].trim();
+        String output1 = outContent.toString().split("\n")[1].trim();
+        String output2 = outContent.toString().split("\n")[0].trim();
         assertEquals(printString2[0], output1.substring(0, output1.length()-9));
         assertEquals(printString2[1], output2.substring(0, output2.length()-9));
     }

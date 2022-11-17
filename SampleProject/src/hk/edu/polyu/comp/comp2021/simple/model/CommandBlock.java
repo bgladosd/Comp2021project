@@ -15,6 +15,7 @@ public class CommandBlock implements Command {
         for (String command : cmdListString) {
             if (m.getCmd(command)==null) {
                 System.out.println("Statement : "+ command +" can not be found ");
+                return new DataObject("false", m);
             }
             cmdList.add(m.getCmd(command)) ;
         }
@@ -28,18 +29,27 @@ public class CommandBlock implements Command {
     public CommandBlock(String[] cmd, Memory m) {
         if (cmd.length <3) {
             System.out.println(
-                    "instruction failed! block statement should have atleast 3 elements which in format of (block lab expRef statementLab1 ... statementLabn)");
+                    "instruction failed! block statement should have at least 3 elements which in format of (block lab statementLab1 ... statementLabn)");
             return;
         }
-        label = cmd[1];
+        String label = cmd[1];
 
-        for (int i = 2; i < cmd.length; i++) {
-            //check
-            cmdListString.add(cmd[i]);
-
+        if (!m.checkIsValidNameOrLabel(label)) {
+            System.out.println(
+                    label + " is not a valid label name");
+            return;
         }
 
+        for (int i = 2; i < cmd.length; i++) {
+            if (!m.checkIsValidNameOrLabel(cmd[i])) {
+                System.out.println(
+                        cmd[i] + " is not a valid statement label name");
+                return;
+            }
+            else cmdListString.add(cmd[i]);
+        }
 
+        setLabel(label);
         // command check tegrity end
         m.addCmd(label, this);
 

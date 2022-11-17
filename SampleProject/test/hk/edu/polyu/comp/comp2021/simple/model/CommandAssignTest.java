@@ -29,8 +29,6 @@ public class CommandAssignTest {
     @Test
     public void testConstructor1 () {
         Command c1 = new CommandAssign("assign assign1 x 5".split(" "), m);
-        String printString = "assign1 added";
-        assertEquals(printString, outContent.toString().trim());
         assertEquals(c1 ,m.getCmd("assign1"));
         assertEquals("assign1", m.getCmd("assign1").getLabel());
     }
@@ -82,7 +80,7 @@ public class CommandAssignTest {
         Command c1 = new CommandAssign("assign assign1 z 5".split(" "), m);
         assertEquals(false, c1.execute(m).getO());
         String failStat = "Error on :assign1 z not found";
-        assertEquals(failStat ,outContent.toString().split("\n")[1].trim());
+        assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
@@ -90,7 +88,7 @@ public class CommandAssignTest {
         Command c1 = new CommandAssign("assign assign1 x z".split(" "), m);
         assertEquals(false, c1.execute(m).getO());
         String failStat = "Error on :assign1 ExpRef is not a valid data";
-        assertEquals(failStat ,outContent.toString().split("\n")[1].trim());
+        assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
@@ -98,7 +96,7 @@ public class CommandAssignTest {
         Command c1 = new CommandAssign("assign assign1 x y".split(" "), m);
         assertEquals(false, c1.execute(m).getO());
         String failStat = "Error on :assign1 can't assign if x and y are not the same data type";
-        assertEquals(failStat ,outContent.toString().split("\n")[1].trim());
+        assertEquals(failStat ,outContent.toString().trim());
     }
 
 
