@@ -2,7 +2,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandUnexpr implements Command {
     String label;
-    String dataName;
+    //String dataName;
     DataObject dataObject;
     String cmdString;
     String expName;
@@ -11,11 +11,14 @@ public class CommandUnexpr implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        if (!m.getExecuting()) {
+            return new DataObject("false", m);
+        }
         DataObject expRefObject = new DataObject();
         if (expRefObject.autoSetData(expRef1, m)) {
         } else {
             System.out.println(
-                    "ExpRef1 is not a valid data");
+                    "Error on :" + expName + " ExpRef1 is not a valid data");
             return new DataObject("false", m);
         }
         
@@ -43,7 +46,7 @@ public class CommandUnexpr implements Command {
     public CommandUnexpr(String[] cmd, Memory m) {
         if (cmd.length != 4) {
             System.out.println(
-                    "instruction failed! unnexpr statement should only have 4 elements which is (unexpr expName uop expRef1)");
+                    "instruction failed! unexpr statement should only have 4 elements which is (unexpr expName uop expRef1)");
             return;
         }
         expName = cmd[1];
@@ -66,9 +69,10 @@ public class CommandUnexpr implements Command {
         // }
         if (!m.checkIsValidExpression(expRef1)) {
             System.out.println(
-                    "ExpRef1 is not a valid data");
+                    expRef1 + " is not a valid expression");
             return;
         }
+        setLabel(null);
 
         m.addData(expName, new DataObject(this, m));
     }
@@ -84,12 +88,5 @@ public class CommandUnexpr implements Command {
         return label;
     }
 
-    public void setDataName(String dataName) {
-        this.dataName = dataName;
-    }
-
-    public void setDataObject(DataObject dataObject) {
-        this.dataObject = dataObject;
-    }
 
 }
