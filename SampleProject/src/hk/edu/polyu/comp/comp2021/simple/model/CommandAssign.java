@@ -13,10 +13,9 @@ public class CommandAssign implements Command {
 
 
 
-
-
-        DataObject dataObject2 = new DataObject();
         String varName = dataName;
+        DataObject dataObject1 = m.getData(varName);
+        DataObject dataObject2 = new DataObject();
 
         if (m.getData(varName)==null) {
             System.out.println(
@@ -31,6 +30,10 @@ public class CommandAssign implements Command {
             return new DataObject("false", m);
         }
 
+        if (!dataObject1.type.equals(dataObject2.type)) {
+            System.out.println("Error on :" + label + " can't assign if "+varName+" and "+expRef+" are not the same data type");
+            return new DataObject("false", m);
+        }
 
         m.addData(dataName, dataObject2);
 		return null;
@@ -42,7 +45,7 @@ public class CommandAssign implements Command {
                     "instruction failed! assign statement should only have 4 elements which is (assign lab varName expRef)");
             return;
         }
-        label = cmd[1];
+        String label = cmd[1];
         String varName = cmd[2];
         expRef = cmd[3];
 
@@ -53,7 +56,7 @@ public class CommandAssign implements Command {
         }
         if (!m.checkIsValidNameOrLabel(varName)) {
             System.out.println(
-                  varName + " is not a valid label name");
+                  varName + " is not a valid variable name");
             return;
         }
         if (!m.checkIsValidExpression(expRef)) {
@@ -82,7 +85,7 @@ public class CommandAssign implements Command {
         //     return;
         // }
 
-
+        setLabel(label);
         setDataName(varName);
         m.addCmd(label, this);
 
@@ -103,7 +106,4 @@ public class CommandAssign implements Command {
         this.dataName = dataName;
     }
 
-    public void setDataObject(DataObject dataObject) {
-        this.dataObject = dataObject;
-    }
 }

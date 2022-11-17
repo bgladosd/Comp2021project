@@ -34,6 +34,10 @@ public class CommandVarDef implements Command {
         String varName = cmd[3];
         expRef = cmd[4];
         // if (checkValidName(cmd[1])) {
+        if (!m.checkIsValidNameOrLabel(label)) {
+            System.out.println("instruction failed! "+label + " is not a valid label name");
+            return;
+        }
 
         // }
 
@@ -43,6 +47,9 @@ public class CommandVarDef implements Command {
 
         // should have more check
         // command check tegrity end
+
+        // in both constructor and execute? | test wont go through the check in execute
+        //                                  V
         DataObject dataObject = new DataObject();
         if (!dataObject.autoSetData(expRef, m)) {
             System.out.println("instruction failed! expRef is not valid value");

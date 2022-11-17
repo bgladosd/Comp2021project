@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandBinexpr implements Command {
     String cmdString;
     String label;
-    String dataName;
+    //String dataName;
     DataObject dataObject;
 
     String expName;
@@ -113,15 +113,15 @@ public class CommandBinexpr implements Command {
                     expName + " is not a valid expression name");
             return;
         }
-        
+
         if (!m.checkIsValidExpression(expRef1)) {
             System.out.println(
-                expRef1 + " is not a valid expression");
+                    expRef1 + " is not a valid expression");
             return;
         }
         if (!m.checkIsValidExpression(expRef2)) {
             System.out.println(
-                expRef2 + " is not a valid expression");
+                    expRef2 + " is not a valid expression");
             return;
         }
 
@@ -150,7 +150,8 @@ public class CommandBinexpr implements Command {
         */
 
         // command check tegrity end
-        m.addData(expName, new DataObject(this, m));   
+        setLabel(null);
+        m.addData(expName, new DataObject(this, m));
 
         // delete later, instant execute for testing
         // System.out.println(m.getCmd(expName).execute(m));
@@ -167,13 +168,4 @@ public class CommandBinexpr implements Command {
     public String getLabel() {
         return label;
     }
-
-    public void setDataName(String dataName) {
-        this.dataName = dataName;
-    }
-
-    public void setDataObject(DataObject dataObject) {
-        this.dataObject = dataObject;
-    }
-
 }
