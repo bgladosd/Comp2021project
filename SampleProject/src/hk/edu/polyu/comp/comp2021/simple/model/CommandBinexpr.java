@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandBinexpr implements Command {
 
     String label;
-    String dataName;
+    //String dataName;
     DataObject dataObject;
 
     String expName;
@@ -150,6 +150,7 @@ public class CommandBinexpr implements Command {
         */
 
         // command check tegrity end
+        setLabel(null);
         m.addData(expName, new DataObject(this, m));   
 
         // delete later, instant execute for testing
@@ -168,12 +169,17 @@ public class CommandBinexpr implements Command {
         return label;
     }
 
+
+    /*
     public void setDataName(String dataName) {
+
         this.dataName = dataName;
     }
+
+
 
     public void setDataObject(DataObject dataObject) {
         this.dataObject = dataObject;
     }
-
+    */
 }
