@@ -14,7 +14,7 @@ public class CommandSkip implements Command {
                     "instruction failed! skip statement should only have 2 elements which is (skip skip1)");
             return;
         }
-        label = cmd[1];
+        String label = cmd[1];
 
         if (!m.checkIsValidNameOrLabel(label)) {
             System.out.println(
@@ -22,6 +22,7 @@ public class CommandSkip implements Command {
             return;
         }
 
+        setLabel(label);
         m.addCmd(label, this);
     }
 
