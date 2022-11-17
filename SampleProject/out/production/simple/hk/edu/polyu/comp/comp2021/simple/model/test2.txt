@@ -1,0 +1,10 @@
+vardef vardef1 int a 100
+execute vardef1
+vardef vardef int b 90
+execute vardef
+binexpr exp1 a + b
+execute exp1
+
+
+
+load D:\MediaD test
