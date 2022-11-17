@@ -25,8 +25,7 @@ public class Memory {
         saveDataMemory = new HashMap<>();
         saveCmdMemory = new HashMap<>();
         saveCmdMemory = new HashMap<>();
-        runnedCommand = new ArrayDeque<>() {
-        };
+        runnedCommand = new ArrayDeque<>();
 
     }
 
