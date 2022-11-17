@@ -16,7 +16,6 @@ public class CommandExecute implements Command {
             System.out.println("Program : "+ exeLabel +" can not be found ");
             return null;
         }
-        // c=m.getCmd(exeLabel);
         m.setExecuting(true);
         c.execute(m);
         m.setExecuting(false);
@@ -46,5 +45,16 @@ public class CommandExecute implements Command {
     public String getLabel() {
         return label;
     }
+    
+    @Override
+    public String getCmdString() {
+        return "";
+    }
+
+    @Override
+    public void setCmdString(String s) {
+        
+    }
+
 
 }

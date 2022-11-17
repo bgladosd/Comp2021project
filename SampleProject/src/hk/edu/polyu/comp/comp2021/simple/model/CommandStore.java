@@ -13,7 +13,24 @@ public class CommandStore implements Command{
 
     @Override
     public DataObject execute(Memory m) {
+        m.SaveState();
+        m.resetRunnedCommand();
+        Command c = m.getProgram(progName);
+        if (c==null) {
+            System.out.println("Program : "+ progName +" can not be found ");
+            return null;
+        }
+        m.setExecuting(true);
+        c.execute(m);
+        m.setExecuting(false);
 
+
+        //print out all the runned command
+        while (!m.getRunnedCommand().isEmpty()) {
+            Command cs = m.getRunnedCommand().remove();
+            System.out.println(cs.getCmdString());
+        }
+        
         try {
             File store = new File(path+"/"+progName+".txt");
             if (store.createNewFile()) {
@@ -46,6 +63,9 @@ public class CommandStore implements Command{
         } catch (IOException e) {
             System.out.println("Error: Failed to creating txt file.");
             e.printStackTrace();
+        }finally{
+            m.LoadState();
+
         }
 
         return null;
@@ -73,5 +93,14 @@ public class CommandStore implements Command{
     @Override
     public String getLabel() {
         return this.label;
+    }
+    @Override
+    public String getCmdString() {
+        return "";
+    }
+
+    @Override
+    public void setCmdString(String s) {
+        
     }
 }

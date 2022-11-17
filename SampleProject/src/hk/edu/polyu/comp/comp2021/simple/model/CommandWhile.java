@@ -73,5 +73,16 @@ public class CommandWhile implements Command {
     public String getLabel() {
         return label;
     }
+    
+    @Override
+    public String getCmdString() {
+        return this.cmdString;
+    }
+
+    @Override
+    public void setCmdString(String s) {
+        this.cmdString=s;
+    }
+
 
 }

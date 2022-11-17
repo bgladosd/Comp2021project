@@ -64,5 +64,16 @@ public class CommandInspect implements Command {
     public String getLabel() {
         return label;
     }
+    
+    @Override
+    public String getCmdString() {
+        return "";
+    }
+
+    @Override
+    public void setCmdString(String s) {
+        
+    }
+
 
 }

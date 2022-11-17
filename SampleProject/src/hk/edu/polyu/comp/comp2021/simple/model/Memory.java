@@ -1,7 +1,9 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Queue;
 
 public class Memory {
     private HashMap<String, DataObject> dataMemory;
@@ -11,7 +13,7 @@ public class Memory {
     private HashMap<String, Command> programMemory;
     private HashMap<String, Command> saveProgramMemory;
 
-    private ArrayList<Command> runnedCommand;
+    private Queue<Command> runnedCommand;
 
     private boolean executing = false;
     private boolean inSaveState = false;
@@ -23,21 +25,22 @@ public class Memory {
         saveDataMemory = new HashMap<>();
         saveCmdMemory = new HashMap<>();
         saveCmdMemory = new HashMap<>();
-        runnedCommand=new ArrayList<>();
+        runnedCommand = new ArrayDeque<>() {
+        };
 
     }
-    
+
     public void SaveState() {
-        saveDataMemory= (HashMap<String, DataObject>)dataMemory.clone();
-        saveCmdMemory= (HashMap<String, Command>)cmdMemory.clone();
-        saveProgramMemory= (HashMap<String, Command>)programMemory.clone();
+        saveDataMemory = (HashMap<String, DataObject>) dataMemory.clone();
+        saveCmdMemory = (HashMap<String, Command>) cmdMemory.clone();
+        saveProgramMemory = (HashMap<String, Command>) programMemory.clone();
         inSaveState = true;
     }
 
     public void LoadState() {
-        dataMemory= (HashMap<String, DataObject>)saveDataMemory.clone();
-        cmdMemory= (HashMap<String, Command>)saveCmdMemory.clone();
-        programMemory= (HashMap<String, Command>)saveProgramMemory.clone();
+        dataMemory = (HashMap<String, DataObject>) saveDataMemory.clone();
+        cmdMemory = (HashMap<String, Command>) saveCmdMemory.clone();
+        programMemory = (HashMap<String, Command>) saveProgramMemory.clone();
         inSaveState = false;
     }
 
@@ -48,16 +51,22 @@ public class Memory {
     public boolean getExecuting() {
         return this.executing;
     }
-    
-    public void addRunnedCommand(Command cmd){
+
+    public Queue<Command> getRunnedCommand() {
+        return runnedCommand;
+    }
+
+    public void addRunnedCommand(Command cmd) {
         if (runnedCommand.contains(cmd)) {
             return;
         }
         runnedCommand.add(cmd);
     }
-    public void resetRunnedCommand(){
-        runnedCommand=new ArrayList<>();
+
+    public void resetRunnedCommand() {
+        runnedCommand = new ArrayDeque<>();
     }
+
     public void addData(String dataName, DataObject data) {
         dataMemory.put(dataName, data);
     }
@@ -68,7 +77,6 @@ public class Memory {
 
     public void addCmd(String label, Command cmd) {
         cmdMemory.put(label, cmd);
-        System.out.println(label + " added");
     }
 
     public Command getCmd(String label) {

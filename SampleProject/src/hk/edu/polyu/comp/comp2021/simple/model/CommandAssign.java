@@ -88,6 +88,7 @@ public class CommandAssign implements Command {
         setLabel(label);
         setDataName(varName);
         m.addCmd(label, this);
+        
 
 
     }
@@ -101,9 +102,20 @@ public class CommandAssign implements Command {
     public String getLabel() {
         return label;
     }
+    
+    @Override
+    public String getCmdString() {
+        return this.cmdString;
+    }
+
+    @Override
+    public void setCmdString(String s) {
+        this.cmdString=s;
+    }
+
 
     public void setDataName(String dataName) {
         this.dataName = dataName;
     }
-
+    
 }

@@ -15,47 +15,59 @@ public class CommandBuilder {
         // vardef command
         if (cmd[0].equals("vardef")) {
             command = new CommandVarDef(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("binexpr")) {
             command = new CommandBinexpr(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("unexpr")) {
             command = new CommandUnexpr(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("assign")) {
             command = new CommandAssign(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("print")) {
             command = new CommandPrint(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("skip")) {
             command = new CommandSkip(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("inspect")) {
             new CommandInspect(cmd, m);
         } else if (cmd[0].equals("if")) {
             command = new CommandIf(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("load")) {
             new CommandLoad(cmd, m);
         } else if (cmd[0].equals("execute")) {
-            new CommandExecute(cmd, m);
+            command= new CommandExecute(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("while")) {
             command = new CommandWhile(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("block")) {
             command = new CommandBlock(cmd, m);
+            command.setCmdString(c);
         } else if (cmd[0].equals("program")) {
             command= new CommandProgram(cmd, m);
-        } else if (cmd[0].equals("exeMode")) {
-            if (executeMode) {
-                executeMode=false;
-            }else{executeMode=true;}
-            System.out.println("exe mode : = "+ executeMode);
-
+            command.setCmdString(c);
         } else if (cmd[0].equals("store")) {
             new CommandStore(cmd,m);
         }
 
 
-        //for testing
+        //for testing delete later
         else if (cmd[0].equals("s")) {
             m.SaveState();
         }
         else if (cmd[0].equals("l")) {
             m.LoadState();
+        }
+        else if (cmd[0].equals("exeMode")) {
+            if (executeMode) {
+                executeMode=false;
+            }else{executeMode=true;}
+            System.out.println("exe mode : = "+ executeMode);
+
         }
 
 

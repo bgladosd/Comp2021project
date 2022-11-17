@@ -67,5 +67,15 @@ public class CommandLoad implements Command{
     public String getLabel() {
         return this.label;
     }
+
+    @Override
+    public String getCmdString() {
+        return "";
+    }
+
+    @Override
+    public void setCmdString(String s) {
+        
+    }
 }
 
