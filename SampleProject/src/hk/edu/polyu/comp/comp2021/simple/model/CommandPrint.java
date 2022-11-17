@@ -27,7 +27,7 @@ public class CommandPrint implements Command {
                     "instruction failed! print statement should only have 3 elements which is (print lab expRef)");
             return;
         }
-        label = cmd[1];
+        String label = cmd[1];
         expRef = cmd[2];
 
         if (!m.checkIsValidNameOrLabel(label)) {
@@ -38,10 +38,11 @@ public class CommandPrint implements Command {
 
         if (!m.checkIsValidExpression(expRef)) {
             System.out.println(
-                    label + "instruction failed! expRef is not valid expression");
+                    expRef + " is not valid expression");
             return;
         }
 
+        setLabel(label);
         m.addCmd(label, this);
     }
 
