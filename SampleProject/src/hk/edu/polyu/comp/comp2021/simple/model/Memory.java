@@ -1,69 +1,113 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Memory {
-    private HashMap<String,DataObject> dataMemory;
-    private HashMap<String,Command> cmdMemory;
-    private HashMap<String,Command> programMemory;
+    private HashMap<String, DataObject> dataMemory;
+    private HashMap<String, DataObject> saveDataMemory;
+    private HashMap<String, Command> cmdMemory;
+    private HashMap<String, Command> saveCmdMemory;
+    private HashMap<String, Command> programMemory;
+    private HashMap<String, Command> saveProgramMemory;
 
-    private boolean executing=false;
-    
-    public Memory(){
+    private ArrayList<Command> runnedCommand;
+
+    private boolean executing = false;
+    private boolean inSaveState = false;
+
+    public Memory() {
         dataMemory = new HashMap<>();
-        cmdMemory= new HashMap<>();
-        programMemory=new HashMap<>();
+        cmdMemory = new HashMap<>();
+        programMemory = new HashMap<>();
+        saveDataMemory = new HashMap<>();
+        saveCmdMemory = new HashMap<>();
+        saveCmdMemory = new HashMap<>();
+        runnedCommand=new ArrayList<>();
 
     }
+    
+    public void SaveState() {
+        saveDataMemory= (HashMap<String, DataObject>)dataMemory.clone();
+        saveCmdMemory= (HashMap<String, Command>)cmdMemory.clone();
+        saveProgramMemory= (HashMap<String, Command>)programMemory.clone();
+        inSaveState = true;
+    }
+
+    public void LoadState() {
+        dataMemory= (HashMap<String, DataObject>)saveDataMemory.clone();
+        cmdMemory= (HashMap<String, Command>)saveCmdMemory.clone();
+        programMemory= (HashMap<String, Command>)saveProgramMemory.clone();
+        inSaveState = false;
+    }
+
     public void setExecuting(boolean executing) {
         this.executing = executing;
     }
-    public boolean getExecuting(){
+
+    public boolean getExecuting() {
         return this.executing;
     }
-    public void addData(String dataName,DataObject data){
+    
+    public void addRunnedCommand(Command cmd){
+        if (runnedCommand.contains(cmd)) {
+            return;
+        }
+        runnedCommand.add(cmd);
+    }
+    public void resetRunnedCommand(){
+        runnedCommand=new ArrayList<>();
+    }
+    public void addData(String dataName, DataObject data) {
         dataMemory.put(dataName, data);
     }
-    public DataObject getData(String dataName){
+
+    public DataObject getData(String dataName) {
         return dataMemory.get(dataName);
     }
-    public void addCmd(String label,Command cmd){
+
+    public void addCmd(String label, Command cmd) {
         cmdMemory.put(label, cmd);
-        System.out.println(label+" added");
+        System.out.println(label + " added");
     }
-    public Command getCmd(String label){
+
+    public Command getCmd(String label) {
         return cmdMemory.get(label);
     }
+
     public Command getProgram(String programName) {
         return programMemory.get(programName);
     }
-    public void addProgram(String programName,Command program) {
+
+    public void addProgram(String programName, Command program) {
         programMemory.put(programName, program);
     }
-    public void printData(){
-        for (String data : dataMemory.keySet()) {
-            System.out.println(data + " : "+getData(data));
-        }
 
+    public void printData() {
+        for (String data : dataMemory.keySet()) {
+            System.out.println(data + " : " + getData(data));
+        }
     }
-    public void printCmd(){
+
+    public void printCmd() {
         for (String data : cmdMemory.keySet()) {
-            System.out.println(data + " : "+getCmd(data));
+            System.out.println(data + " : " + getCmd(data));
         }
 
     }
 
     public Boolean checkIsValidExpression(String s) {
-        DataObject dob= new DataObject();
+        DataObject dob = new DataObject();
         if (!dob.autoSetData(s, this)) {
             if (!checkIsValidNameOrLabel(s)) {
                 return false;
             }
-        }
-        else{
+        } else {
             return true;
         }
         return true;
     }
+
     public boolean checkIsValidNameOrLabel(String s) {
         // ascii table [(48)0-9(58),(65)A-Z(90),(97)a-z(122)]
         // case1 if more than eight characters
@@ -84,7 +128,8 @@ public class Memory {
         }
         // case4 is SIMPLE Keywords
         // please continue add
-        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print", "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
+        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
+                "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
         for (String string : Identifiers) {
             if (s.equals(string)) {
                 return false;
@@ -94,6 +139,7 @@ public class Memory {
         return true;
 
     }
+
     public boolean checkIsValidProgramName(String s) {
         // ascii table [(48)0-9(58),(65)A-Z(90),(97)a-z(122)]
         // case1 if more than eight characters
@@ -114,13 +160,14 @@ public class Memory {
         }
         // case4 is SIMPLE Keywords
         // please continue add
-        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print", "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
+        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
+                "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
         for (String string : Identifiers) {
             if (s.equals(string)) {
                 return false;
             }
         }
-        
+
         return true;
 
     }

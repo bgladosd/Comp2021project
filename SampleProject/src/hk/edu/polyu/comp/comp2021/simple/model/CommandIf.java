@@ -11,6 +11,7 @@ public class CommandIf implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        m.addRunnedCommand(this);
         DataObject dataO = new DataObject();
         if (!dataO.autoSetData(expRef, m)) {
             System.out.println("execute " + label + " failed! unable to load expRef");

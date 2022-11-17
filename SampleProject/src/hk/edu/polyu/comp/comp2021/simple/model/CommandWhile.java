@@ -10,6 +10,7 @@ public class CommandWhile implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        m.addRunnedCommand(this);
         DataObject dataO = new DataObject();
         if (m.getCmd(statementLab1) == null) {
             System.out.println("execute " + label + " failed! statementLab1 can not be find");

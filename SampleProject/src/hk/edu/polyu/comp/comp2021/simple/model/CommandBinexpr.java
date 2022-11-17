@@ -13,6 +13,7 @@ public class CommandBinexpr implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+        m.addRunnedCommand(this);
         if (!m.getExecuting()) {
             return new DataObject("false", m);
         }

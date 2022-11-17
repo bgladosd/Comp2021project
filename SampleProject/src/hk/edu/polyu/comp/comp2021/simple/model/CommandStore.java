@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+//run before program load
 public class CommandStore implements Command{
 
     String path;

@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
+
+// running in debug mode
 public class CommandInspect implements Command {
     String label;
     String programName;
@@ -8,6 +10,7 @@ public class CommandInspect implements Command {
 
     @Override
     public DataObject execute(Memory m) {
+
         
         if (inspectObject.autoSetData(varName, m)) {
         } else {
