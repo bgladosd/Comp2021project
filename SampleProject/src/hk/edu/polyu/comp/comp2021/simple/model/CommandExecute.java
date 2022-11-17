@@ -10,7 +10,6 @@ public class CommandExecute implements Command {
     @Override
     public DataObject execute(Memory m) {
         m.resetRunnedCommand();
-        m.addRunnedCommand(this);
         Command c = m.getProgram(exeLabel);
         if (c==null) {
             System.out.println("Program : "+ exeLabel +" can not be found ");
