@@ -3,6 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
+//run before the program load
 public class CommandLoad implements Command{
 
 

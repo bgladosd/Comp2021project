@@ -49,6 +49,16 @@ public class CommandBuilder {
             new CommandStore(cmd,m);
         }
 
+
+        //for testing
+        else if (cmd[0].equals("s")) {
+            m.SaveState();
+        }
+        else if (cmd[0].equals("l")) {
+            m.LoadState();
+        }
+
+
         else {
             System.out.println("Command not found : " + cmd[0]);
             return;
