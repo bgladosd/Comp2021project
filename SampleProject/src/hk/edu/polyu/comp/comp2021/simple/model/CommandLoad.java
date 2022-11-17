@@ -2,7 +2,6 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 
 public class CommandLoad implements Command{
 
@@ -68,3 +67,4 @@ public class CommandLoad implements Command{
         return this.label;
     }
 }
+
