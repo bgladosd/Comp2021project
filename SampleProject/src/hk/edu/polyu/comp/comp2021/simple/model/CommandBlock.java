@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 import java.util.ArrayList;
 
 public class CommandBlock implements Command {
-
+    String cmdString;
     String label;
     ArrayList<String> cmdListString= new ArrayList<String>();
     ArrayList<Command> cmdList=new ArrayList<Command>();
