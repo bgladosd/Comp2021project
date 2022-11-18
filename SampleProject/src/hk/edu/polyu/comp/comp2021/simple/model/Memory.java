@@ -94,8 +94,9 @@ public class Memory {
 
         // check if this command need to break point
         if (getDebugMode()) {
-            for (String string : breakpointList) {
-                String[] sp = string.split(" ");
+            for (int i=0;i<breakpointList.size();i++) {
+
+                String[] sp = breakpointList.get(i).split(" ");
                 if (!sp[0].equals(getRunningProgramName())) {
                     continue;
                 }
@@ -103,7 +104,8 @@ public class Memory {
                     continue;
                 }
                 // break program
-                System.out.println("Entered debug mode, stoped before : " + string);
+                System.out
+                        .println("Entered debug mode, stoped before : " + breakpointList.get(i) + " input 'quit' to exit debug mode");
                 while (true) {
 
                     Scanner scanner1 = new Scanner(System.in); // Create a Scanner object
@@ -114,6 +116,11 @@ public class Memory {
                         break;
                     } else if (ss[0].equals("inspect")) {
                         new CommandInspect(ss, this);
+                    } else if (ss[0].equals("togglebreakpoint")) {
+                        new CommandToggleBreakPoint(ss, this);
+                    } else if (ss[0].equals("quit")) {
+                        setDebugMode(false);
+                        break;
                     } else {
                         System.out.println(
                                 "please end debug mode before enter other command by with :" + "debug " + sp[0]);

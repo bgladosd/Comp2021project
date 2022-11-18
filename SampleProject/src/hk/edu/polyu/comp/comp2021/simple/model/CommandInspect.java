@@ -14,7 +14,8 @@ public class CommandInspect implements Command {
             System.out.println("inspect can't find the variable with var name : " + varName);
             return null;
         }
-        System.out.println(inspectObject);
+        inspectObject=new DataObject(varName,m);
+        System.out.println("<"+inspectObject+">");
         return null;
     }
 
@@ -26,6 +27,10 @@ public class CommandInspect implements Command {
         }
         programName = cmd[1];
         varName = cmd[2];
+        if (!programName.equals(m.getRunningProgramName())) {
+            System.out.println("program name is not correct"); 
+            return;
+        }
         this.execute(m);
 
     }

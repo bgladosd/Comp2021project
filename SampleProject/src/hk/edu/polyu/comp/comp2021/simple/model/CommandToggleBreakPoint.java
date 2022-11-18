@@ -33,13 +33,6 @@ public class CommandToggleBreakPoint implements Command {
         breakPointLabel = cmd[2];
         this.execute(m);
 
-        // if (inspectObject.autoSetData(varName,m)) {
-        // }else{
-        // System.out.println(
-        // "can't find varName");
-        // return;
-        // }
-
         // command check tegrity end
 
     }
