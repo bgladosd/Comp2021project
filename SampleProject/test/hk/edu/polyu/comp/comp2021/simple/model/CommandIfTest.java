@@ -71,6 +71,7 @@ public class CommandIfTest {
     @Test
     public void testExecute1() {
         Command c1 = new CommandIf("if if1 true print1 print2".split(" "), m);
+        m.setExecuting(true);
         c1.execute(m);
         String printString = "[100]";
         assertEquals(printString ,outContent.toString().trim());
@@ -79,6 +80,7 @@ public class CommandIfTest {
     @Test
     public void testExecute2() {
         Command c1 = new CommandIf("if if1 false print1 print2".split(" "), m);
+        m.setExecuting(true);
         c1.execute(m);
         String printString = "[55]";
         assertEquals(printString ,outContent.toString().trim());

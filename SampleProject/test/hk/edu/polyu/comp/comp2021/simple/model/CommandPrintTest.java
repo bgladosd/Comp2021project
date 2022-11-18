@@ -53,6 +53,7 @@ public class CommandPrintTest {
     @Test
     public void testExecute1() {
         Command c1 = new CommandPrint("print print1 1".split(" "), m);
+        m.setExecuting(true);
         c1.execute(m);
         String result = "[1]";
         assertEquals(result ,outContent.toString().trim());
@@ -61,6 +62,7 @@ public class CommandPrintTest {
     @Test
     public void testExecute2() {
         Command c1 = new CommandPrint("print print1 true".split(" "), m);
+        m.setExecuting(true);
         c1.execute(m);
         String result = "[true]";
         assertEquals(result ,outContent.toString().trim());
@@ -69,6 +71,7 @@ public class CommandPrintTest {
     @Test
     public void testExecute3() {
         Command c1 = new CommandPrint("print print1 x".split(" "), m);
+        m.setExecuting(true);
         c1.execute(m);
         String result = "[100]";
         assertEquals(result ,outContent.toString().trim());
@@ -77,6 +80,7 @@ public class CommandPrintTest {
     @Test
     public void testExecuteFail() {
         Command c1 = new CommandPrint("print print1 y".split(" "), m);
+        m.setExecuting(true);
         assertEquals(false, c1.execute(m).getO());
         String failStat = "ExpRef is not a valid data";
         assertEquals(failStat ,outContent.toString().trim());
