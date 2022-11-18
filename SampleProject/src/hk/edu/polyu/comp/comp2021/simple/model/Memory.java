@@ -88,7 +88,7 @@ public class Memory {
 
         // check if this command need to break point
         if (getDebugMode()) {
-            for (int i=0;i<breakpointList.size();i++) {
+            for (int i=breakpointList.size()-1;i>=0;i--) {
 
                 String[] sp = breakpointList.get(i).split(" ");
                 if (!sp[0].equals(getRunningProgramName())) {

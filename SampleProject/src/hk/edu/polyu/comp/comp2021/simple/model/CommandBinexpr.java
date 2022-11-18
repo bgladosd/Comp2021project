@@ -131,6 +131,7 @@ public class CommandBinexpr implements Command {
         for (String string : bopSuitArray) {
             if (bop.equals(string)) {
                 goodBop = true;
+                break;
             }
         }
         if (!goodBop) {

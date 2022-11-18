@@ -70,6 +70,7 @@ public class CommandUnexpr implements Command {
         for (String string : bopSuitArray) {
             if (uop.equals(string)) {
                 goodBop = true;
+                break;
             }
         }
         if (!goodBop) {
