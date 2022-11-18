@@ -16,7 +16,8 @@ public class CommandExecuteTest {
     Memory m = new Memory();
     Command cv = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
     Command cp = new CommandPrint("print print1 x".split(" "), m);
-    Command cpg = new CommandProgram("program program1 print1".split(" "), m);
+    Command cb = new CommandBlock("block block1 vardef1 print1".split(" "), m);
+    Command cpg = new CommandProgram("program program1 block1".split(" "), m);
 
     @Before
     public void setUpStreams() {

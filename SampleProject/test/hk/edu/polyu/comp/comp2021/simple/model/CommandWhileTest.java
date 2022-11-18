@@ -66,6 +66,7 @@ public class CommandWhileTest {
     public void testExecute1() {
         Command c1 = new CommandWhile("while while1 exp2 block1".split(" "), m);
         m.setExecuting(true);
+        m.setRunningProgramName("Testing");
         c1.execute(m);
         String [] printString = {"[101]", "[102]", "[103]", "[104]", "[105]"};
         assertEquals(printString[0] ,outContent.toString().split("\n")[0].trim());

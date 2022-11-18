@@ -50,14 +50,14 @@ public class CommandIfTest {
     @Test
     public void testConstructor4 () {
         Command c1 = new CommandIf("if if1 exp1 print print2".split(" "), m);
-        String failStat = "print is not a valid statement label name";
+        String failStat = "print is not a valid label name";
         assertEquals(failStat ,outContent.toString().trim());
     }
 
     @Test
     public void testConstructor5 () {
         Command c1 = new CommandIf("if if1 exp1 print1 assign".split(" "), m);
-        String failStat = "assign is not a valid statement label name";
+        String failStat = "assign is not a valid label name";
         assertEquals(failStat ,outContent.toString().trim());
     }
 
@@ -72,6 +72,7 @@ public class CommandIfTest {
     public void testExecute1() {
         Command c1 = new CommandIf("if if1 true print1 print2".split(" "), m);
         m.setExecuting(true);
+        m.setRunningProgramName("Testing");
         c1.execute(m);
         String printString = "[100]";
         assertEquals(printString ,outContent.toString().trim());
@@ -81,6 +82,7 @@ public class CommandIfTest {
     public void testExecute2() {
         Command c1 = new CommandIf("if if1 false print1 print2".split(" "), m);
         m.setExecuting(true);
+        m.setRunningProgramName("Testing");
         c1.execute(m);
         String printString = "[55]";
         assertEquals(printString ,outContent.toString().trim());

@@ -55,6 +55,7 @@ public class CommandProgramTest {
     public void testExecute1() {
         Command c1 = new CommandProgram("program program1 print1".split(" "), m);
         m.setExecuting(true);
+        m.setRunningProgramName("Testing");
         c1.execute(m);
         String printString = "[100]";
         assertEquals(printString ,outContent.toString().trim());

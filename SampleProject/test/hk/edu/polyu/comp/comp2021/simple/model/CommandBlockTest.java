@@ -75,6 +75,7 @@ public class CommandBlockTest {
     public void testExecute2() {
         Command c1 = new CommandBlock("block block1 assign1 skip1 assign2 print1".split(" "), m);
         m.setExecuting(true);
+        m.setRunningProgramName("Testing");
         c1.execute(m);
         assertEquals(50, m.getData("x").getO());
         String result = "[50]";
