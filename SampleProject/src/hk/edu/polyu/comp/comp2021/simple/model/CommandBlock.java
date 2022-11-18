@@ -22,7 +22,7 @@ public class CommandBlock implements Command {
         for (Command command : cmdList) {
             command.execute(m);
         }
-        m.postExecution();
+        m.postExecution(this);
         return null;
 
     }

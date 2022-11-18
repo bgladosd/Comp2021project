@@ -19,7 +19,7 @@ public class CommandPrint implements Command {
         }
 
         System.out.println("["+dataObject+"]");
-        m.postExecution();
+        m.postExecution(this);
         return null;
 
     }

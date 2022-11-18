@@ -37,7 +37,7 @@ public class CommandAssign implements Command {
         }
 
         m.addData(dataName, dataObject2);
-        m.postExecution();
+        m.postExecution(this);
         return new DataObject("false", m);
     }
 

@@ -20,7 +20,7 @@ public class Memory {
     private String runningProgramName;
     private ArrayList<String> breakpointList ;
     private ArrayList<String> instrumentList ;
-    private Queue<String> instrumentBuffer;
+    
 
     private boolean executing = false;
     private boolean inSaveState = false;
@@ -41,7 +41,6 @@ public class Memory {
         runningProgramName = null;
         breakpointList = new ArrayList<>();
         instrumentList = new ArrayList<>();
-        instrumentBuffer = new ArrayDeque<>();
     }
 
     public boolean getDebugMode() {
@@ -156,27 +155,29 @@ public class Memory {
                     continue;
                 }
                 System.out.println("{"+dob+"}");
-            }else{
-                if (!sp[1].equals(lastInstructmentCommand)) {
-                    instrumentBuffer=new ArrayDeque<String>();
-                }
-                lastInstructmentCommand=sp[1];
-                instrumentBuffer.add(sp[3]);
             }
         }
 
-        //check if it is instrument
     }
     //things to check after command executed by commandExecute
-    public void postExecution(){
-        while (!instrumentBuffer.isEmpty()) {
-            String s= instrumentBuffer.remove();
-            DataObject dob = new DataObject();
-                if (!dob.autoSetData(s, this)) {
-                    System.out.println("instructment can't find the variable with var name : "+s);
+    public void postExecution(Command cmd){
+
+        for (String string : instrumentList) {
+            String[] sp = string.split(" ");
+            if (!sp[0].equals(getRunningProgramName())) {
+                continue;
+            }
+            if (!sp[1].equals(cmd.getLabel())) {
+                continue;
+            }
+            if (sp[2].equals("after")) {
+                DataObject dob = new DataObject();
+                if (!dob.autoSetData(sp[3], this)) {
+                    System.out.println("instructment can't find the variable with var name : "+sp[3] );
                     continue;
                 }
-                System.out.println("{after"+dob+"}");
+                System.out.println("{"+dob+"}");
+            }
         }
     }
 

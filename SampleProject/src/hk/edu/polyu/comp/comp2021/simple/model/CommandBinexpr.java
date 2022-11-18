@@ -94,7 +94,7 @@ public class CommandBinexpr implements Command {
                     break;
             }
         }
-        m.postExecution();
+        m.postExecution(this);
         return dataObject;
 
     }

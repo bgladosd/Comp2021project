@@ -15,7 +15,7 @@ public class CommandProgram implements Command {
             return null;
         }
         c.execute(m);
-        m.postExecution();
+        m.postExecution(this);
         return null;
     }
 
