@@ -11,7 +11,7 @@ public class CommandAssign implements Command {
     @Override
     public DataObject execute(Memory m) {
 
-        m.addRunnedCommand(this);
+        m.preExecution(this);
 
         String varName = dataName;
         DataObject dataObject1 = m.getData(varName);

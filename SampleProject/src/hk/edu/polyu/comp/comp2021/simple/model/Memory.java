@@ -13,10 +13,17 @@ public class Memory {
     private HashMap<String, Command> programMemory;
     private HashMap<String, Command> saveProgramMemory;
 
+
+
     private Queue<Command> runnedCommand;
+
+    private String runningProgramName;
+    private ArrayList<String> breakpointList=new ArrayList<>();
+    private ArrayList<String> instrumentList=new ArrayList<>();
 
     private boolean executing = false;
     private boolean inSaveState = false;
+    private boolean debugMode=false;
 
     public Memory() {
         dataMemory = new HashMap<>();
@@ -27,6 +34,35 @@ public class Memory {
         saveCmdMemory = new HashMap<>();
         runnedCommand = new ArrayDeque<>();
 
+        runningProgramName=null;
+        breakpointList=new ArrayList<>();
+        instrumentList=new ArrayList<>();
+    }
+    
+    public boolean getDebugMode(){
+        return this.debugMode;
+    }
+
+    public void setDebugMode(boolean b){
+        this.debugMode=b;        
+    }
+    public String getRunningProgramName(){
+        return runningProgramName;
+    }
+    public void setRunningProgramName(String s){
+        this.runningProgramName=s;
+    }
+
+    public boolean toggleBreakPointInList(String s){
+        if(breakpointList.contains(s)){
+            breakpointList.remove(s);
+            return false;
+        }
+        breakpointList.add(s);
+        return true;
+    }
+    public void addInstrument(String s){
+        instrumentList.add(s);
     }
 
     public void SaveState() {
@@ -55,11 +91,26 @@ public class Memory {
         return runnedCommand;
     }
 
-    public void addRunnedCommand(Command cmd) {
+    public void preExecution(Command cmd) {
+        //store executed command to runned command list
         if (runnedCommand.contains(cmd)) {
             return;
         }
         runnedCommand.add(cmd);
+
+        //check if this command need to break point
+        if (getDebugMode()) {
+            for (String string : breakpointList) {
+                String[] sp=string.split(" ");
+                if (!sp[0].equals(getRunningProgramName())) {
+                    continue;
+                }
+                if (!sp[1].equals(cmd.getLabel())) {
+                    continue;
+                }
+                //pause program
+            }
+        }
     }
 
     public void resetRunnedCommand() {

@@ -13,7 +13,7 @@ public class CommandBinexpr implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         if (!m.getExecuting()) {
             return new DataObject("false", m);
         }
@@ -151,7 +151,7 @@ public class CommandBinexpr implements Command {
         */
 
         // command check tegrity end
-        setLabel(null);
+        setLabel(label);
         m.addData(expName, new DataObject(this, m));
 
         // delete later, instant execute for testing

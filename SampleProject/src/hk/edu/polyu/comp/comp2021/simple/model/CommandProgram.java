@@ -8,7 +8,7 @@ public class CommandProgram implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         Command c = m.getCmd(statemendLabel);
         if (c==null) {
             System.out.println("Statemend : "+ statemendLabel +" can not be found ");

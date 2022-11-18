@@ -6,7 +6,7 @@ public class CommandPrint implements Command {
     String cmdString;
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         DataObject dataObject = new DataObject();
         if (dataObject.autoSetData(expRef, m)) {
         } else {

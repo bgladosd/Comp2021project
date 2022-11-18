@@ -10,7 +10,7 @@ public class CommandVarDef implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         if (!dataObject.autoSetData(expRef, m)) {
             System.out.println("instruction failed! expRef is not valid value");
             return null;

@@ -11,7 +11,7 @@ public class CommandIf implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         DataObject dataO = new DataObject();
         if (!dataO.autoSetData(expRef, m)) {
             System.out.println("execute " + label + " failed! unable to load expRef");
@@ -50,9 +50,9 @@ public class CommandIf implements Command {
         expRef = cmd[2];
         statementLab1 = cmd[3];
         statementLab2 = cmd[4];
-
         // command check tegrity end
         m.addCmd(label, this);
+        
 
     }
 

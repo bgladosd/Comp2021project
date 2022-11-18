@@ -5,7 +5,7 @@ public class CommandSkip implements Command {
     String cmdString;
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         return null;
     }
 

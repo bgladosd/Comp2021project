@@ -13,13 +13,13 @@ public class CommandStore implements Command{
 
     @Override
     public DataObject execute(Memory m) {
-        m.SaveState();
-        m.resetRunnedCommand();
         Command c = m.getProgram(progName);
         if (c==null) {
             System.out.println("Program : "+ progName +" can not be found ");
             return null;
         }
+        m.SaveState();
+        m.resetRunnedCommand();
         m.setExecuting(true);
         c.execute(m);
         m.setExecuting(false);

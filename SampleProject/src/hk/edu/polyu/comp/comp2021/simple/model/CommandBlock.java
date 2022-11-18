@@ -10,7 +10,7 @@ public class CommandBlock implements Command {
 
     @Override
     public DataObject execute(Memory m) {
-        m.addRunnedCommand(this);
+        m.preExecution(this);
         cmdList=new ArrayList<Command>();
         for (String command : cmdListString) {
             if (m.getCmd(command)==null) {

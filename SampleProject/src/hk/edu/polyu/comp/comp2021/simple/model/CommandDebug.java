@@ -1,7 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 //this should execute program, but for testing, it is also able to use to execute Commands
-public class CommandExecute implements Command {
+public class CommandDebug implements Command {
 
     String label;
 
@@ -14,15 +14,19 @@ public class CommandExecute implements Command {
             System.out.println("Program : "+ program +" can not be found ");
             return null;
         }
+        m.setDebugMode(true);
+        m.setRunningProgramName(program);
         m.resetRunnedCommand();
         m.setExecuting(true);
         c.execute(m);
         m.setExecuting(false);
+        m.setDebugMode(false);
+        m.setRunningProgramName(null);
         return null;
 
     }
 
-    public CommandExecute(String[] cmd, Memory m) {
+    public CommandDebug(String[] cmd, Memory m) {
         if (cmd.length != 2) {
             System.out.println(
                     "instruction failed! execute statement should only have 2 elements which are (execute program1)");
