@@ -13,7 +13,7 @@ public class CommandWhile implements Command {
         m.preExecution(this);
         DataObject dataO = new DataObject();
         if (m.getCmd(statementLab1) == null) {
-            System.out.println("execute " + label + " failed! statementLab1 can not be find");
+            System.out.println("execute " + label + " failed! statementLab1 can not be found");
             return null;
         }
         if (!dataO.autoSetData(expRef, m)) {
