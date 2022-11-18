@@ -25,6 +25,9 @@ public class Memory {
     private boolean inSaveState = false;
     private boolean debugMode=false;
 
+    String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
+                "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
+
     public Memory() {
         dataMemory = new HashMap<>();
         cmdMemory = new HashMap<>();
@@ -185,9 +188,7 @@ public class Memory {
             return false;
         }
         // case4 is SIMPLE Keywords
-        // please continue add
-        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
-                "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
+        
         for (String string : Identifiers) {
             if (s.equals(string)) {
                 return false;
@@ -217,9 +218,6 @@ public class Memory {
             return false;
         }
         // case4 is SIMPLE Keywords
-        // please continue add
-        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
-                "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
         for (String string : Identifiers) {
             if (s.equals(string)) {
                 return false;
