@@ -21,7 +21,7 @@ public class CommandWhile implements Command {
             return null;
         }
         if (!dataO.type.equals("bool")) {
-            System.out.println("execute " + label + " failed!    expRef is not boolean");
+            System.out.println("execute " + label + " failed! expRef is not boolean");
             return null;
         }
 
@@ -35,7 +35,7 @@ public class CommandWhile implements Command {
                 return null;
             }
             if (!dataO.type.equals("bool")) {
-                System.out.println("execute " + label + " failed!    expRef is not boolean");
+                System.out.println("execute " + label + " failed! expRef is not boolean");
                 return null;
             }
             expBoolean = (boolean) dataO.o;
@@ -49,16 +49,35 @@ public class CommandWhile implements Command {
     public CommandWhile(String[] cmd, Memory m) {
         if (cmd.length != 4) {
             System.out.println(
-                    "instruction failed! if statement should only have 5 elements which is (if lab expRef statementLab1 statementLab2)");
+                    "instruction failed! if statement should only have 4 elements which is (while lab expRef statementLab1)");
             return;
         }
-        label = cmd[1];
+        String label = cmd[1];
         expRef = cmd[2];
         statementLab1 = cmd[3];
         
         //check expRef is bool or e
 
         // command check tegrity end
+        if (!m.checkIsValidNameOrLabel(label)) {
+            System.out.println(
+                    label + " is not a valid label name");
+            return;
+        }
+
+        if (!m.checkIsValidExpression(expRef)) {
+            System.out.println(
+                    expRef + " is not a valid expression");
+            return;
+        }
+
+        if (!m.checkIsValidNameOrLabel(statementLab1)) {
+            System.out.println(
+                    statementLab1 + " is not a valid statement label name");
+            return;
+        }
+
+        setLabel(label);
         m.addCmd(label, this);
 
     }

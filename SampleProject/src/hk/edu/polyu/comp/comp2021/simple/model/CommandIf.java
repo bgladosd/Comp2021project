@@ -64,12 +64,6 @@ public class CommandIf implements Command {
             return;
         }
 
-        if (!m.checkIsValidNameOrLabel(label)) {
-            System.out.println(
-                    label + " is not a valid label name");
-            return;
-        }
-
         for (int i = 3; i < cmd.length; i++) {
             if (!m.checkIsValidNameOrLabel(cmd[i])) {
                 System.out.println(
