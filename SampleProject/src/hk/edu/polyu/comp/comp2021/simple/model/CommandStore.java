@@ -26,13 +26,6 @@ public class CommandStore implements Command {
         c.execute(m);
         m.setExecuting(false);
 
-
-        // print out all the runned command
-        while (!m.getRunnedCommand().isEmpty()) {
-            Command cs = m.getRunnedCommand().remove();
-            System.out.println(cs.getCmdString());
-        }
-
         try {
             File store = new File(path + "/" + progName + ".txt");
             if (store.createNewFile()) {

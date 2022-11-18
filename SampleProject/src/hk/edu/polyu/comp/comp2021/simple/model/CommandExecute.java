@@ -14,7 +14,7 @@ public class CommandExecute implements Command {
             System.out.println("Program : "+ program +" can not be found ");
             return null;
         }
-        m.reSetVariableData();
+        // m.reSetVariableData();
         m.setRunningProgramName(program);
         m.resetRunnedCommand();
         m.setExecuting(true);

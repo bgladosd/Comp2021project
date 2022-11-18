@@ -1,7 +1,5 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
-import java.io.IOException;
-
 public interface Command {
 	
 	public DataObject execute(Memory m) ;
