@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandBinexpr implements Command {
     String cmdString;
     String label;
-    //String dataName;
+    // String dataName;
     DataObject dataObject;
 
     String expName;
@@ -126,31 +126,6 @@ public class CommandBinexpr implements Command {
                     expRef2 + " is not a valid expression");
             return;
         }
-
-        /*  Delete Later,  my mistake, should not check the if the variable is available before executed
-        DataObject expRefObject1 = new DataObject();
-        DataObject expRefObject2 = new DataObject();
-
-        if (expRefObject1.autoSetData(expRef1, m)) {
-        } else {
-            System.out.println(
-                    "ExpRef1 is not a valid data");
-            return;
-        }
-        if (expRefObject2.autoSetData(expRef2, m)) {
-        } else {
-            System.out.println(
-                    "ExpRef2 is not a valid data");
-            return;
-        }
-        // can't do calculation if they are not the same type
-        if (!expRefObject1.type.equals(expRefObject2.type)) {
-            System.out.println(
-                    "can't do calculation if ExpRef1 and ExpRef2 are not the same type");
-            return;
-        }
-        */
-
         // command check tegrity end
         setLabel(label);
         m.addData(expName, new DataObject(this, m));
@@ -170,7 +145,6 @@ public class CommandBinexpr implements Command {
     public String getLabel() {
         return label;
     }
-    
 
     @Override
     public String getCmdString() {
@@ -179,6 +153,6 @@ public class CommandBinexpr implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
 }

@@ -15,9 +15,8 @@ public class Memory {
     private Queue<Command> runnedCommand;
 
     private String runningProgramName;
-    private ArrayList<String> breakpointList ;
-    private ArrayList<String> instrumentList ;
-    
+    private ArrayList<String> breakpointList;
+    private ArrayList<String> instrumentList;
 
     private boolean executing = false;
     private boolean debugMode = false;
@@ -66,7 +65,13 @@ public class Memory {
     }
 
     public void reSetVariableData() {
-        dataMemory = new HashMap<>();
+        for (var entry : dataMemory.entrySet()) {
+            if (entry.getValue().type.equals("e")) {
+                continue;
+            }
+            dataMemory.remove(entry.getKey());
+
+        }
     }
 
     public void setExecuting(boolean executing) {
@@ -80,7 +85,8 @@ public class Memory {
     public Queue<Command> getRunnedCommand() {
         return runnedCommand;
     }
-    //things to check before command executed by commanExecute
+
+    // things to check before command executed by commanExecute
     public void preExecution(Command cmd) {
         // store executed command to runned command list
         if (!runnedCommand.contains(cmd)) {
@@ -117,7 +123,7 @@ public class Memory {
                 }
             }
         }
-        //check if it need instrument
+        // check if it need instrument
         for (String string : instrumentList) {
             String[] sp = string.split(" ");
             if (!sp[0].equals(getRunningProgramName())) {
@@ -129,16 +135,17 @@ public class Memory {
             if (sp[2].equals("before")) {
                 DataObject dob = new DataObject();
                 if (!dob.autoSetData(sp[3], this)) {
-                    System.out.println("instructment can't find the variable with var name : "+sp[3] );
+                    System.out.println("instructment can't find the variable with var name : " + sp[3]);
                     continue;
                 }
-                System.out.println("{"+dob+"}");
+                System.out.println("{" + dob + "}");
             }
         }
 
     }
-    //things to check after command executed by commandExecute
-    public void postExecution(Command cmd){
+
+    // things to check after command executed by commandExecute
+    public void postExecution(Command cmd) {
 
         for (String string : instrumentList) {
             String[] sp = string.split(" ");
@@ -151,10 +158,10 @@ public class Memory {
             if (sp[2].equals("after")) {
                 DataObject dob = new DataObject();
                 if (!dob.autoSetData(sp[3], this)) {
-                    System.out.println("instructment can't find the variable with var name : "+sp[3] );
+                    System.out.println("instructment can't find the variable with var name : " + sp[3]);
                     continue;
                 }
-                System.out.println("{"+dob+"}");
+                System.out.println("{" + dob + "}");
             }
         }
     }
