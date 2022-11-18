@@ -10,6 +10,7 @@ public class CommandBinexpr implements Command {
     String expRef1;
     String bop;
     String expRef2;
+    String[] bopSuitArray = { "%", "+", "-", "*", "/", ">", "<", "<=", ">=", "==", "!=", "&&", "||" };
 
     @Override
     public DataObject execute(Memory m) {
@@ -124,6 +125,17 @@ public class CommandBinexpr implements Command {
         if (!m.checkIsValidExpression(expRef2)) {
             System.out.println(
                     expRef2 + " is not a valid expression");
+            return;
+        }
+        boolean goodBop = false;
+        for (String string : bopSuitArray) {
+            if (bop.equals(string)) {
+                goodBop = true;
+            }
+        }
+        if (!goodBop) {
+            System.out.println(
+                    bop + " is not a valid bop");
             return;
         }
         // command check tegrity end

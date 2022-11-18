@@ -24,7 +24,7 @@ public class CommandDebug implements Command {
     public CommandDebug(String[] cmd, Memory m) {
         if (cmd.length != 2) {
             System.out.println(
-                    "instruction failed! execute statement should only have 2 elements which are (execute program1)");
+                    "instruction failed! execute statement should only have 2 elements which are (debug program1)");
             return;
         }
         program = cmd[1];

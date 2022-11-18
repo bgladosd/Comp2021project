@@ -1,6 +1,5 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
-
 public class CommandIf implements Command {
     String cmdString;
     String label;
@@ -50,31 +49,30 @@ public class CommandIf implements Command {
         expRef = cmd[2];
         statementLab1 = cmd[3];
         statementLab2 = cmd[4];
-        // command check tegrity end
 
         if (!m.checkIsValidNameOrLabel(label)) {
             System.out.println(
                     label + " is not a valid label name");
             return;
         }
-
         if (!m.checkIsValidExpression(expRef)) {
             System.out.println(
                     expRef + " is not a valid expression");
             return;
         }
-
-        for (int i = 3; i < cmd.length; i++) {
-            if (!m.checkIsValidNameOrLabel(cmd[i])) {
-                System.out.println(
-                        cmd[i] + " is not a valid statement label name");
-                return;
-            }
+        if (!m.checkIsValidNameOrLabel(statementLab1)) {
+            System.out.println(
+                    statementLab1 + " is not a valid label name");
+            return;
         }
-
+        if (!m.checkIsValidNameOrLabel(statementLab2)) {
+            System.out.println(
+                    statementLab2 + " is not a valid label name");
+            return;
+        }
+        // command check tegrity end
         setLabel(label);
         m.addCmd(label, this);
-        
 
     }
 
@@ -88,7 +86,7 @@ public class CommandIf implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -96,8 +94,7 @@ public class CommandIf implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
-
 
 }

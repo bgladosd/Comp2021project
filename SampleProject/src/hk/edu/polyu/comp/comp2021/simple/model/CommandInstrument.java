@@ -32,6 +32,8 @@ public class CommandInstrument implements Command {
         instrumentLabel = cmd[2];
         pos=cmd[3];
         expRef=cmd[4];
+
+        
         // command check tegrity end
         this.execute(m);
 

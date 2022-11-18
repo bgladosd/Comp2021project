@@ -8,6 +8,7 @@ public class CommandUnexpr implements Command {
     String expName;
     String expRef1;
     String uop;
+    String[] bopSuitArray = { "~", "!", "#", };
 
     @Override
     public DataObject execute(Memory m) {
@@ -60,20 +61,24 @@ public class CommandUnexpr implements Command {
                     expName + " is not a valid expression name");
             return;
         }
-        // delete later, updated check with checkIsValidExpression below
-        // DataObject expRefObject1 = new DataObject();
-
-        // if (expRefObject1.autoSetData(expRef1, m)) {
-        // } else {
-        //     System.out.println(
-        //             "ExpRef1 is not a valid data");
-        //     return;
-        // }
         if (!m.checkIsValidExpression(expRef1)) {
             System.out.println(
                     expRef1 + " is not a valid expression");
             return;
         }
+        boolean goodBop = false;
+        for (String string : bopSuitArray) {
+            if (uop.equals(string)) {
+                goodBop = true;
+            }
+        }
+        if (!goodBop) {
+            System.out.println(
+                uop + " is not a valid uop");
+            return;
+        }
+
+        //command check end
         setLabel(null);
 
         m.addData(expName, new DataObject(this, m));
