@@ -56,7 +56,7 @@ public class CommandStore implements Command{
                         Command cs = m.getRunnedCommand().remove();
                         txtWriter.write(cs.getCmdString()+"\n");
                     }
-
+                    txtWriter.write("execute "+progName+"\n");
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
@@ -88,9 +88,7 @@ public class CommandStore implements Command{
                         Command cs = m.getRunnedCommand().remove();
                         txtWriter.write(cs.getCmdString()+"\n");
                     }
-
-
-
+                    txtWriter.write("execute "+progName+"\n");
 
                     txtWriter.close();
                 } catch (IOException e) {
