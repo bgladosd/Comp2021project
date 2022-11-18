@@ -38,7 +38,25 @@ public class CommandStore implements Command{
 
                 try {
                     FileWriter txtWriter = new FileWriter(path+"/"+progName+".txt");
-                    txtWriter.write("Hi");
+
+                    Command e = m.getProgram(progName);
+                    if (e==null) {
+                        System.out.println("Program : "+ progName +" can not be found ");
+                        return null;
+                    }
+                    m.SaveState();
+                    m.resetRunnedCommand();
+                    m.setExecuting(true);
+                    c.execute(m);
+                    m.setExecuting(false);
+
+
+                    //print out all the runned command
+                    while (!m.getRunnedCommand().isEmpty()) {
+                        Command cs = m.getRunnedCommand().remove();
+                        txtWriter.write(cs.getCmdString()+"\n");
+                    }
+                    txtWriter.write("execute "+progName+"\n");
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
@@ -51,7 +69,27 @@ public class CommandStore implements Command{
 
                 try {
                     FileWriter txtWriter = new FileWriter(path+"/"+progName+".txt");
-                    txtWriter.write("rewrite Hi");
+
+
+                    Command d = m.getProgram(progName);
+                    if (d==null) {
+                        System.out.println("Program : "+ progName +" can not be found ");
+                        return null;
+                    }
+                    m.SaveState();
+                    m.resetRunnedCommand();
+                    m.setExecuting(true);
+                    c.execute(m);
+                    m.setExecuting(false);
+
+
+                    //print out all the runned command
+                    while (!m.getRunnedCommand().isEmpty()) {
+                        Command cs = m.getRunnedCommand().remove();
+                        txtWriter.write(cs.getCmdString()+"\n");
+                    }
+                    txtWriter.write("execute "+progName+"\n");
+
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
