@@ -60,9 +60,7 @@ public class CommandBuilder {
 
         // for testing delete later
         else if (cmd[0].equals("s")) {
-            m.SaveState();
         } else if (cmd[0].equals("l")) {
-            m.LoadState();
         } else if (cmd[0].equals("exeMode")) {
             if (executeMode) {
                 executeMode = false;

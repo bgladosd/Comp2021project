@@ -15,13 +15,8 @@ public class CommandDebug implements Command {
             return null;
         }
         m.setDebugMode(true);
-        m.setRunningProgramName(program);
-        m.resetRunnedCommand();
-        m.setExecuting(true);
-        c.execute(m);
-        m.setExecuting(false);
+        CommandExecute ce =new CommandExecute(new String[]{"execute",program}, m);
         m.setDebugMode(false);
-        m.setRunningProgramName(null);
         return null;
 
     }

@@ -9,11 +9,8 @@ import java.util.Scanner;
 
 public class Memory {
     private HashMap<String, DataObject> dataMemory;
-    private HashMap<String, DataObject> saveDataMemory;
     private HashMap<String, Command> cmdMemory;
-    private HashMap<String, Command> saveCmdMemory;
     private HashMap<String, Command> programMemory;
-    private HashMap<String, Command> saveProgramMemory;
 
     private Queue<Command> runnedCommand;
 
@@ -23,7 +20,6 @@ public class Memory {
     
 
     private boolean executing = false;
-    private boolean inSaveState = false;
     private boolean debugMode = false;
 
     String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
@@ -33,9 +29,6 @@ public class Memory {
         dataMemory = new HashMap<>();
         cmdMemory = new HashMap<>();
         programMemory = new HashMap<>();
-        saveDataMemory = new HashMap<>();
-        saveCmdMemory = new HashMap<>();
-        saveCmdMemory = new HashMap<>();
         runnedCommand = new ArrayDeque<>();
 
         runningProgramName = null;
@@ -72,21 +65,8 @@ public class Memory {
         instrumentList.add(s);
     }
 
-    public void SaveState() {
-        saveDataMemory = (HashMap<String, DataObject>) dataMemory.clone();
-        saveCmdMemory = (HashMap<String, Command>) cmdMemory.clone();
-        saveProgramMemory = (HashMap<String, Command>) programMemory.clone();
-        inSaveState = true;
-    }
-
-    public void LoadState() {
-        dataMemory = (HashMap<String, DataObject>) saveDataMemory.clone();
-        cmdMemory = (HashMap<String, Command>) saveCmdMemory.clone();
-        programMemory = (HashMap<String, Command>) saveProgramMemory.clone();
-        inSaveState = false;
-    }
-    public boolean getInSaveState(){
-        return this.inSaveState;
+    public void reSetVariableData() {
+        dataMemory = new HashMap<>();
     }
 
     public void setExecuting(boolean executing) {
@@ -100,8 +80,6 @@ public class Memory {
     public Queue<Command> getRunnedCommand() {
         return runnedCommand;
     }
-    //store the last command that get instructment
-    private String lastInstructmentCommand=null;
     //things to check before command executed by commanExecute
     public void preExecution(Command cmd) {
         // store executed command to runned command list
