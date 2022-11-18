@@ -20,7 +20,7 @@ public class CommandVarDef implements Command {
             return null;
         }
         m.addData(dataName, dataObject);
-
+        m.postExecution();
         return (null);
     }
 

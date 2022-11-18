@@ -14,10 +14,12 @@ public class CommandExecute implements Command {
             System.out.println("Program : "+ program +" can not be found ");
             return null;
         }
+        m.setRunningProgramName(program);
         m.resetRunnedCommand();
         m.setExecuting(true);
         c.execute(m);
         m.setExecuting(false);
+        m.setRunningProgramName(null);
         return null;
 
     }

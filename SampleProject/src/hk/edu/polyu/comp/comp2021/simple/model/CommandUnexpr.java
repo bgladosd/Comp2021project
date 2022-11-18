@@ -41,6 +41,7 @@ public class CommandUnexpr implements Command {
                     dataObject = new DataObject(String.valueOf((!boolExpRef1)), m) ;
             }
         }
+        m.postExecution();
         return dataObject;
     }
 

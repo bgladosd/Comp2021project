@@ -2,8 +2,10 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Memory {
     private HashMap<String, DataObject> dataMemory;
@@ -13,20 +15,19 @@ public class Memory {
     private HashMap<String, Command> programMemory;
     private HashMap<String, Command> saveProgramMemory;
 
-
-
     private Queue<Command> runnedCommand;
 
     private String runningProgramName;
-    private ArrayList<String> breakpointList=new ArrayList<>();
-    private ArrayList<String> instrumentList=new ArrayList<>();
+    private ArrayList<String> breakpointList ;
+    private ArrayList<String> instrumentList ;
+    private Queue<String> instrumentBuffer;
 
     private boolean executing = false;
     private boolean inSaveState = false;
-    private boolean debugMode=false;
+    private boolean debugMode = false;
 
     String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
-                "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
+            "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
 
     public Memory() {
         dataMemory = new HashMap<>();
@@ -37,34 +38,38 @@ public class Memory {
         saveCmdMemory = new HashMap<>();
         runnedCommand = new ArrayDeque<>();
 
-        runningProgramName=null;
-        breakpointList=new ArrayList<>();
-        instrumentList=new ArrayList<>();
+        runningProgramName = null;
+        breakpointList = new ArrayList<>();
+        instrumentList = new ArrayList<>();
+        instrumentBuffer = new ArrayDeque<>();
     }
-    
-    public boolean getDebugMode(){
+
+    public boolean getDebugMode() {
         return this.debugMode;
     }
 
-    public void setDebugMode(boolean b){
-        this.debugMode=b;        
-    }
-    public String getRunningProgramName(){
-        return runningProgramName;
-    }
-    public void setRunningProgramName(String s){
-        this.runningProgramName=s;
+    public void setDebugMode(boolean b) {
+        this.debugMode = b;
     }
 
-    public boolean toggleBreakPointInList(String s){
-        if(breakpointList.contains(s)){
+    public String getRunningProgramName() {
+        return runningProgramName;
+    }
+
+    public void setRunningProgramName(String s) {
+        this.runningProgramName = s;
+    }
+
+    public boolean toggleBreakPointInList(String s) {
+        if (breakpointList.contains(s)) {
             breakpointList.remove(s);
             return false;
         }
         breakpointList.add(s);
         return true;
     }
-    public void addInstrument(String s){
+
+    public void addInstrument(String s) {
         instrumentList.add(s);
     }
 
@@ -81,6 +86,9 @@ public class Memory {
         programMemory = (HashMap<String, Command>) saveProgramMemory.clone();
         inSaveState = false;
     }
+    public boolean getInSaveState(){
+        return this.inSaveState;
+    }
 
     public void setExecuting(boolean executing) {
         this.executing = executing;
@@ -93,26 +101,82 @@ public class Memory {
     public Queue<Command> getRunnedCommand() {
         return runnedCommand;
     }
-
+    //store the last command that get instructment
+    private String lastInstructmentCommand=null;
+    //things to check before command executed by commanExecute
     public void preExecution(Command cmd) {
-        //store executed command to runned command list
-        if (runnedCommand.contains(cmd)) {
-            return;
+        // store executed command to runned command list
+        if (!runnedCommand.contains(cmd)) {
+            runnedCommand.add(cmd);
         }
-        runnedCommand.add(cmd);
 
-        //check if this command need to break point
+        // check if this command need to break point
         if (getDebugMode()) {
             for (String string : breakpointList) {
-                String[] sp=string.split(" ");
+                String[] sp = string.split(" ");
                 if (!sp[0].equals(getRunningProgramName())) {
                     continue;
                 }
                 if (!sp[1].equals(cmd.getLabel())) {
                     continue;
                 }
-                //pause program
+                // break program
+                System.out.println("Entered debug mode, stoped before : " + string);
+                while (true) {
+
+                    Scanner scanner1 = new Scanner(System.in); // Create a Scanner object
+                    System.out.print(">");
+                    String input = scanner1.nextLine(); // Read user input
+                    String[] ss = input.split(" ");
+                    if (input.equals("debug " + sp[0])) {
+                        break;
+                    } else if (ss[0].equals("inspect")) {
+                        new CommandInspect(ss, this);
+                    } else {
+                        System.out.println(
+                                "please end debug mode before enter other command by with :" + "debug " + sp[0]);
+                    }
+
+                }
             }
+        }
+        //check if it need instrument
+        for (String string : instrumentList) {
+            String[] sp = string.split(" ");
+            if (!sp[0].equals(getRunningProgramName())) {
+                continue;
+            }
+            if (!sp[1].equals(cmd.getLabel())) {
+                continue;
+            }
+            if (sp[2].equals("before")) {
+                DataObject dob = new DataObject();
+                if (!dob.autoSetData(sp[3], this)) {
+                    System.out.println("instructment can't find the variable with var name : "+sp[3] );
+                    continue;
+                }
+                System.out.println("{"+dob+"}");
+            }else{
+                if (!sp[1].equals(lastInstructmentCommand)) {
+                    instrumentBuffer=new ArrayDeque<String>();
+                }
+                lastInstructmentCommand=sp[1];
+                instrumentBuffer.add(sp[3]);
+            }
+        }
+
+        //check if it is instrument
+    }
+    //things to check after command executed by commandExecute
+    public void postExecution(){
+        while (!instrumentBuffer.isEmpty()) {
+            String s= instrumentBuffer.remove();
+            DataObject dob = new DataObject();
+                if (!dob.autoSetData(s, this)) {
+                    System.out.println("instructment can't find the variable with var name : "+s);
+                    continue;
+                }
+                System.out.println("{after"+dob+"}");
         }
     }
 
@@ -188,7 +252,7 @@ public class Memory {
             return false;
         }
         // case4 is SIMPLE Keywords
-        
+
         for (String string : Identifiers) {
             if (s.equals(string)) {
                 return false;

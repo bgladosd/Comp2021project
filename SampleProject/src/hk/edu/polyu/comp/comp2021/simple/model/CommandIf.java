@@ -35,7 +35,7 @@ public class CommandIf implements Command {
             }
             m.getCmd(statementLab2).execute(m);
         }
-
+        m.postExecution();
         return null;
 
     }

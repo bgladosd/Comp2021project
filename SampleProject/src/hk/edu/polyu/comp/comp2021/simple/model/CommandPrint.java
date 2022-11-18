@@ -7,6 +7,9 @@ public class CommandPrint implements Command {
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
+        if (m.getInSaveState()) {
+            return null;    
+        }
         DataObject dataObject = new DataObject();
         if (dataObject.autoSetData(expRef, m)) {
         } else {
@@ -16,7 +19,7 @@ public class CommandPrint implements Command {
         }
 
         System.out.println("["+dataObject+"]");
-
+        m.postExecution();
         return null;
 
     }

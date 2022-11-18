@@ -41,7 +41,7 @@ public class CommandWhile implements Command {
             expBoolean = (boolean) dataO.o;
         }
 
-
+        m.postExecution();
         return null;
 
     }

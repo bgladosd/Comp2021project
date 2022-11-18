@@ -32,14 +32,6 @@ public class CommandInstrument implements Command {
         instrumentLabel = cmd[2];
         pos=cmd[3];
         expRef=cmd[4];
-
-        // if (inspectObject.autoSetData(varName,m)) {
-        // }else{
-        // System.out.println(
-        // "can't find varName");
-        // return;
-        // }
-
         // command check tegrity end
         this.execute(m);
 

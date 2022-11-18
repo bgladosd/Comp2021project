@@ -6,6 +6,7 @@ public class CommandSkip implements Command {
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
+        m.postExecution();
         return null;
     }
 

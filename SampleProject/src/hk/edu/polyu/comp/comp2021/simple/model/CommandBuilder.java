@@ -31,15 +31,17 @@ public class CommandBuilder {
         } else if (cmd[0].equals("skip")) {
             command = new CommandSkip(cmd, m);
             command.setCmdString(c);
-        } else if (cmd[0].equals("inspect")) {
-            new CommandInspect(cmd, m);
         } else if (cmd[0].equals("if")) {
             command = new CommandIf(cmd, m);
             command.setCmdString(c);
         } else if (cmd[0].equals("load")) {
             new CommandLoad(cmd, m);
+        } else if (cmd[0].equals("togglebreakpoint")) {
+            new CommandToggleBreakPoint(cmd, m);
+        } else if (cmd[0].equals("debug")) {
+            new CommandDebug(cmd, m);
         } else if (cmd[0].equals("execute")) {
-            command= new CommandExecute(cmd, m);
+            command = new CommandExecute(cmd, m);
             command.setCmdString(c);
         } else if (cmd[0].equals("while")) {
             command = new CommandWhile(cmd, m);
@@ -48,35 +50,35 @@ public class CommandBuilder {
             command = new CommandBlock(cmd, m);
             command.setCmdString(c);
         } else if (cmd[0].equals("program")) {
-            command= new CommandProgram(cmd, m);
+            command = new CommandProgram(cmd, m);
             command.setCmdString(c);
         } else if (cmd[0].equals("store")) {
-            new CommandStore(cmd,m);
+            new CommandStore(cmd, m);
+        }else if (cmd[0].equals("instrument")) {
+            new CommandInstrument(cmd, m);
         }
 
-
-        //for testing delete later
+        // for testing delete later
         else if (cmd[0].equals("s")) {
             m.SaveState();
-        }
-        else if (cmd[0].equals("l")) {
+        } else if (cmd[0].equals("l")) {
             m.LoadState();
-        }
-        else if (cmd[0].equals("exeMode")) {
+        } else if (cmd[0].equals("exeMode")) {
             if (executeMode) {
-                executeMode=false;
-            }else{executeMode=true;}
-            System.out.println("exe mode : = "+ executeMode);
+                executeMode = false;
+            } else {
+                executeMode = true;
+            }
+            System.out.println("exe mode : = " + executeMode);
 
         }
-
 
         else {
             System.out.println("Command not found : " + cmd[0]);
             return;
         }
         // if (executeMode) {
-        //     command.execute(m);
+        // command.execute(m);
         // }
 
     }
