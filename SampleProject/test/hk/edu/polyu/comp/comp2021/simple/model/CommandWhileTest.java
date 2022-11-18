@@ -80,7 +80,7 @@ public class CommandWhileTest {
         Command c1 = new CommandWhile("while while1 exp2 block2".split(" "), m);
         m.setExecuting(true);
         c1.execute(m);
-        String failStat = "execute while1 failed! statementLab1 can not be find";
+        String failStat = "execute while1 failed! statementLab1 can not be found";
         assertEquals(failStat ,outContent.toString().trim());
     }
 

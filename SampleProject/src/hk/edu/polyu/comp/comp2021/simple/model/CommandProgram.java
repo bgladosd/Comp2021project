@@ -4,14 +4,14 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandProgram implements Command {
     String cmdString;
     String label;
-    String statemendLabel;
+    String statementLabel;
 
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
-        Command c = m.getCmd(statemendLabel);
+        Command c = m.getCmd(statementLabel);
         if (c==null) {
-            System.out.println("Statemend : "+ statemendLabel +" can not be found ");
+            System.out.println("execute "+statementLabel+" failed! statementLab1 can not be found");
             return null;
         }
         c.execute(m);
@@ -25,19 +25,19 @@ public class CommandProgram implements Command {
                 "instruction failed! program statement should only have 3 elements which is (program programName statementLab)");
             return;
         }
-        label = cmd[1];
-        statemendLabel = cmd[2];
-        if (!m.checkIsValidProgramName(label)) {
+        String ProgramLabel = cmd[1];
+        statementLabel = cmd[2];
+        if (!m.checkIsValidProgramName(ProgramLabel)) {
             System.out.println("program name is not valid");
         }
-        if (!m.checkIsValidNameOrLabel(statemendLabel)) {
-            System.out.println("statement Label name is not valid");
+        if (!m.checkIsValidNameOrLabel(statementLabel)) {
+            System.out.println(statementLabel + " is not a valid statement label name");
         }
         
 
 
         // command check tegrity end
-        
+        setLabel(ProgramLabel);
         m.addProgram(label, this);
 
     }
