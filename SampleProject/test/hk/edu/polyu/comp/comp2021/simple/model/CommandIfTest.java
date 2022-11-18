@@ -35,7 +35,7 @@ public class CommandIfTest {
 
     @Test
     public void testConstructor2 () {
-        Command c1 = new CommandIf("if if1 exp1 print1 print2 abc".split(" "), m);
+        Command c1 = new CommandIf("if if1 exp1 print1 print2 6thEle".split(" "), m);
         String failStat = "instruction failed! if statement should only have 5 elements which is (if lab expRef statementLab1 statementLab2)";
         assertEquals(failStat ,outContent.toString().trim());
     }
