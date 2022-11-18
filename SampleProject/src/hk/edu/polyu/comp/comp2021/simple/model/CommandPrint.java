@@ -7,6 +7,9 @@ public class CommandPrint implements Command {
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
+        if (m.getRunningProgramName()==null) {
+            return null;
+        }
         if (!m.getExecuting()) {
             return null;    
         }

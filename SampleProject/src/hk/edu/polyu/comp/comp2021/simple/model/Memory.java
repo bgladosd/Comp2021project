@@ -2,7 +2,6 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.Queue;
 import java.util.Scanner;

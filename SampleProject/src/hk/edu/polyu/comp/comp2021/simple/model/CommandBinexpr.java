@@ -130,9 +130,6 @@ public class CommandBinexpr implements Command {
         setLabel(label);
         m.addData(expName, new DataObject(this, m));
 
-        // delete later, instant execute for testing
-        // System.out.println(m.getCmd(expName).execute(m));
-
     }
 
     @Override

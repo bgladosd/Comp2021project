@@ -18,10 +18,14 @@ public class CommandStore implements Command {
             System.out.println("Program : " + progName + " can not be found ");
             return null;
         }
+        
         m.reSetVariableData();
+        m.setRunningProgramName(null);
         m.resetRunnedCommand();
-        m.setExecuting(false);
+        m.setExecuting(true);
         c.execute(m);
+        m.setExecuting(false);
+
 
         // print out all the runned command
         while (!m.getRunnedCommand().isEmpty()) {
@@ -72,7 +76,6 @@ public class CommandStore implements Command {
             System.out.println("Error: Failed to creating txt file.");
             e.printStackTrace();
         } finally {
-
         }
 
         return null;

@@ -67,27 +67,6 @@ public class CommandAssign implements Command {
             return;
         }
 
-        // updated checking delete later
-        // DataObject dataObject1 = new DataObject();
-        // DataObject dataObject2 = new DataObject();
-
-        // if (!dataObject1.autoSetData(varName, m)) {
-        // System.out.println("instruction failed! variable: "+varName+" is not
-        // exists");
-        // return;
-        // }
-
-        // if (!dataObject2.autoSetData(expRef, m)) {
-        // System.out.println("instruction failed! expRef is not valid value");
-        // return;
-        // }
-
-        // if (!dataObject1.type.equals(dataObject2.type)) {
-        // System.out.println("instruction failed! Not the same type! "+varName+" is :"
-        // + dataObject1.type + " "+expRef+"is :"+dataObject2.type);
-        // return;
-        // }
-
         setLabel(label);
         setDataName(varName);
         m.addCmd(label, this);
