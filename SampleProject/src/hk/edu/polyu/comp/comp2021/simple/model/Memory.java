@@ -313,6 +313,12 @@ public class Memory {
      * @return boolean
      */
     public boolean checkIsValidNameOrLabel(String s) {
+        int char0_9lower = 47;
+        int char0_9upper = 59;
+        int chara_zlower = 64;
+        int chara_zupper = 91;
+        int charA_Zlower = 96;
+        int charA_Zupper = 123;
         // ascii table [(48)0-9(58),(65)A-Z(90),(97)a-z(122)]
         // case1 if more than eight characters
         if (s.length() > 8) {
@@ -320,14 +326,14 @@ public class Memory {
         }
         // case2 if not english letters and digits
         for (char c : s.toCharArray()) {
-            if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'b'))) {
+            if (!((c > char0_9lower && c < char0_9upper) || (c > chara_zlower && c < chara_zupper) || (c > charA_Zlower && c < charA_Zupper))) {
                 return false;
             }
 
         }
 
         // case3 if string start with 0-9
-        if (s.charAt(0) >= '0' && s.charAt(0) <= '9') {
+        if (s.charAt(0) > 47 && s.charAt(0) < 58) {
             return false;
         }
         // case4 is SIMPLE Keywords
