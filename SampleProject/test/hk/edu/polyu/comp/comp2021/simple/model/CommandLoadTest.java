@@ -20,6 +20,8 @@ public class CommandLoadTest {
     Command cb = new CommandBlock("block block1 vardef1 print1".split(" "), m);
     Command cpg = new CommandProgram("program program1 block1".split(" "), m);
 
+    String path = System.getProperty("user.dir");
+
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
@@ -27,12 +29,12 @@ public class CommandLoadTest {
         cp.setCmdString("print print1 x");
         cb.setCmdString("block block1 vardef1 print1");
         cpg.setCmdString("program program1 block1");
-        Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
+        Command c2 = new CommandStore(("store program1 "+path).split(" "), m);
     }
 
     @Test
     public void testConstructorExecute () {
-        Command c2 = new CommandLoad("load d:\\simple_testing program1".split(" "), m);
+        Command c2 = new CommandLoad(("load "+path+ " program1").split(" "), m);
         Command c3 = new CommandExecute("execute program1".split(" "), m);
         String printString = "[100]";
         String [] output = outContent.toString().split("\n");
@@ -41,7 +43,7 @@ public class CommandLoadTest {
 
     @Test
     public void testConstructorExecute2 () {
-        Command c2 = new CommandLoad("load d:\\simple_testing program2".split(" "), m);
+        Command c2 = new CommandLoad(("load "+path+ " program2").split(" "), m);
         String failStat = "file not found, please ensure that your file path is correct";
         assertEquals(failStat ,outContent.toString().split("\n")[2].trim());
     }

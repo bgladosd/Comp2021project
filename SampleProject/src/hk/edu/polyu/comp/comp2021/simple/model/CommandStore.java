@@ -20,7 +20,7 @@ public class CommandStore implements Command {
             System.out.println("Program : " + progName + " can not be found ");
             return null;
         }
-        m.setRunningProgramName("");
+
         m.reSetVariableData();
         m.setRunningProgramName(null);
         m.resetRunnedCommand();
@@ -44,7 +44,7 @@ public class CommandStore implements Command {
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
-                    e.printStackTrace();
+                    System.out.println(e);
                 }
 
                 System.out.println(store.getName() + " created");
@@ -62,14 +62,15 @@ public class CommandStore implements Command {
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
-                    e.printStackTrace();
+                    System.out.println(e);
                 }
                 System.out.println("Same name file already exists so it is rewritten.");
             }
 
         } catch (IOException e) {
-            System.out.println("Error: Failed to creating txt file. maybe path is not correct");
-            e.printStackTrace();
+            System.out.println("Error: Failed to creating txt file.");
+            System.out.println(e);
+
         }
 
         return null;

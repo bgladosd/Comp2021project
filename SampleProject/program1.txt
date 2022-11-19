@@ -1,0 +1,5 @@
+program program1 block1
+block block1 vardef1 print1
+vardef vardef1 int x 100
+print print1 x
+execute program1
