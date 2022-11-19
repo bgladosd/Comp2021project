@@ -27,6 +27,7 @@ public class CommandStore implements Command {
         m.setExecuting(true);
         c.execute(m);
         m.setExecuting(false);
+        m.setRunningProgramName("");
 
         try {
             File store = new File(path + "/" + progName + ".txt");
