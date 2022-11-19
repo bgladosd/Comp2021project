@@ -32,11 +32,6 @@ public class MemoryTest {
         assertEquals(dataX, m.getData("x"));
         assertEquals(dataB1, m.getData("b1"));
         assertNull(m.getData("unknown"));
-
-        String [] printString = {"x : 123", "b1 : true"};
-        m.printData();
-        assertEquals(printString[0], outContent.toString().split("\n")[0].trim());
-        assertEquals(printString[1], outContent.toString().split("\n")[1].trim());
     }
 
     @Test
