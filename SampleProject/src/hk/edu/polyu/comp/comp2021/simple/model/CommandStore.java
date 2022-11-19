@@ -44,7 +44,7 @@ public class CommandStore implements Command {
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
-                    e.printStackTrace();
+                    System.out.println(e);
                 }
 
                 System.out.println(store.getName() + " created");
@@ -62,14 +62,15 @@ public class CommandStore implements Command {
                     txtWriter.close();
                 } catch (IOException e) {
                     System.out.println("Error: Failed to writing txt file.");
-                    e.printStackTrace();
+                    System.out.println(e);
                 }
                 System.out.println("Same name file already exists so it is rewritten.");
             }
 
         } catch (IOException e) {
             System.out.println("Error: Failed to creating txt file.");
-            e.printStackTrace();
+            System.out.println(e);
+
         }
 
         return null;
