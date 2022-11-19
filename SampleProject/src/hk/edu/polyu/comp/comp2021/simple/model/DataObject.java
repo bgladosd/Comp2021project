@@ -1,9 +1,9 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class DataObject {
-    String type;
-    Object o;
-    Memory m;
+    private String type;
+    private Object o;
+    private Memory m;
 
     public DataObject() {
 

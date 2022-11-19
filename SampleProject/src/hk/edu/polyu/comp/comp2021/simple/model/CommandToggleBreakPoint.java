@@ -2,9 +2,9 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 // running in debug mode
 public class CommandToggleBreakPoint implements Command {
-    String label;
-    String programName;
-    String breakPointLabel;
+    private String label;
+    private String programName;
+    private String breakPointLabel;
 
     @Override
     public DataObject execute(Memory m) {

@@ -1,12 +1,12 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandWhile implements Command {
-    String cmdString;
-    String label;
-    String expRef;
-    Boolean expBoolean;
-    String statementLab1;
-    Command statement;
+    private String cmdString;
+    private String label;
+    private String expRef;
+    private Boolean expBoolean;
+    private String statementLab1;
+    private Command statement;
 
     @Override
     public DataObject execute(Memory m) {
@@ -20,25 +20,25 @@ public class CommandWhile implements Command {
             System.out.println("execute " + label + " failed! unable to load expRef");
             return null;
         }
-        if (!dataO.type.equals("bool")) {
+        if (!dataO.getType().equals("bool")) {
             System.out.println("execute " + label + " failed! expRef is not boolean");
             return null;
         }
 
         statement = m.getCmd(statementLab1);
 
-        expBoolean = (boolean) dataO.o;
+        expBoolean = (boolean) dataO.getO();
         while (expBoolean) {
             statement.execute(m);
             if (!dataO.autoSetData(expRef, m)) {
                 System.out.println("execute " + label + " failed! unable to load expRef");
                 return null;
             }
-            if (!dataO.type.equals("bool")) {
+            if (!dataO.getType().equals("bool")) {
                 System.out.println("execute " + label + " failed! expRef is not boolean");
                 return null;
             }
-            expBoolean = (boolean) dataO.o;
+            expBoolean = (boolean) dataO.getO();
         }
 
         m.postExecution(this);

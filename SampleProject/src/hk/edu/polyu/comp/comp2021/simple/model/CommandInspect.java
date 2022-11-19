@@ -2,10 +2,10 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 // running in debug mode
 public class CommandInspect implements Command {
-    String label;
-    String programName;
-    String varName;
-    DataObject inspectObject;
+    private String label;
+    private String programName;
+    private String varName;
+    private DataObject inspectObject;
 
     @Override
     public DataObject execute(Memory m) {

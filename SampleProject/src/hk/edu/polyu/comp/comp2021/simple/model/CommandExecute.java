@@ -3,9 +3,9 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 //this should execute program, but for testing, it is also able to use to execute Commands
 public class CommandExecute implements Command {
 
-    String label;
+    private String label;
 
-    String program;
+    private  String program;
 
     @Override
     public DataObject execute(Memory m) {

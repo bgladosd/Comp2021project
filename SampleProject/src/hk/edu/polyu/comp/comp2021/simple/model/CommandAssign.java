@@ -1,12 +1,10 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandAssign implements Command {
-    String cmdString;
-    String label;
-    String dataName;
-    DataObject dataObject;
-
-    String expRef;
+    private String cmdString;
+    private String label;
+    private String dataName;
+    private String expRef;
 
     @Override
     public DataObject execute(Memory m) {
@@ -30,7 +28,7 @@ public class CommandAssign implements Command {
             return new DataObject("false", m);
         }
 
-        if (!dataObject1.type.equals(dataObject2.type)) {
+        if (!dataObject1.getType().equals(dataObject2.getType())) {
             System.out.println("Error on :" + label + " can't assign if " + varName + " and " + expRef
                     + " are not the same data type");
             return new DataObject("false", m);

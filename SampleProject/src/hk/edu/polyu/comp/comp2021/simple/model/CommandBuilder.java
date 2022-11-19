@@ -1,16 +1,18 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** CommandBuilder. build command
+ * @author Jack Lee
+ */
 public class CommandBuilder {
 
-    public CommandBuilder() {
 
-    }
-
+    /**
+     * @param c string to define the command
+     * @param m access to memory class
+     */
     public void buildCommand(String c, Memory m) {
         Boolean executeMode = false;
 
         String[] cmd = c.split(" ");
-        // Command command = new CommandSkip(new String[]{"skip","shit"}, m);
         Command command;
         // vardef command
         if (cmd[0].equals("vardef")) {
@@ -56,32 +58,11 @@ public class CommandBuilder {
             new CommandStore(cmd, m);
         } else if (cmd[0].equals("list")) {
             new CommandList(cmd, m);
-        }
-
-        else if (cmd[0].equals("instrument")) {
+        } else if (cmd[0].equals("instrument")) {
             new CommandInstrument(cmd, m);
-        }
-
-        // for testing delete later
-        else if (cmd[0].equals("s")) {
-        } else if (cmd[0].equals("l")) {
-        } else if (cmd[0].equals("exeMode")) {
-            if (executeMode) {
-                executeMode = false;
-            } else {
-                executeMode = true;
-            }
-            System.out.println("exe mode : = " + executeMode);
-
-        }
-
-        else {
+        } else {
             System.out.println("Command not found : " + cmd[0]);
-            return;
         }
-        // if (executeMode) {
-        // command.execute(m);
-        // }
 
     }
 

@@ -2,8 +2,8 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandList implements Command {
 
-    String progName;
-    String label;
+    private String progName;
+    private String label;
 
     @Override
     public DataObject execute(Memory m) {

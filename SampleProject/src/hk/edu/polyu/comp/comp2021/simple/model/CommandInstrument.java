@@ -2,11 +2,11 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 // running in debug mode
 public class CommandInstrument implements Command {
-    String label;
-    String programName;
-    String instrumentLabel;
-    String pos;
-    String expRef;
+    private String label;
+    private String programName;
+    private String instrumentLabel;
+    private String pos;
+    private String expRef;
 
     @Override
     public DataObject execute(Memory m) {

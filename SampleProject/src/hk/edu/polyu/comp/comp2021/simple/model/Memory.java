@@ -64,7 +64,7 @@ public class Memory {
     }
 
     public void reSetVariableData() {
-        dataMemory.values().removeIf(i -> !i.type.equals("e"));
+        dataMemory.values().removeIf(i -> !i.getType().equals("e"));
     }
 
     public void setExecuting(boolean executing) {

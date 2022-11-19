@@ -1,12 +1,14 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 import java.util.ArrayList;
-
+/** block command. this command store commands
+ * @author Jack Lee
+*/
 public class CommandBlock implements Command {
-    String cmdString;
-    String label;
-    ArrayList<String> cmdListString = new ArrayList<String>();
-    ArrayList<Command> cmdList = new ArrayList<Command>();
+    private String cmdString;
+    private String label;
+    private ArrayList<String> cmdListString = new ArrayList<String>();
+    private ArrayList<Command> cmdList = new ArrayList<Command>();
 
     @Override
     public DataObject execute(Memory m) {
@@ -27,6 +29,10 @@ public class CommandBlock implements Command {
 
     }
 
+    /**
+     * @param cmd 
+     * @param m
+     */
     public CommandBlock(String[] cmd, Memory m) {
         if (cmd.length < 3) {
             System.out.println(

@@ -1,14 +1,13 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandUnexpr implements Command {
-    String label;
-    // String dataName;
-    DataObject dataObject;
-    String cmdString;
-    String expName;
-    String expRef1;
-    String uop;
-    String[] bopSuitArray = { "~", "!", "#", };
+    private String label;
+    private DataObject dataObject;
+    private String cmdString;
+    private String expName;
+    private String expRef1;
+    private String uop;
+    private String[] bopSuitArray = { "~", "!", "#", };
 
     @Override
     public DataObject execute(Memory m) {
@@ -24,8 +23,8 @@ public class CommandUnexpr implements Command {
             return new DataObject("false", m);
         }
 
-        if (expRefObject.type == "int") {
-            Integer intExpRef1 = (Integer) expRefObject.o;
+        if (expRefObject.getType() == "int") {
+            Integer intExpRef1 = (Integer) expRefObject.getO();
             switch (uop) {
                 case "#":
                     dataObject = new DataObject(String.valueOf((intExpRef1)), m);
@@ -34,8 +33,8 @@ public class CommandUnexpr implements Command {
                     dataObject = new DataObject(String.valueOf((-intExpRef1)), m);
                     break;
             }
-        } else if (expRefObject.type == "bool") {
-            Boolean boolExpRef1 = (Boolean) expRefObject.o;
+        } else if (expRefObject.getType() == "bool") {
+            Boolean boolExpRef1 = (Boolean) expRefObject.getO();
             switch (uop) {
                 case "!":
                     dataObject = new DataObject(String.valueOf((!boolExpRef1)), m);

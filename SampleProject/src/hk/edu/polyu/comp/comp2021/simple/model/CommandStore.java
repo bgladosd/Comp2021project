@@ -7,9 +7,9 @@ import java.io.IOException;
 //run before program load
 public class CommandStore implements Command {
 
-    String path;
-    String progName;
-    String label;
+    private String path;
+    private String progName;
+    private String label;
 
     @Override
     public DataObject execute(Memory m) {

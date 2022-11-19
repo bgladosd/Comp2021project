@@ -1,12 +1,12 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandIf implements Command {
-    String cmdString;
-    String label;
-    String expRef;
-    Boolean expBoolean;
-    String statementLab1;
-    String statementLab2;
+    private String cmdString;
+    private String label;
+    private String expRef;
+    private Boolean expBoolean;
+    private String statementLab1;
+    private String statementLab2;
 
     @Override
     public DataObject execute(Memory m) {
@@ -16,11 +16,11 @@ public class CommandIf implements Command {
             System.out.println("execute " + label + " failed! unable to load expRef");
             return null;
         }
-        if (!dataO.type.equals("bool")) {
+        if (!dataO.getType().equals("bool")) {
             System.out.println("execute " + label + " failed! expRef is not boolean");
             return null;
         }
-        expBoolean = (boolean) dataO.o;
+        expBoolean = (boolean) dataO.getO();
         if (expBoolean) {
             if (m.getCmd(statementLab1) == null) {
                 System.out.println("execute " + label + " failed! statementLab1 can not be find");

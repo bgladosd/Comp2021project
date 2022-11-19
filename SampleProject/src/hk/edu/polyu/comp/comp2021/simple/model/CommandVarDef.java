@@ -1,12 +1,12 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandVarDef implements Command {
-    String label;
-    String dataName;
-    DataObject dataObject;
-    String cmdString;
-    String type;
-    String expRef;
+    private String label;
+    private String dataName;
+    private DataObject dataObject;
+    private String cmdString;
+    private String type;
+    private String expRef;
 
     @Override
     public DataObject execute(Memory m) {
@@ -15,7 +15,7 @@ public class CommandVarDef implements Command {
             System.out.println("instruction failed! expRef is not valid value");
             return null;
         }
-        if (!dataObject.type.equals(type)) {
+        if (!dataObject.getType().equals(type)) {
             System.out.println("instruction failed! expRef is not type :" + type);
             return null;
         }

@@ -1,8 +1,8 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandSkip implements Command {
-    String label;
-    String cmdString;
+    private String label;
+    private String cmdString;
 
     @Override
     public DataObject execute(Memory m) {

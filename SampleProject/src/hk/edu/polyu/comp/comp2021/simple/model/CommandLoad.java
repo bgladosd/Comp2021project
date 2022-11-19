@@ -6,9 +6,9 @@ import java.io.FileReader;
 //run before the program load
 public class CommandLoad implements Command {
 
-    String path;
-    String progName;
-    String label;
+    private String path;
+    private String progName;
+    private String label;
 
     CommandBuilder cmdB;
 

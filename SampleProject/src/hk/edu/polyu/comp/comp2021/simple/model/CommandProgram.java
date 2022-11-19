@@ -1,9 +1,9 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandProgram implements Command {
-    String cmdString;
-    String label;
-    String statementLabel;
+    private String cmdString;
+    private String label;
+    private String statementLabel;
 
     @Override
     public DataObject execute(Memory m) {

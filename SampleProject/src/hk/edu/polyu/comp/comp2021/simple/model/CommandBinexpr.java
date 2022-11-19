@@ -1,16 +1,14 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandBinexpr implements Command {
-    String cmdString;
-    String label;
-    // String dataName;
-    DataObject dataObject;
-
-    String expName;
-    String expRef1;
-    String bop;
-    String expRef2;
-    String[] bopSuitArray = { "%", "+", "-", "*", "/", ">", "<", "<=", ">=", "==", "!=", "&&", "||" };
+    private String cmdString;
+    private String label;
+    private DataObject dataObject;
+    private String expName;
+    private String expRef1;
+    private String bop;
+    private String expRef2;
+    private String[] bopSuitArray = { "%", "+", "-", "*", "/", ">", "<", "<=", ">=", "==", "!=", "&&", "||" };
 
     @Override
     public DataObject execute(Memory m) {
@@ -33,15 +31,15 @@ public class CommandBinexpr implements Command {
             return new DataObject("false", m);
         }
         // can't do calculation if they are not the same type
-        if (!expRefObject1.type.equals(expRefObject2.type)) {
+        if (!expRefObject1.getType().equals(expRefObject2.getType())) {
             System.out.println(
                     "Error on :" + expName + " can't do calculation if ExpRef1 and ExpRef2 are not the same type");
             return new DataObject("false", m);
         }
 
-        if (expRefObject1.type == "int") {
-            Integer intExpRef1 = (Integer) expRefObject1.o;
-            Integer intExpRef2 = (Integer) expRefObject2.o;
+        if (expRefObject1.getType() == "int") {
+            Integer intExpRef1 = (Integer) expRefObject1.getO();
+            Integer intExpRef2 = (Integer) expRefObject2.getO();
             switch (bop) {
                 case "%":
                     dataObject = new DataObject(String.valueOf((intExpRef1 % intExpRef2)), m);
@@ -77,9 +75,9 @@ public class CommandBinexpr implements Command {
                     dataObject = new DataObject(String.valueOf((intExpRef1 != intExpRef2)), m);
                     break;
             }
-        } else if (expRefObject1.type == "bool") {
-            Boolean boolExpRef1 = (Boolean) expRefObject1.o;
-            Boolean boolExpRef2 = (Boolean) expRefObject2.o;
+        } else if (expRefObject1.getType() == "bool") {
+            Boolean boolExpRef1 = (Boolean) expRefObject1.getO();
+            Boolean boolExpRef2 = (Boolean) expRefObject2.getO();
             switch (bop) {
                 case "==":
                     dataObject = new DataObject(String.valueOf((boolExpRef1 == boolExpRef2)), m);
