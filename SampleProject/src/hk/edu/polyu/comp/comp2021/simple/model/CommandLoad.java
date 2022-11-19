@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 
 //run before the program load
-public class CommandLoad implements Command{
-
+public class CommandLoad implements Command {
 
     String path;
     String progName;
@@ -15,16 +14,16 @@ public class CommandLoad implements Command{
 
     @Override
     public DataObject execute(Memory m) {
-        cmdB=new CommandBuilder();
+        cmdB = new CommandBuilder();
 
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(path+"/"+progName+".txt"));
+            reader = new BufferedReader(new FileReader(path + "/" + progName + ".txt"));
             String line = reader.readLine();
             while (line != null) {
                 System.out.println(line);
                 // read next line
-                cmdB.buildCommand(line,m);
+                cmdB.buildCommand(line, m);
                 line = reader.readLine();
             }
             reader.close();
@@ -38,29 +37,22 @@ public class CommandLoad implements Command{
         return null;
     }
 
-    public CommandLoad(String[] cmd, Memory m){
-        if(cmd.length!=3){            //load D:\test test
+    public CommandLoad(String[] cmd, Memory m) {
+        if (cmd.length != 3) { // load D:\test test
             System.out.println(
                     "instruction failed! load statement should only have 3 elements which is (load path programName)");
             return;
         }
-        this.path=cmd[1];
-        this.progName=cmd[2];
+        this.path = cmd[1];
+        this.progName = cmd[2];
 
         this.execute(m);
 
     }
 
-
-
-
-
-
-
-
     @Override
     public void setLabel(String l) {
-        this.label=l;
+        this.label = l;
     }
 
     @Override
@@ -75,7 +67,6 @@ public class CommandLoad implements Command{
 
     @Override
     public void setCmdString(String s) {
-        
+
     }
 }
-

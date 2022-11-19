@@ -5,19 +5,19 @@ import java.util.ArrayList;
 public class CommandBlock implements Command {
     String cmdString;
     String label;
-    ArrayList<String> cmdListString= new ArrayList<String>();
-    ArrayList<Command> cmdList=new ArrayList<Command>();
+    ArrayList<String> cmdListString = new ArrayList<String>();
+    ArrayList<Command> cmdList = new ArrayList<Command>();
 
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
-        cmdList=new ArrayList<Command>();
+        cmdList = new ArrayList<Command>();
         for (String command : cmdListString) {
-            if (m.getCmd(command)==null) {
-                System.out.println("Statement : "+ command +" can not be found ");
+            if (m.getCmd(command) == null) {
+                System.out.println("Statement : " + command + " can not be found ");
                 return new DataObject("false", m);
             }
-            cmdList.add(m.getCmd(command)) ;
+            cmdList.add(m.getCmd(command));
         }
         for (Command command : cmdList) {
             command.execute(m);
@@ -28,7 +28,7 @@ public class CommandBlock implements Command {
     }
 
     public CommandBlock(String[] cmd, Memory m) {
-        if (cmd.length <3) {
+        if (cmd.length < 3) {
             System.out.println(
                     "instruction failed! block statement should have at least 3 elements which in format of (block lab statementLab1 ... statementLabn)");
             return;
@@ -46,8 +46,8 @@ public class CommandBlock implements Command {
                 System.out.println(
                         cmd[i] + " is not a valid statement label name");
                 return;
-            }
-            else cmdListString.add(cmd[i]);
+            } else
+                cmdListString.add(cmd[i]);
         }
 
         setLabel(label);
@@ -66,8 +66,6 @@ public class CommandBlock implements Command {
     public String getLabel() {
         return label;
     }
-    
-
 
     @Override
     public String getCmdString() {
@@ -76,7 +74,7 @@ public class CommandBlock implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
 
 }

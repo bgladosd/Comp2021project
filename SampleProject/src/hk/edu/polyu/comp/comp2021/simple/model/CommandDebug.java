@@ -10,12 +10,14 @@ public class CommandDebug implements Command {
     @Override
     public DataObject execute(Memory m) {
         Command c = m.getProgram(program);
+
         if (c==null) {
             System.out.println("Program : "+ program +" can not be found");
+
             return null;
         }
         m.setDebugMode(true);
-        CommandExecute ce =new CommandExecute(new String[]{"execute",program}, m);
+        CommandExecute ce = new CommandExecute(new String[] { "execute", program }, m);
         m.setDebugMode(false);
         return null;
 
@@ -43,7 +45,7 @@ public class CommandDebug implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return "";
@@ -51,8 +53,7 @@ public class CommandDebug implements Command {
 
     @Override
     public void setCmdString(String s) {
-        
-    }
 
+    }
 
 }
