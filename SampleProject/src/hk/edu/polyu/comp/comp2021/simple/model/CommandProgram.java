@@ -1,6 +1,5 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
-
 public class CommandProgram implements Command {
     String cmdString;
     String label;
@@ -10,8 +9,8 @@ public class CommandProgram implements Command {
     public DataObject execute(Memory m) {
         m.preExecution(this);
         Command c = m.getCmd(statementLabel);
-        if (c==null) {
-            System.out.println("execute "+statementLabel+" failed! statementLab1 can not be found");
+        if (c == null) {
+            System.out.println("execute " + statementLabel + " failed! statementLab1 can not be found");
             return null;
         }
         c.execute(m);
@@ -20,9 +19,9 @@ public class CommandProgram implements Command {
     }
 
     public CommandProgram(String[] cmd, Memory m) {
-        if (cmd.length !=3) {
+        if (cmd.length != 3) {
             System.out.println(
-                "instruction failed! program statement should only have 3 elements which is (program programName statementLab)");
+                    "instruction failed! program statement should only have 3 elements which is (program programName statementLab)");
             return;
         }
         String ProgramLabel = cmd[1];
@@ -33,8 +32,6 @@ public class CommandProgram implements Command {
         if (!m.checkIsValidNameOrLabel(statementLabel)) {
             System.out.println(statementLabel + " is not a valid statement label name");
         }
-        
-
 
         // command check tegrity end
         setLabel(ProgramLabel);
@@ -52,7 +49,7 @@ public class CommandProgram implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -60,8 +57,7 @@ public class CommandProgram implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
-
 
 }

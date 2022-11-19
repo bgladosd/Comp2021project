@@ -3,6 +3,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandSkip implements Command {
     String label;
     String cmdString;
+
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
@@ -38,7 +39,7 @@ public class CommandSkip implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -46,7 +47,7 @@ public class CommandSkip implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
 
 }

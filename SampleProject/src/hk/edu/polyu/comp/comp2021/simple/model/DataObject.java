@@ -67,8 +67,8 @@ public class DataObject {
                     this.o = tcc.execute(m).o;
                     this.type = tcc.execute(m).type;
                 }
-                
-            } 
+
+            }
             return true;
             // is a boolean
         } else if (s.equals("true") || s.equals("false")) {

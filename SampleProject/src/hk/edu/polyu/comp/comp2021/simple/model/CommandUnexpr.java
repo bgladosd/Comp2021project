@@ -2,7 +2,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 public class CommandUnexpr implements Command {
     String label;
-    //String dataName;
+    // String dataName;
     DataObject dataObject;
     String cmdString;
     String expName;
@@ -23,7 +23,6 @@ public class CommandUnexpr implements Command {
                     "Error on :" + expName + " ExpRef1 is not a valid data");
             return new DataObject("false", m);
         }
-        
 
         if (expRefObject.type == "int") {
             Integer intExpRef1 = (Integer) expRefObject.o;
@@ -35,11 +34,11 @@ public class CommandUnexpr implements Command {
                     dataObject = new DataObject(String.valueOf((-intExpRef1)), m);
                     break;
             }
-        } else if(expRefObject.type == "bool") {
+        } else if (expRefObject.type == "bool") {
             Boolean boolExpRef1 = (Boolean) expRefObject.o;
             switch (uop) {
                 case "!":
-                    dataObject = new DataObject(String.valueOf((!boolExpRef1)), m) ;
+                    dataObject = new DataObject(String.valueOf((!boolExpRef1)), m);
             }
         }
         m.postExecution(this);
@@ -75,11 +74,11 @@ public class CommandUnexpr implements Command {
         }
         if (!goodBop) {
             System.out.println(
-                uop + " is not a valid uop");
+                    uop + " is not a valid uop");
             return;
         }
 
-        //command check end
+        // command check end
         setLabel(null);
 
         m.addData(expName, new DataObject(this, m));
@@ -95,7 +94,7 @@ public class CommandUnexpr implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -103,9 +102,7 @@ public class CommandUnexpr implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
-
-
 
 }

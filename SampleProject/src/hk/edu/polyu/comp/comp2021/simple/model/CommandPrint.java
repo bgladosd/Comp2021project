@@ -4,14 +4,15 @@ public class CommandPrint implements Command {
     String label;
     String expRef;
     String cmdString;
+
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
-        if (m.getRunningProgramName()==null) {
+        if (m.getRunningProgramName() == null) {
             return null;
         }
         if (!m.getExecuting()) {
-            return null;    
+            return null;
         }
         DataObject dataObject = new DataObject();
         if (dataObject.autoSetData(expRef, m)) {
@@ -21,7 +22,7 @@ public class CommandPrint implements Command {
             return new DataObject("false", m);
         }
 
-        System.out.println("["+dataObject+"]");
+        System.out.println("[" + dataObject + "]");
         m.postExecution(this);
         return null;
 
@@ -62,7 +63,7 @@ public class CommandPrint implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -70,7 +71,7 @@ public class CommandPrint implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
 
 }

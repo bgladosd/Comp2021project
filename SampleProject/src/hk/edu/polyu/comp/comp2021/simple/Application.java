@@ -13,9 +13,8 @@ public class Application {
         Simple simple = new Simple();
         // Initialize and utilize the system
         System.out.println("program end!");
-        
+
     }
-    //delete later load D:\MediaD printeven
+    // delete later load D:\MediaD printeven
 
 }
-    

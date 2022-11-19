@@ -34,44 +34,17 @@ public class CommandVarDef implements Command {
         type = cmd[2];
         String varName = cmd[3];
         expRef = cmd[4];
-        // if (checkValidName(cmd[1])) {
         if (!m.checkIsValidNameOrLabel(label)) {
-            System.out.println("instruction failed! "+label + " is not a valid label name");
+            System.out.println("instruction failed! " + label + " is not a valid label name");
             return;
         }
 
-        // }
-
-        // check label exist
-
-        // check variable exist
-
-        // should have more check
         // command check tegrity end
-
-        // in both constructor and execute? | test wont go through the check in execute
-        //                                  V
-        DataObject dataObject = new DataObject();
-        if (!dataObject.autoSetData(expRef, m)) {
-            System.out.println("instruction failed! expRef is not valid value");
-            return;
-        }
-        if (!dataObject.type.equals(type)) {
-            System.out.println("instruction failed! expRef is not type :" + type);
-            return;
-        }
-
-
         setLabel(label);
         setDataObject(dataObject);
         setDataName(varName);
 
         m.addCmd(label, this);
-
-        // for testing
-        // m.getCmd(label).execute(m);
-        
-
     }
 
     @Override
@@ -84,7 +57,7 @@ public class CommandVarDef implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -92,9 +65,8 @@ public class CommandVarDef implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
-
 
     public void setDataName(String dataName) {
         this.dataName = dataName;

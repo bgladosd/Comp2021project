@@ -18,7 +18,7 @@ public class CommandStore implements Command {
             System.out.println("Program : " + progName + " can not be found ");
             return null;
         }
-        
+
         m.reSetVariableData();
         m.setRunningProgramName(null);
         m.resetRunnedCommand();

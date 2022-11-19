@@ -88,7 +88,7 @@ public class Memory {
 
         // check if this command need to break point
         if (getDebugMode()) {
-            for (int i=breakpointList.size()-1;i>=0;i--) {
+            for (int i = breakpointList.size() - 1; i >= 0; i--) {
 
                 String[] sp = breakpointList.get(i).split(" ");
                 if (!sp[0].equals(getRunningProgramName())) {
@@ -99,7 +99,8 @@ public class Memory {
                 }
                 // break program
                 System.out
-                        .println("Entered debug mode, stoped before : " + breakpointList.get(i) + " input 'quit' to exit debug mode");
+                        .println("Entered debug mode, stoped before : " + breakpointList.get(i)
+                                + " input 'quit' to exit debug mode");
                 while (true) {
 
                     Scanner scanner1 = new Scanner(System.in); // Create a Scanner object
@@ -250,30 +251,7 @@ public class Memory {
     }
 
     public boolean checkIsValidProgramName(String s) {
-        // ascii table [(48)0-9(58),(65)A-Z(90),(97)a-z(122)]
-        // case1 if more than eight characters
-        if (s.length() > 40) {
-            return false;
-        }
-        // case2 if not english letters and digits
-        for (char c : s.toCharArray()) {
-            if (!((c > 47 && c < 59) || (c > 64 && c < 91) || (c > 96 && c < 123))) {
-                return false;
-            }
-
-        }
-
-        // case3 if string start with 0-9
-        if (s.charAt(0) > 47 && s.charAt(0) < 58) {
-            return false;
-        }
-        // case4 is SIMPLE Keywords
-        for (String string : Identifiers) {
-            if (s.equals(string)) {
-                return false;
-            }
-        }
-
+        // program name checking is not defined in description
         return true;
 
     }

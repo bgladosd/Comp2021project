@@ -25,7 +25,7 @@ public class CommandWhile implements Command {
             return null;
         }
 
-        statement=m.getCmd(statementLab1);
+        statement = m.getCmd(statementLab1);
 
         expBoolean = (boolean) dataO.o;
         while (expBoolean) {
@@ -55,8 +55,6 @@ public class CommandWhile implements Command {
         String label = cmd[1];
         expRef = cmd[2];
         statementLab1 = cmd[3];
-        
-        //check expRef is bool or e
 
         // command check tegrity end
         if (!m.checkIsValidNameOrLabel(label)) {
@@ -92,7 +90,7 @@ public class CommandWhile implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return this.cmdString;
@@ -100,8 +98,7 @@ public class CommandWhile implements Command {
 
     @Override
     public void setCmdString(String s) {
-        this.cmdString=s;
+        this.cmdString = s;
     }
-
 
 }
