@@ -5,7 +5,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 public class CommandAssign implements Command {
     private String cmdString;
     private String label;
-    private String dataName;
+    private String varName;
     private String expRef;
 
     @Override
@@ -13,7 +13,7 @@ public class CommandAssign implements Command {
 
         m.preExecution(this);
 
-        String varName = dataName;
+       
         DataObject dataObject1 = m.getData(varName);
         DataObject dataObject2 = new DataObject();
 
@@ -36,7 +36,7 @@ public class CommandAssign implements Command {
             return new DataObject("false", m);
         }
 
-        m.addData(dataName, dataObject2);
+        m.addData(varName, dataObject2);
         m.postExecution(this);
         return new DataObject("false", m);
     }
@@ -51,8 +51,8 @@ public class CommandAssign implements Command {
                     "instruction failed! assign statement should only have 4 elements which is (assign lab varName expRef)");
             return;
         }
-        String label = cmd[1];
-        String varName = cmd[2];
+        label = cmd[1];
+        varName = cmd[2];
         expRef = cmd[3];
 
         if (!m.checkIsValidNameOrLabel(label)) {
