@@ -34,7 +34,7 @@ public class CommandInspect implements Command {
         programName = cmd[1];
         varName = cmd[2];
         if (!programName.equals(m.getRunningProgramName())) {
-            System.out.println("program name is not correct it should be" + m.getRunningProgramName());
+            System.out.println("program name is not correct it should be " + m.getRunningProgramName());
             return;
         }
         this.execute(m);
