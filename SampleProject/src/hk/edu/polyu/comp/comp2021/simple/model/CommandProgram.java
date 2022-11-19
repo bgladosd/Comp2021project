@@ -19,7 +19,10 @@ public class CommandProgram implements Command {
         m.postExecution(this);
         return null;
     }
-
+    /** check is the command valid and add to program list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandProgram(String[] cmd, Memory m) {
         if (cmd.length != 3) {
             System.out.println(

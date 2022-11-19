@@ -37,7 +37,10 @@ public class CommandLoad implements Command {
 
         return null;
     }
-
+    /** check is the command valid and execute to load all command in a file
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandLoad(String[] cmd, Memory m) {
         if (cmd.length != 3) { // load D:\test test
             System.out.println(

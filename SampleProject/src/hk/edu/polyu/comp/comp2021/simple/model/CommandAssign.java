@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** assign command. this command assign a expRef to an existing variable
+ * @author kuri0606
+ */
 public class CommandAssign implements Command {
     private String cmdString;
     private String label;
@@ -39,6 +41,10 @@ public class CommandAssign implements Command {
         return new DataObject("false", m);
     }
 
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandAssign(String[] cmd, Memory m) {
         if (cmd.length != 4) {
             System.out.println(
@@ -66,7 +72,6 @@ public class CommandAssign implements Command {
         }
 
         setLabel(label);
-        setDataName(varName);
         m.addCmd(label, this);
 
     }
@@ -89,10 +94,6 @@ public class CommandAssign implements Command {
     @Override
     public void setCmdString(String s) {
         this.cmdString = s;
-    }
-
-    public void setDataName(String dataName) {
-        this.dataName = dataName;
     }
 
 }

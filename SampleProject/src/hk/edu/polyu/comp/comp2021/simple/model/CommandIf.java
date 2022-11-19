@@ -40,7 +40,10 @@ public class CommandIf implements Command {
         return null;
 
     }
-
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandIf(String[] cmd, Memory m) {
         if (cmd.length != 5) {
             System.out.println(

@@ -25,7 +25,10 @@ public class CommandExecute implements Command {
         return null;
 
     }
-
+    /** check is the command valid and execute this command which executed other commands
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandExecute(String[] cmd, Memory m) {
         if (cmd.length != 2) {
             System.out.println(

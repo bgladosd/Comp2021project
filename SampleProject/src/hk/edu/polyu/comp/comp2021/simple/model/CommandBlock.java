@@ -29,9 +29,9 @@ public class CommandBlock implements Command {
 
     }
 
-    /**
-     * @param cmd 
-     * @param m
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
      */
     public CommandBlock(String[] cmd, Memory m) {
         if (cmd.length < 3) {

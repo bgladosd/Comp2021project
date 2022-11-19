@@ -39,7 +39,7 @@ public class CommandBinexpr implements Command {
             return new DataObject("false", m);
         }
 
-        if (expRefObject1.getType() == "int") {
+        if (expRefObject1.getType() .equals("int") ) {
             Integer intExpRef1 = (Integer) expRefObject1.getO();
             Integer intExpRef2 = (Integer) expRefObject2.getO();
             switch (bop) {
@@ -77,7 +77,7 @@ public class CommandBinexpr implements Command {
                     dataObject = new DataObject(String.valueOf((intExpRef1 != intExpRef2)), m);
                     break;
             }
-        } else if (expRefObject1.getType() == "bool") {
+        } else if (expRefObject1.getType() .equals("bool") ) {
             Boolean boolExpRef1 = (Boolean) expRefObject1.getO();
             Boolean boolExpRef2 = (Boolean) expRefObject2.getO();
             switch (bop) {
@@ -99,7 +99,10 @@ public class CommandBinexpr implements Command {
         return dataObject;
 
     }
-
+    /** check is the command valid and add ExpRef
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandBinexpr(String[] cmd, Memory m) {
         if (cmd.length != 5) {
             System.out.println(

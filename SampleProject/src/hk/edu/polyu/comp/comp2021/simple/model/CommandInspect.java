@@ -21,7 +21,10 @@ public class CommandInspect implements Command {
         System.out.println("<" + inspectObject + ">");
         return null;
     }
-
+    /** check is the command valid and execute this command to inspect
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandInspect(String[] cmd, Memory m) {
         if (cmd.length != 3) {
             System.out.println(

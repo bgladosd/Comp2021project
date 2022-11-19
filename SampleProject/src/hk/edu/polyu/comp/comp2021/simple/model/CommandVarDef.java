@@ -25,7 +25,10 @@ public class CommandVarDef implements Command {
         m.postExecution(this);
         return (null);
     }
-
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandVarDef(String[] cmd, Memory m) {
         if (cmd.length != 5) {
             System.out.println(

@@ -12,7 +12,10 @@ public class CommandSkip implements Command {
         m.postExecution(this);
         return null;
     }
-
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandSkip(String[] cmd, Memory m) {
         if (cmd.length != 2) {
             System.out.println(

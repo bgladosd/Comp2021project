@@ -25,7 +25,7 @@ public class CommandUnexpr implements Command {
             return new DataObject("false", m);
         }
 
-        if (expRefObject.getType() == "int") {
+        if (expRefObject.getType() .equals("int") ) {
             Integer intExpRef1 = (Integer) expRefObject.getO();
             switch (uop) {
                 case "#":
@@ -35,7 +35,7 @@ public class CommandUnexpr implements Command {
                     dataObject = new DataObject(String.valueOf((-intExpRef1)), m);
                     break;
             }
-        } else if (expRefObject.getType() == "bool") {
+        } else if (expRefObject.getType() .equals("bool") ) {
             Boolean boolExpRef1 = (Boolean) expRefObject.getO();
             switch (uop) {
                 case "!":
@@ -45,7 +45,10 @@ public class CommandUnexpr implements Command {
         m.postExecution(this);
         return dataObject;
     }
-
+    /** check is the command valid and add ExpRef
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandUnexpr(String[] cmd, Memory m) {
         if (cmd.length != 4) {
             System.out.println(

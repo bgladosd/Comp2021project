@@ -29,7 +29,10 @@ public class CommandPrint implements Command {
         return null;
 
     }
-
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandPrint(String[] cmd, Memory m) {
         if (cmd.length != 3) {
             System.out.println(

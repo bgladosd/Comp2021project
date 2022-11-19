@@ -74,7 +74,10 @@ public class CommandStore implements Command {
 
         return null;
     }
-
+    /** check is the command valid and execute command to store program
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandStore(String[] cmd, Memory m) {
         if (cmd.length != 3) { // store printeven C:\\
             System.out.println(

@@ -30,7 +30,10 @@ public class CommandList implements Command {
 
         return null;
     }
-
+    /** check is the command valid and execute to show the command used in a program
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandList(String[] cmd, Memory m) {
         if (cmd.length != 2) {
             System.out.println(

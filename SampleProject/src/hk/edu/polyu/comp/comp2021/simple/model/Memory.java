@@ -1,13 +1,13 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-/** memory class for SIMPLE, all data store here, including commands, data, program, breakpoints, instruments, running states
- * @author Jack Lee
- */
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 import java.util.Scanner;
-
+/** memory class for SIMPLE, all data store here, including commands, data, program, breakpoints, instruments, running states
+ * @author Jack Lee
+ */
 public class Memory {
     private HashMap<String, DataObject> dataMemory;
     private HashMap<String, Command> cmdMemory;
@@ -23,7 +23,7 @@ public class Memory {
     private boolean debugMode = false;
 
     private String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
-            "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
+            "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect","debug","instrument","togglebreakpoint" };
 
     public Memory() {
         dataMemory = new HashMap<>();

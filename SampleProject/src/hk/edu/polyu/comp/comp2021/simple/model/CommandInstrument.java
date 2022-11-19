@@ -16,7 +16,10 @@ public class CommandInstrument implements Command {
         System.out.println("Instructment : " + instrumentString + " added");
         return null;
     }
-
+    /** check is the command valid and add to instrument to instrument list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandInstrument(String[] cmd, Memory m) {
         // just for debuging delete later
 

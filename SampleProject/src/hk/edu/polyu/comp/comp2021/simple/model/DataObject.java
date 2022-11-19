@@ -6,21 +6,32 @@ public class DataObject {
     private String type;
     private Object o;
     private Memory m;
-
+    /** constructor of dataobject
+     */
     public DataObject() {
 
     }
-
+    /** create data memory and call autoSetData to auto setup the DataObject
+     * @param s string of data
+     * @param m access to memory
+     */
     public DataObject(String s, Memory m) {
         autoSetData(s, m);
     }
-
+    /** set up the dataMemory with given parameters
+     * @param type type of data
+     * @param o object of data
+     * @param m access to memory
+     */
     public DataObject(String type, Object o, Memory m) {
         this.type = type;
         this.o = o;
         this.m = m;
     }
-
+    /** set up the dataMemory with given parameters but this one is quick setup for command type
+     * @param c command to save
+     * @param m access to memory
+     */
     public DataObject(Command c, Memory m) {
         this.type = "e";
         this.o = c;

@@ -47,7 +47,10 @@ public class CommandWhile implements Command {
         return null;
 
     }
-
+    /** check is the command valid and add to command list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandWhile(String[] cmd, Memory m) {
         if (cmd.length != 4) {
             System.out.println(

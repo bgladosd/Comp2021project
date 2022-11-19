@@ -18,7 +18,10 @@ public class CommandToggleBreakPoint implements Command {
         }
         return null;
     }
-
+    /** check is the command valid and add Breakpoint to breakpoint list
+     * @param cmd command arguments
+     * @param m access to memory
+     */
     public CommandToggleBreakPoint(String[] cmd, Memory m) {
         // just for debuging delete later
 
