@@ -19,16 +19,17 @@ public class CommandExecuteTest {
     Command cb = new CommandBlock("block block1 vardef1 print1".split(" "), m);
     Command cpg = new CommandProgram("program program1 block1".split(" "), m);
 
+
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
-        cv.execute(m);
     }
 
     @Test
     public void testConstructorExecute () {
 
         Command c1 = new CommandExecute("execute program1".split(" "), m);
+        assertEquals(null, m.getRunningProgramName());
         String printString = "[100]";
         assertEquals(printString ,outContent.toString().trim());
     }
