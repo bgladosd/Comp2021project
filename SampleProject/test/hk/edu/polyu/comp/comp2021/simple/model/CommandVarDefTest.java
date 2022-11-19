@@ -44,6 +44,7 @@ public class CommandVarDefTest {
     @Test
     public void testConstructor4() {
         Command c1 = new CommandVarDef("vardef vardef1 int x abc".split(" "), m);
+        c1.execute(m);
         String failStat = "instruction failed! expRef is not valid value";
         assertEquals(failStat ,outContent.toString().trim());
     }
@@ -51,6 +52,7 @@ public class CommandVarDefTest {
     @Test
     public void testConstructor5() {
         Command c1 = new CommandVarDef("vardef vardef1 long x 100".split(" "), m);
+        c1.execute(m);
         String failStat = "instruction failed! expRef is not type :long";
         assertEquals(failStat ,outContent.toString().trim());
     }

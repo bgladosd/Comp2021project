@@ -4,10 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.FileReader;
-import java.io.PrintStream;
+import java.io.*;
 
 import static org.junit.Assert.*;
 
@@ -32,7 +29,10 @@ public class CommandStoreTest {
 
     @Test
     public void testConstructorExecute () {
-        Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
+        //Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
+        File myObj = new File("d:\\simple_testing\\program1.txt");
+        myObj.delete();
+        Command c2 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
         String path = "d:\\simple_testing";
         String progName = "program1";
         BufferedReader reader = null;
@@ -43,7 +43,7 @@ public class CommandStoreTest {
     }
 
     @Test
-    public void testConstructorExecute2 () {
+    public void testConstructorExecute2 () { //for rewrite
         Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
         Command c2 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
         String path = "d:\\simple_testing";

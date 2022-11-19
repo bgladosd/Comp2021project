@@ -42,28 +42,10 @@ public class MemoryTest {
     @Test
     public void testGetAddPrintCmd () {
         Command c1 = new CommandVarDef("vardef vardef1 int x 100".split(" "), m);
-        //assertEquals("vardef1 added", outContent.toString().trim());
-
         Command c2 = new CommandPrint("print print1 x".split(" "), m);
-        //check output
-        //String [] printString = {"vardef1 added", "print1 added"};
-        //assertEquals(printString[0], outContent.toString().split("\n")[0].trim());
-        //assertEquals(printString[1], outContent.toString().split("\n")[1].trim());
-        //m.addCmd("vardef1", c1);
-        //m.addCmd("print1", c2);
-
         assertEquals(c1, m.getCmd("vardef1"));
         assertEquals(c2, m.getCmd("print1"));
         assertNull(m.getCmd("unkownCommand"));
-
-        String [] printString2 = {"vardef1 : hk.edu.polyu.comp.comp2021.simple.model.CommandVarDef",
-                "print1 : hk.edu.polyu.comp.comp2021.simple.model.CommandPrint"};
-        m.printCmd();
-        //assertTrue(Arrays.stream(printString2).anyMatch((outContent.toString().split("\n")[2].trim())::equals));
-        String output1 = outContent.toString().split("\n")[1].trim();
-        String output2 = outContent.toString().split("\n")[0].trim();
-        assertEquals(printString2[0], output1.substring(0, output1.length()-9));
-        assertEquals(printString2[1], output2.substring(0, output2.length()-9));
     }
 
     @Test
@@ -96,20 +78,6 @@ public class MemoryTest {
         String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print", "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
         for (String string : Identifiers) {
             assertFalse(m.checkIsValidNameOrLabel(string));
-        }
-    }
-
-    @Test
-    public void testCheckIsValidProgramName () {
-        assertTrue(m.checkIsValidProgramName("A1234567"));
-        assertTrue(m.checkIsValidProgramName("Aaa123"));
-
-        assertFalse(m.checkIsValidProgramName("A12345678910111213141516171819202122232425"));
-        assertFalse(m.checkIsValidProgramName("^%$%&*`"));
-        assertFalse(m.checkIsValidProgramName("01234567"));
-        String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print", "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect" };
-        for (String string : Identifiers) {
-            assertFalse(m.checkIsValidProgramName(string));
         }
     }
 
