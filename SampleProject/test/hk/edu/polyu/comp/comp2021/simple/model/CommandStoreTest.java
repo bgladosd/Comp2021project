@@ -55,7 +55,7 @@ public class CommandStoreTest {
         } catch (Exception e) {}
         assertNotNull(reader);
         String rewriteStat = "Same name file already exists so it is rewritten.";
-        assertEquals(rewriteStat ,outContent.toString().split("\n")[1].trim());
+        assertEquals(rewriteStat ,outContent.toString().split("\n")[3].trim());
 
     }
 
