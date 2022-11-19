@@ -18,6 +18,8 @@ public class CommandStoreTest {
     Command cb = new CommandBlock("block block1 vardef1 print1".split(" "), m);
     Command cpg = new CommandProgram("program program1 block1".split(" "), m);
 
+    String path = System.getProperty("user.dir");
+
     @Before
     public void setUpStreams() {
         System.setOut(new PrintStream(outContent));
@@ -30,10 +32,9 @@ public class CommandStoreTest {
     @Test
     public void testConstructorExecute () {
         //Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
-        File myObj = new File("d:\\simple_testing\\program1.txt");
+        File myObj = new File(System.getProperty("user.dir")+"\\program1.txt");
         myObj.delete();
-        Command c2 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
-        String path = "d:\\simple_testing";
+        Command c2 = new CommandStore(("store program1 "+path).split(" "), m);
         String progName = "program1";
         BufferedReader reader = null;
         try {
@@ -44,9 +45,9 @@ public class CommandStoreTest {
 
     @Test
     public void testConstructorExecute2 () { //for rewrite
-        Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
-        Command c2 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
-        String path = "d:\\simple_testing";
+        Command c1 = new CommandStore(("store program1 "+path).split(" "), m);
+        Command c2 = new CommandStore(("store program1 "+path).split(" "), m);
+
         String progName = "program1";
         BufferedReader reader = null;
         try {
@@ -60,7 +61,7 @@ public class CommandStoreTest {
 
     @Test
     public void testConstructorExecute3 () {
-        Command c1 = new CommandStore("store program1 d:\\simple_testing 4thEle".split(" "), m);
+        Command c1 = new CommandStore("store program1 d:\\ 4thEle".split(" "), m);
         String failStat = "instruction failed! store statement should only have 3 elements which is (store programName path)";
         assertEquals(failStat ,outContent.toString().trim());
     }
