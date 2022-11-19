@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 import java.util.Scanner;
-/** memory class for SIMPLE, all data store here, including commands, data, program, breakpoints, instruments, running states
+
+/**
+ * memory class for SIMPLE, all data store here, including commands, data,
+ * program, breakpoints, instruments, running states
+ * 
  * @author Jack Lee
  */
 public class Memory {
@@ -23,8 +27,10 @@ public class Memory {
     private boolean debugMode = false;
 
     private String[] Identifiers = { "int", "bool", "true", "false", "vardef", "binexpr", "unexpr", "assign", "print",
-            "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect","debug","instrument","togglebreakpoint" };
+            "skip", "block", "if", "while", "program", "execute", "list", "store", "load", "quit", "inspect", "debug",
+            "instrument", "togglebreakpoint" };
 
+    /** constructor of memory, initialize all memory containers */
     public Memory() {
         dataMemory = new HashMap<>();
         cmdMemory = new HashMap<>();
@@ -35,22 +41,46 @@ public class Memory {
         instrumentList = new ArrayList<>();
     }
 
+    /**
+     * get the state of debug mode
+     * 
+     * @return bool state
+     */
     public boolean getDebugMode() {
         return this.debugMode;
     }
 
+    /**
+     * set the debug state
+     * 
+     * @param b boolean
+     */
     public void setDebugMode(boolean b) {
         this.debugMode = b;
     }
 
+    /**
+     * get the name of running program
+     * 
+     * @return String
+     */
     public String getRunningProgramName() {
         return runningProgramName;
     }
 
+    /**
+     * set the name of running program
+     * 
+     * @param s name
+     */
     public void setRunningProgramName(String s) {
         this.runningProgramName = s;
     }
 
+    /**
+     * @param s toggleBreakPoint command input string
+     * @return boolean add or remove
+     */
     public boolean toggleBreakPointInList(String s) {
         if (breakpointList.contains(s)) {
             breakpointList.remove(s);
@@ -60,26 +90,46 @@ public class Memory {
         return true;
     }
 
+    /**
+     * add instrument
+     * 
+     * @param s instrument
+     */
     public void addInstrument(String s) {
         instrumentList.add(s);
     }
 
+    /** reset the variable data */
     public void reSetVariableData() {
         dataMemory.values().removeIf(i -> !i.getType().equals("e"));
     }
 
+    /**
+     * @param executing bool state
+     */
     public void setExecuting(boolean executing) {
         this.executing = executing;
     }
 
+    /**
+     * @return boolean
+     */
     public boolean getExecuting() {
         return this.executing;
     }
 
+    /**
+     * @return Queue<Command>
+     */
     public Queue<Command> getRunnedCommand() {
         return runnedCommand;
     }
 
+    /**
+     * run at the start of when command is executed by execute command
+     * 
+     * @param cmd cmd
+     */
     // things to check before command executed by commanExecute
     public void preExecution(Command cmd) {
         // store executed command to runned command list
@@ -146,6 +196,11 @@ public class Memory {
 
     }
 
+    /**
+     * run after the command at the end of execution by execute command
+     * 
+     * @param cmd command
+     */
     // things to check after command executed by commandExecute
     public void postExecution(Command cmd) {
 
@@ -168,47 +223,77 @@ public class Memory {
         }
     }
 
+    /** reset the runned command list */
     public void resetRunnedCommand() {
         runnedCommand = new ArrayDeque<>();
     }
 
+    /**
+     * put data inside data hashmap
+     * 
+     * @param dataName dataName
+     * @param data     data object
+     */
     public void addData(String dataName, DataObject data) {
         dataMemory.put(dataName, data);
     }
 
+    /**
+     * get data from hashmap with coressponding name
+     * 
+     * @param dataName dataname
+     * @return DataObject
+     */
     public DataObject getData(String dataName) {
         return dataMemory.get(dataName);
     }
 
+    /**
+     * add command to commandMemory
+     * 
+     * @param label label
+     * @param cmd   cmd
+     */
     public void addCmd(String label, Command cmd) {
         cmdMemory.put(label, cmd);
     }
 
+    /**
+     * get command with coressponding label
+     * 
+     * @param label label
+     * @return Command
+     */
     public Command getCmd(String label) {
         return cmdMemory.get(label);
     }
 
+    /**
+     * get program with coressponding name
+     * 
+     * @param programName program name
+     * @return Command
+     */
     public Command getProgram(String programName) {
         return programMemory.get(programName);
     }
 
+    /**
+     * get program command to programMemory
+     * 
+     * @param programName programName
+     * @param program     program command
+     */
     public void addProgram(String programName, Command program) {
         programMemory.put(programName, program);
     }
 
-    public void printData() {
-        for (String data : dataMemory.keySet()) {
-            System.out.println(data + " : " + getData(data));
-        }
-    }
-
-    public void printCmd() {
-        for (String data : cmdMemory.keySet()) {
-            System.out.println(data + " : " + getCmd(data));
-        }
-
-    }
-
+    /**
+     * check string is valid expression
+     * 
+     * @param s expression string
+     * @return Boolean
+     */
     public Boolean checkIsValidExpression(String s) {
         DataObject dob = new DataObject();
         if (!dob.autoSetData(s, this)) {
@@ -221,6 +306,12 @@ public class Memory {
         return true;
     }
 
+    /**
+     * check string is valid name or label
+     * 
+     * @param s name or label string
+     * @return boolean
+     */
     public boolean checkIsValidNameOrLabel(String s) {
         // ascii table [(48)0-9(58),(65)A-Z(90),(97)a-z(122)]
         // case1 if more than eight characters
@@ -229,14 +320,14 @@ public class Memory {
         }
         // case2 if not english letters and digits
         for (char c : s.toCharArray()) {
-            if (!((c > 47 && c < 59) || (c > 64 && c < 91) || (c > 96 && c < 123))) {
+            if (!((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'b'))) {
                 return false;
             }
 
         }
 
         // case3 if string start with 0-9
-        if (s.charAt(0) > 47 && s.charAt(0) < 58) {
+        if (s.charAt(0) >= '0' && s.charAt(0) <= '9') {
             return false;
         }
         // case4 is SIMPLE Keywords
@@ -251,6 +342,12 @@ public class Memory {
 
     }
 
+    /**
+     * check string is valid programName
+     * 
+     * @param s program name
+     * @return boolean
+     */
     public boolean checkIsValidProgramName(String s) {
         // program name checking is not defined in description
         return true;

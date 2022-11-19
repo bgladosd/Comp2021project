@@ -4,7 +4,7 @@ package hk.edu.polyu.comp.comp2021.simple.model;
  */
 public class CommandVarDef implements Command {
     private String label;
-    private String dataName;
+    private String varName;
     private DataObject dataObject=new DataObject();
     private String cmdString;
     private String type;
@@ -21,7 +21,7 @@ public class CommandVarDef implements Command {
             System.out.println("instruction failed! expRef is not type :" + type);
             return null;
         }
-        m.addData(dataName, dataObject);
+        m.addData(varName, dataObject);
         m.postExecution(this);
         return (null);
     }
@@ -35,9 +35,9 @@ public class CommandVarDef implements Command {
                     "instruction failed! vardef statement should only have 5 elements which is (vardef lable type varName expRef)");
             return;
         }
-        String label = cmd[1];
+        label = cmd[1];
         type = cmd[2];
-        String varName = cmd[3];
+        varName = cmd[3];
         expRef = cmd[4];
         if (!m.checkIsValidNameOrLabel(label)) {
             System.out.println("instruction failed! " + label + " is not a valid label name");
@@ -46,9 +46,6 @@ public class CommandVarDef implements Command {
 
         // command check tegrity end
         setLabel(label);
-        setDataObject(dataObject);
-        setDataName(varName);
-
         m.addCmd(label, this);
     }
 
@@ -71,14 +68,6 @@ public class CommandVarDef implements Command {
     @Override
     public void setCmdString(String s) {
         this.cmdString = s;
-    }
-
-    public void setDataName(String dataName) {
-        this.dataName = dataName;
-    }
-
-    public void setDataObject(DataObject dataObject) {
-        this.dataObject = dataObject;
     }
 
 }

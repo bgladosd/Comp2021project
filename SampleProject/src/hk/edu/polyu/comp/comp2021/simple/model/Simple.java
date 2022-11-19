@@ -8,7 +8,7 @@ public class Simple {
 
     private Memory memory;
     private CommandBuilder commandBuilder;
-
+    /** construct the SIMPLE object, set up memory and commandbuilder, start accept inputs*/
     public Simple() {
 
         memory = new Memory();
@@ -17,9 +17,9 @@ public class Simple {
         System.out.println("SIMPLE is running please input");
         while (true) {
 
-            Scanner scanner1 = new Scanner(System.in); // Create a Scanner object
+            Scanner scanner1 = new Scanner(System.in);
             System.out.print(">");
-            String input = scanner1.nextLine(); // Read user input
+            String input = scanner1.nextLine();
             if (input.equals("quit"))
                 break;
             commandBuilder.buildCommand(input, memory);

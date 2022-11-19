@@ -139,8 +139,8 @@ public class DataObject {
     }
 
     
-    /** 
-     * @param s
+    /** check if string is integer
+     * @param s string
      * @return boolean
      */
     public boolean isInteger(String s) {
