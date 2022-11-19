@@ -1,6 +1,5 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
-
 // running in debug mode
 public class CommandInstrument implements Command {
     String label;
@@ -9,31 +8,60 @@ public class CommandInstrument implements Command {
     String pos;
     String expRef;
 
-
     @Override
     public DataObject execute(Memory m) {
-        String instrumentString=programName+" "+instrumentLabel+" "+pos+" "+expRef;
+        String instrumentString = programName + " " + instrumentLabel + " " + pos + " " + expRef;
         m.addInstrument(instrumentString);
-        System.out.println("Instructment : "+ instrumentString + " added");
+        System.out.println("Instructment : " + instrumentString + " added");
         return null;
     }
 
     public CommandInstrument(String[] cmd, Memory m) {
-        //just for debuging delete later
+        // just for debuging delete later
 
         if (cmd.length != 5) {
             System.out.println(
                     "instruction failed! instrument statement should only have 5 elements which is (instrument programName statementLab pos expRef)");
             return;
-        
+
         }
-        label=cmd[0];
+        label = cmd[0];
         programName = cmd[1];
         instrumentLabel = cmd[2];
-        pos=cmd[3];
-        expRef=cmd[4];
+        pos = cmd[3];
+        expRef = cmd[4];
 
-        
+        if (!m.checkIsValidProgramName(programName)) {
+            System.out.println(
+                    programName + " is not a valid program Name");
+            return;
+        }
+        if (m.getProgram(programName) == null) {
+            System.out.println(
+                    programName + " : no such program");
+            return;
+        }
+        if (!m.checkIsValidNameOrLabel(instrumentLabel)) {
+            System.out.println(
+                    instrumentLabel + " is not a valid label");
+            return;
+        }
+        if (m.getCmd(instrumentLabel) == null) {
+            System.out.println(
+                    instrumentLabel + " : no such command is inside memory with this label");
+            return;
+        }
+        if (!m.checkIsValidExpression(expRef)) {
+            System.out.println(
+                    expRef + " is not a valid expression");
+            return;
+        }
+        if (!(pos.equals("before") || pos.equals("after"))) {
+            System.out.println(
+                    "pos should only be 'before' or 'after'");
+            return;
+        }
+
         // command check tegrity end
         this.execute(m);
 
@@ -49,7 +77,7 @@ public class CommandInstrument implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return "";
@@ -57,8 +85,7 @@ public class CommandInstrument implements Command {
 
     @Override
     public void setCmdString(String s) {
-        
-    }
 
+    }
 
 }

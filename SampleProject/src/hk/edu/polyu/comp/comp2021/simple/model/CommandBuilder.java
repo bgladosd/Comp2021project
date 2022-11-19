@@ -58,8 +58,6 @@ public class CommandBuilder {
             new CommandList(cmd, m);
         }
 
-
-
         else if (cmd[0].equals("instrument")) {
             new CommandInstrument(cmd, m);
         }

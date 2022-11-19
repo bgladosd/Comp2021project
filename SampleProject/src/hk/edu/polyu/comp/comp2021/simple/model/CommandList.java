@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
-public class CommandList implements Command{
+public class CommandList implements Command {
 
     String progName;
     String label;
@@ -25,30 +25,24 @@ public class CommandList implements Command{
             System.out.println(cs.getCmdString());
         }
 
-
         return null;
     }
 
-    public CommandList(String[] cmd, Memory m){
-        if(cmd.length!=2){
+    public CommandList(String[] cmd, Memory m) {
+        if (cmd.length != 2) {
             System.out.println(
                     "instruction failed! list statement should only have 2 elements which is (list programName)");
             return;
         }
 
-        this.progName=cmd[1];
+        this.progName = cmd[1];
 
         this.execute(m);
     }
 
-
-
-
-
-
     @Override
     public void setLabel(String l) {
-        this.label=l;
+        this.label = l;
     }
 
     @Override

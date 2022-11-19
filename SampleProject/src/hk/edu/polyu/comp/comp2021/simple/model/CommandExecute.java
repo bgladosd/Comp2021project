@@ -10,8 +10,8 @@ public class CommandExecute implements Command {
     @Override
     public DataObject execute(Memory m) {
         Command c = m.getProgram(program);
-        if (c==null) {
-            System.out.println("Program : "+ program +" can not be found ");
+        if (c == null) {
+            System.out.println("Program : " + program + " can not be found ");
             return null;
         }
         m.reSetVariableData();
@@ -47,7 +47,7 @@ public class CommandExecute implements Command {
     public String getLabel() {
         return label;
     }
-    
+
     @Override
     public String getCmdString() {
         return "";
@@ -55,8 +55,7 @@ public class CommandExecute implements Command {
 
     @Override
     public void setCmdString(String s) {
-        
-    }
 
+    }
 
 }
