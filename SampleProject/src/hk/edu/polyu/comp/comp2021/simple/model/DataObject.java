@@ -3,11 +3,14 @@ package hk.edu.polyu.comp.comp2021.simple.model;
  * @author Jack Lee
  */
 public class DataObject {
+    /** the lowest number of integer in SIMPLE*/
+    public static final int intLowLimit = -99999;
+    /** the largest number of integer in SIMPLE*/
+    public static final int intUpLimit = 99999;
     private String type;
     private Object o;
     private Memory m;
-    /** constructor of dataobject
-     */
+    /** constructor of dataobject*/
     public DataObject() {
 
     }
@@ -38,47 +41,78 @@ public class DataObject {
         this.m = m;
     }
 
+    /** basic get and set
+     * @return String
+     */
     public String getType() {
         return type;
     }
-
+    
+    
+    /** basic get and set
+     * @return Object
+     */
     public Object getO() {
         return o;
     }
 
+    
+    /** basic get and set
+     * @param o set object
+     */
     public void setO(Object o) {
         this.o = o;
     }
 
+    
+    /** basic get and set
+     * @param type set type
+     */
     public void setType(String type) {
         this.type = type;
     }
 
+    
+    /** basic get and set
+     * @param b set boolean
+     */
     public void setBoolean(Boolean b) {
         o = b;
         type = "bool";
     }
 
+    
+    /** basic get and set
+     * @param i set int
+     */
     public void setInteger(Integer i) {
         o = i;
         type = "int";
     }
 
+    
+    /** auto set up the data to a corresponding data via string,
+     * it will check if the string is inside data first to copy data as the finded variable or expression
+     * if it is not it will also check if it is Integer or boolean
+     * @param s string to detect corresponding object
+     * @param m access to memory
+     * @return boolean if the boolean is true it mean it set up the data successfully, if it is false it mean it fails to setup the data
+     */
     public boolean autoSetData(String s, Memory m) {
         // is variable that inside memory
         this.m = m;
         if (m.getData(s) != null) {
-            this.o = m.getData(s).o;
-            this.type = m.getData(s).type;
-            if (m.getData(s).type.equals("e")) {
+            this.o = m.getData(s).getO();
+            this.type = m.getData(s).getType();
+            if (m.getData(s).getType().equals("e")) {
                 if (!m.getExecuting()) {
                     return true;
                 }
 
                 while (this.type.equals("e")) {
                     Command tcc = (Command) this.o;
-                    this.o = tcc.execute(m).o;
-                    this.type = tcc.execute(m).type;
+                    this.o = tcc.execute(m).getO();
+                    this.type = tcc.execute(m).getType();
                 }
 
             }
@@ -92,10 +126,10 @@ public class DataObject {
         } else if (isInteger(s)) {
             this.type = "int";
             int t = Integer.parseInt(s);
-            if (t > 99999) {
-                t = 99999;
-            } else if (t < -99999) {
-                t = -99999;
+            if (t > intUpLimit) {
+                t = intUpLimit;
+            } else if (t < intLowLimit) {
+                t = intLowLimit;
             }
             this.o = t;
             return true;
@@ -104,6 +138,11 @@ public class DataObject {
         return false;
     }
 
+    
+    /** 
+     * @param s
+     * @return boolean
+     */
     public boolean isInteger(String s) {
         try {
             Integer.parseInt(s);
@@ -113,6 +152,10 @@ public class DataObject {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         if (type.equals("int")) {

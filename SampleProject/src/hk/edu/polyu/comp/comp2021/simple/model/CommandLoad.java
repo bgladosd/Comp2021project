@@ -11,7 +11,7 @@ public class CommandLoad implements Command {
     private String progName;
     private String label;
 
-    CommandBuilder cmdB;
+    private CommandBuilder cmdB;
 
     @Override
     public DataObject execute(Memory m) {
