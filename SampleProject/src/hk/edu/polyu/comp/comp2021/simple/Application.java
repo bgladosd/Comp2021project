@@ -16,6 +16,4 @@ public class Application {
         System.out.println("program end!");
 
     }
-    // delete later load D:\MediaD printeven
-
 }

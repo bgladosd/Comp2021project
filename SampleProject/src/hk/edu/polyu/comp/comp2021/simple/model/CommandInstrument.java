@@ -21,8 +21,6 @@ public class CommandInstrument implements Command {
      * @param m access to memory
      */
     public CommandInstrument(String[] cmd, Memory m) {
-        // just for debuging delete later
-
         if (cmd.length != 5) {
             System.out.println(
                     "instruction failed! instrument statement should only have 5 elements which is (instrument programName statementLab pos expRef)");

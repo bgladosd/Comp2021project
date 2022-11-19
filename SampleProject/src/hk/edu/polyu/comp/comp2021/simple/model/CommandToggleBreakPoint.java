@@ -23,8 +23,6 @@ public class CommandToggleBreakPoint implements Command {
      * @param m access to memory
      */
     public CommandToggleBreakPoint(String[] cmd, Memory m) {
-        // just for debuging delete later
-
         if (cmd.length != 3) {
             System.out.println(
                     "instruction failed! togglebreakpoint statement should only have 3 elements which is (togglebreakpoint programName statementLab)");
