@@ -9,7 +9,7 @@ import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-public class CommandDebugTest {
+public class CommandToggleBreakPointTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -27,22 +27,23 @@ public class CommandDebugTest {
 
     @Test
     public void testConstructorExecute () {
-        Command c1 = new CommandDebug("debug program1".split(" "), m);
-        String printString = "[300]";
-        assertEquals(printString ,outContent.toString().split("\n")[1].trim());
+        Command c1 = new CommandToggleBreakPoint("togglebreakpoint program1 print1".split(" "), m);
+        String printString = "break point : program1 print1 added";
+        assertEquals(printString ,outContent.toString().trim());
     }
 
     @Test
     public void testConstructorExecute2 () {
-        Command c1 = new CommandDebug("debug program1 3rdEle".split(" "), m);
-        String failStat = "instruction failed! execute statement should only have 2 elements which are (debug program1)";
-        assertEquals(failStat ,outContent.toString().trim());
+        Command c1 = new CommandToggleBreakPoint("togglebreakpoint program1 print1".split(" "), m);
+        Command c2 = new CommandToggleBreakPoint("togglebreakpoint program1 print1".split(" "), m);
+        String printString = "break point : program1 print1 removed";
+        assertEquals(printString ,outContent.toString().split("\n")[1].trim());
     }
 
     @Test
     public void testConstructorExecute3 () {
-        Command c1 = new CommandDebug("debug program2".split(" "), m);
-        String failStat = "Program : program2 can not be found";
+        Command c1 = new CommandToggleBreakPoint("togglebreakpoint program1 print1 4thEle".split(" "), m);
+        String failStat = "instruction failed! togglebreakpoint statement should only have 3 elements which is (togglebreakpoint programName statementLab)";
         assertEquals(failStat ,outContent.toString().trim());
     }
 

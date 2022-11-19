@@ -37,15 +37,9 @@ public class CommandProgramTest {
         assertEquals(failStat ,outContent.toString().trim());
     }
 
-    @Test
-    public void testConstructor3 () {
-        Command c1 = new CommandProgram("program program print1".split(" "), m);
-        String failStat = "program name is not valid";
-        assertEquals(failStat ,outContent.toString().trim());
-    }
 
     @Test
-    public void testConstructor4 () {
+    public void testConstructor3 () {
         Command c1 = new CommandProgram("program program1 print".split(" "), m);
         String failStat = "print is not a valid statement label name";
         assertEquals(failStat ,outContent.toString().trim());

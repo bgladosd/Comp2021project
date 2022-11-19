@@ -4,13 +4,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
-public class CommandLoadTest {
+public class CommandListTest {
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -27,34 +26,30 @@ public class CommandLoadTest {
         cp.setCmdString("print print1 x");
         cb.setCmdString("block block1 vardef1 print1");
         cpg.setCmdString("program program1 block1");
-        Command c1 = new CommandStore("store program1 d:\\simple_testing".split(" "), m);
     }
 
     @Test
     public void testConstructorExecute () {
-        Command c2 = new CommandLoad("load d:\\simple_testing program1".split(" "), m);
-        Command c3 = new CommandExecute("execute program1".split(" "), m);
-        String printString = "[100]";
-        String [] output = outContent.toString().split("\n");
-        assertEquals(printString ,output[output.length-1].trim());
+        m.setRunningProgramName("program1");
+        Command c1 = new CommandList("list program1".split(" "), m);
+        String[] printString = {"[100]", "program program1 block1", "block block1 vardef1 print1", "vardef vardef1 int x 100", "print print1 x"};
+        assertEquals(printString[0] ,outContent.toString().split("\n")[0].trim());
+        assertEquals(printString[1] ,outContent.toString().split("\n")[1].trim());
+        assertEquals(printString[2] ,outContent.toString().split("\n")[2].trim());
+        assertEquals(printString[3] ,outContent.toString().split("\n")[3].trim());
+        assertEquals(printString[4] ,outContent.toString().split("\n")[4].trim());
     }
 
     @Test
     public void testConstructorExecute2 () {
-        Command c2 = new CommandLoad("load d:\\simple_testing program2".split(" "), m);
-        String failStat = "file not found, please ensure that your file path is correct";
-        assertEquals(failStat ,outContent.toString().split("\n")[2].trim());
-    }
-
-    @Test
-    public void testConstructorExecute3 () {
-        Command c2 = new CommandLoad("load d:\\simple_testing program1 4thEle".split(" "), m);
-        String failStat = "instruction failed! load statement should only have 3 elements which is (load path programName)";
-        assertEquals(failStat ,outContent.toString().split("\n")[2].trim());
+        Command c1 = new CommandList("list program1 3rdEle".split(" "), m);
+        String failStat = "instruction failed! list statement should only have 2 elements which is (list programName)";
+        assertEquals(failStat ,outContent.toString().trim());
     }
 
     @After
     public void restoreStreams() {
         System.setOut(originalOut);
     }
+
 }
