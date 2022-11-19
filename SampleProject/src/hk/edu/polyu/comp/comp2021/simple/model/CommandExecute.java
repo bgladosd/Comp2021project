@@ -1,6 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
-//this should execute program, but for testing, it is also able to use to execute Commands
+/** execute command. this command execute the program
+ * @author Jack Lee
+ */
 public class CommandExecute implements Command {
 
     private String label;

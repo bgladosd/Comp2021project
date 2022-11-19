@@ -2,8 +2,9 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-
-//run before the program load
+/** load command. this command load all the input from a file
+ * @author Jack Lee
+ */
 public class CommandLoad implements Command {
 
     private String path;

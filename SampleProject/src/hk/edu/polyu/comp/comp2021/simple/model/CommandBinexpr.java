@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** unexpr command. this command add a binary expression to data
+ * @author kuri0606
+ */
 public class CommandBinexpr implements Command {
     private String cmdString;
     private String label;

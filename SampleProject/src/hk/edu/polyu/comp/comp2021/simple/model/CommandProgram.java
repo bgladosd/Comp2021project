@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** program command. this command add a new program that execute first command.
+ * @author Jack Lee
+ */
 public class CommandProgram implements Command {
     private String cmdString;
     private String label;

@@ -1,5 +1,8 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
+/** list command. this command list all the command that is executed in the program
+ * @author Kk335577xyz
+ */
 public class CommandList implements Command {
 
     private String progName;

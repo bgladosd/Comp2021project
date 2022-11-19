@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** if command. this command check expref is true of false to execute label1 and label2
+ * @author Jack Lee
+ */
 public class CommandIf implements Command {
     private String cmdString;
     private String label;

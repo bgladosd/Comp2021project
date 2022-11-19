@@ -1,6 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
-//this should execute program, but for testing, it is also able to use to execute Commands
+/** Debug command. this command run the program in debug mode and pause the prgoram when it is in breakpoint, when it breakpoint, it continues the program
+ * @author Jack Lee
+ */
 public class CommandDebug implements Command {
 
     private String label;

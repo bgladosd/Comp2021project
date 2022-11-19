@@ -1,6 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
-// running in debug mode
+/** instrument command. this command add a instrument, when program running and a command is executed that is instrumented, it will print out the expRef
+ * @author Jack Lee
+ */
 public class CommandInstrument implements Command {
     private String label;
     private String programName;

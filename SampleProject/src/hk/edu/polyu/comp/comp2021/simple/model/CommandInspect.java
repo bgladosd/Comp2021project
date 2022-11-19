@@ -1,5 +1,8 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
+/** inspect command. this command inspect variable of varname and print it out in debug mode
+ * @author Jack Lee
+ */
 // running in debug mode
 public class CommandInspect implements Command {
     private String label;

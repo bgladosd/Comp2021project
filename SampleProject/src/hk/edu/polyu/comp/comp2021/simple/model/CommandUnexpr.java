@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** unexpr command. this command add a unary expression to data
+ * @author kuri0606
+ */
 public class CommandUnexpr implements Command {
     private String label;
     private DataObject dataObject;

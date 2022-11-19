@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** print command. this command print out the expRef
+ * @author kuri0606
+ */
 public class CommandPrint implements Command {
     private String label;
     private String expRef;
@@ -8,7 +10,7 @@ public class CommandPrint implements Command {
     @Override
     public DataObject execute(Memory m) {
         m.preExecution(this);
-        if (m.getRunningProgramName() == null) {
+        if (m.getRunningProgramName() == "") {
             return null;
         }
         if (!m.getExecuting()) {

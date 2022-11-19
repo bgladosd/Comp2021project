@@ -3,7 +3,9 @@ package hk.edu.polyu.comp.comp2021.simple.model;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
+/** store command. this command run program insilent mode once and store the used command to a text file
+ * @author kk335577xyz
+ */
 //run before program load
 public class CommandStore implements Command {
 
@@ -68,7 +70,6 @@ public class CommandStore implements Command {
         } catch (IOException e) {
             System.out.println("Error: Failed to creating txt file.");
             e.printStackTrace();
-        } finally {
         }
 
         return null;

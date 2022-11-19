@@ -1,9 +1,11 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** vardef command. it creates a new variable when executed
+ * @author Jack Lee
+ */
 public class CommandVarDef implements Command {
     private String label;
     private String dataName;
-    private DataObject dataObject;
+    private DataObject dataObject=new DataObject();
     private String cmdString;
     private String type;
     private String expRef;

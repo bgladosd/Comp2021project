@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** togglebreakpoint command. this command toggle a breakpoint to make command break before running in debug mode
+ * @author Jack Lee
+ */
 // running in debug mode
 public class CommandToggleBreakPoint implements Command {
     private String label;

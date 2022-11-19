@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** skip command. it do nothing
+ * @author kuri0606
+ */
 public class CommandSkip implements Command {
     private String label;
     private String cmdString;

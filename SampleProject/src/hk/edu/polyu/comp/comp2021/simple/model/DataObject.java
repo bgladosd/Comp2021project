@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** a object that is used as a common dataType in our implementation of SIMPLE, it can auto setup as a suitable data with a string
+ * @author Jack Lee
+ */
 public class DataObject {
     private String type;
     private Object o;

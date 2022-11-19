@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
-
+/** while command. this command will keep executing a command when the giving expRef is true
+ * @author Jack Lee
+ */
 public class CommandWhile implements Command {
     private String cmdString;
     private String label;

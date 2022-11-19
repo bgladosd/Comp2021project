@@ -1,7 +1,9 @@
 package hk.edu.polyu.comp.comp2021.simple.model;
 
 import java.util.Scanner;
-
+/** The SIMPLE program class that use memory class and command builder class to start the program process
+ * @author Jack Lee
+ */
 public class Simple {
 
     private Memory memory;
