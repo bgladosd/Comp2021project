@@ -45,6 +45,8 @@ public class CommandStoreTest {
 
     @Test
     public void testConstructorExecute2 () { //for rewrite
+        File myObj = new File(System.getProperty("user.dir")+"\\program1.txt");
+        myObj.delete();
         Command c1 = new CommandStore(("store program1 "+path).split(" "), m);
         Command c2 = new CommandStore(("store program1 "+path).split(" "), m);
 
