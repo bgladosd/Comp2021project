@@ -11,7 +11,7 @@ public class CommandDebug implements Command {
     public DataObject execute(Memory m) {
         Command c = m.getProgram(program);
         if (c==null) {
-            System.out.println("Program : "+ program +" can not be found ");
+            System.out.println("Program : "+ program +" can not be found");
             return null;
         }
         m.setDebugMode(true);
