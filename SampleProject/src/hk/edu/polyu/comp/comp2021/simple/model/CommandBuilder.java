@@ -54,7 +54,13 @@ public class CommandBuilder {
             command.setCmdString(c);
         } else if (cmd[0].equals("store")) {
             new CommandStore(cmd, m);
-        }else if (cmd[0].equals("instrument")) {
+        } else if (cmd[0].equals("list")) {
+            new CommandList(cmd, m);
+        }
+
+
+
+        else if (cmd[0].equals("instrument")) {
             new CommandInstrument(cmd, m);
         }
 
